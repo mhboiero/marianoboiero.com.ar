@@ -63,6 +63,19 @@
   footer { border-top: 1px solid var(--divider); padding: 24px; text-align: center; font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 0.2em; color: var(--text-light); }
   footer a { color: var(--copper); text-decoration: none; }
   @media (max-width: 600px) { .options { flex-direction: column; } .option-btn { text-align: center; } }
+
+/* CAPTURE FORM */
+.capture-form { margin-top: 40px; }
+.capture-divider { width: 48px; height: 1px; background: var(--divider); margin-bottom: 32px; }
+.capture-title { font-family: 'Cinzel', serif; font-size: 14px; letter-spacing: 0.1em; color: var(--text); margin-bottom: 10px; }
+.capture-desc { font-size: 15px; color: var(--text-light); font-style: italic; margin-bottom: 20px; }
+.capture-input { display: flex; gap: 12px; flex-wrap: wrap; }
+.capture-email { font-family: 'EB Garamond', serif; font-size: 16px; padding: 10px 16px; border: 1px solid var(--divider); background: var(--white); color: var(--text); flex: 1; min-width: 200px; outline: none; }
+.capture-email:focus { border-color: var(--copper); }
+.capture-btn { font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; padding: 10px 24px; background: var(--copper); color: var(--white); border: none; cursor: pointer; transition: background 0.2s; }
+.capture-btn:hover { background: var(--copper-dark); }
+.capture-thanks { font-size: 16px; color: var(--green); font-style: italic; margin-top: 12px; }
+
 </style>
 </head>
 <body>
@@ -95,6 +108,19 @@
       <a class="contact-link" href="https://marianoboiero.com.ar" target="_blank">marianoboiero.com.ar</a>
     </div>
     <a class="doc-link" href="/docs/scanner-tecnico.pdf" target="_blank">Leer el documento técnico</a>
+    
+    <div class="capture-form" id="capture-form">
+      <div class="capture-divider"></div>
+      <p class="capture-title">¿Querés recibir el documento técnico completo?</p>
+      <p class="capture-desc">Te lo mando por mail. Sin listas, sin newsletters. Solo el documento.</p>
+      <form class="capture-input" id="email-form" action="https://formspree.io/f/xdeorwnb" method="POST">
+        <input type="hidden" name="instrumento" value="Scanner de Capacidades">
+        <input type="hidden" name="fase" id="hidden-fase" value="">
+        <input type="email" name="email" placeholder="tu@mail.com" required class="capture-email">
+        <button type="submit" class="capture-btn">Enviar</button>
+      </form>
+      <p class="capture-thanks" id="capture-thanks" style="display:none;">Listo. Te llega en breve.</p>
+    </div>
     <button class="restart-btn" onclick="restart()">Volver a empezar</button>
   </div>
 </div>
@@ -161,6 +187,24 @@ function restart() {
   document.getElementById('result').classList.remove('visible');
   window.scrollTo({top:0,behavior:'smooth'});
 }
+
+// Capture form handling
+document.getElementById('email-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+  var fase = document.getElementById('result-title');
+  if (fase) document.getElementById('hidden-fase').value = fase.textContent;
+  fetch(this.action, {
+    method: 'POST',
+    body: new FormData(this),
+    headers: { 'Accept': 'application/json' }
+  }).then(function(r) {
+    if (r.ok) {
+      document.getElementById('email-form').style.display = 'none';
+      document.getElementById('capture-thanks').style.display = 'block';
+    }
+  });
+});
+
 buildQuestions();
 </script>
 </body>
