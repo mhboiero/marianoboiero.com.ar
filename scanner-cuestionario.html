@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scanner de Capacidades — Diagnóstico formativo — Diagnóstico</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --cream: #f7f4ef; --copper: #9a6a3a; --copper-dark: #7a5228; --copper-faint: #e8d8c4;
+    --text: #1a1410; --text-mid: #4a3a28; --text-light: #7a6a58; --divider: #d8cfc4; --white: #ffffff;
+    --green: #4a7c59; --green-bg: #edf4f0; --amber: #9a6a3a; --amber-bg: #f7f0e8; --red: #9a3a3a; --red-bg: #f7eded;
+  }
+  html { scroll-behavior: smooth; }
+  body { background: var(--cream); color: var(--text); font-family: 'EB Garamond', Georgia, serif; font-size: 18px; line-height: 1.7; min-height: 100vh; }
+  header { padding: 48px 24px 40px; max-width: 720px; margin: 0 auto; border-bottom: 1px solid var(--divider); }
+  .eyebrow { font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 0.3em; color: var(--copper); text-transform: uppercase; margin-bottom: 20px; }
+  h1 { font-family: 'Cinzel', serif; font-size: clamp(22px, 5vw, 36px); font-weight: 600; color: var(--text); line-height: 1.2; margin-bottom: 20px; }
+  .intro { font-size: 17px; color: var(--text-mid); font-style: italic; max-width: 560px; }
+  .progress-bar { max-width: 720px; margin: 0 auto; padding: 24px 24px 0; }
+  .progress-track { height: 2px; background: var(--copper-faint); }
+  .progress-fill { height: 100%; background: var(--copper); transition: width 0.4s ease; width: 0%; }
+  .progress-label { font-family: 'Cinzel', serif; font-size: 11px; color: var(--text-light); letter-spacing: 0.15em; margin-top: 10px; }
+  .questions { max-width: 720px; margin: 0 auto; padding: 40px 24px 80px; }
+  .question { padding: 32px 0; border-bottom: 1px solid var(--divider); opacity: 0; transform: translateY(12px); animation: fadeUp 0.4s ease forwards; }
+  .question:last-of-type { border-bottom: none; }
+  @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+  .question-number { font-family: 'Cinzel', serif; font-size: 11px; color: var(--copper); letter-spacing: 0.2em; margin-bottom: 12px; }
+  .question-text { font-size: 19px; color: var(--text); line-height: 1.55; margin-bottom: 24px; max-width: 600px; }
+  .options { display: flex; gap: 12px; flex-wrap: wrap; }
+  .option-btn { font-family: 'Cinzel', serif; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; padding: 10px 24px; border: 1px solid var(--divider); background: var(--white); color: var(--text-mid); cursor: pointer; transition: all 0.2s ease; outline: none; }
+  .option-btn:hover { border-color: var(--copper); color: var(--copper); }
+  .option-btn.selected { background: var(--copper); border-color: var(--copper); color: var(--white); }
+  .submit-area { max-width: 720px; margin: 0 auto; padding: 0 24px 80px; display: none; }
+  .submit-area.visible { display: block; }
+  .submit-btn { font-family: 'Cinzel', serif; font-size: 13px; letter-spacing: 0.25em; text-transform: uppercase; padding: 16px 48px; background: var(--copper); color: var(--white); border: none; cursor: pointer; transition: background 0.2s ease; }
+  .submit-btn:hover { background: var(--copper-dark); }
+  .submit-note { margin-top: 16px; font-size: 15px; color: var(--text-light); font-style: italic; }
+  #result { display: none; max-width: 720px; margin: 0 auto; padding: 60px 24px 80px; }
+  #result.visible { display: block; }
+  .phase-badge { display: inline-block; padding: 8px 20px; font-family: 'Cinzel', serif; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 28px; }
+  .phase-stable { background: var(--green-bg); color: var(--green); }
+  .phase-pressure { background: var(--amber-bg); color: var(--amber); }
+  .phase-risk { background: var(--red-bg); color: var(--red); }
+  .result-score { font-family: 'Cinzel', serif; font-size: 56px; font-weight: 600; line-height: 1; margin-bottom: 8px; display: block; }
+  .score-stable { color: var(--green); } .score-pressure { color: var(--amber); } .score-risk { color: var(--red); }
+  .result-score-label { font-size: 16px; color: var(--text-light); margin-bottom: 32px; }
+  .result-divider { width: 48px; height: 1px; background: var(--copper); margin-bottom: 32px; }
+  .result-title { font-family: 'Cinzel', serif; font-size: clamp(20px, 4vw, 30px); font-weight: 600; color: var(--text); line-height: 1.25; margin-bottom: 28px; }
+  .result-desc { font-size: 19px; color: var(--text-mid); line-height: 1.75; max-width: 580px; margin-bottom: 48px; }
+  .result-cta { border-top: 1px solid var(--divider); padding-top: 40px; }
+  .result-cta-text { font-size: 20px; color: var(--text); font-style: italic; margin-bottom: 28px; }
+  .contact-links { display: flex; flex-direction: column; gap: 10px; margin-bottom: 16px; }
+  .contact-link { font-family: 'Cinzel', serif; font-size: 12px; letter-spacing: 0.2em; color: var(--copper); text-decoration: none; text-transform: uppercase; }
+  .contact-link:hover { color: var(--copper-dark); }
+  .doc-link { display: inline-block; margin-top: 24px; font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-light); text-decoration: underline; text-underline-offset: 3px; }
+  .doc-link:hover { color: var(--text); }
+  .restart-btn { display: block; margin-top: 40px; font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-light); background: none; border: none; cursor: pointer; padding: 0; text-decoration: underline; text-underline-offset: 3px; }
+  .restart-btn:hover { color: var(--text); }
+  footer { border-top: 1px solid var(--divider); padding: 24px; text-align: center; font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 0.2em; color: var(--text-light); }
+  footer a { color: var(--copper); text-decoration: none; }
+  @media (max-width: 600px) { .options { flex-direction: column; } .option-btn { text-align: center; } }
+</style>
+</head>
+<body>
+<header>
+  <p class="eyebrow">Scanner de Capacidades</p>
+  <h1>¿Su organización sabe por qué la capacitación no alcanza?</h1>
+  <p class="intro">Este cuestionario no evalúa programas formativos. Lee si la brecha de desempeño está donde creen que está.</p>
+</header>
+<div class="progress-bar">
+  <div class="progress-track"><div class="progress-fill" id="progress"></div></div>
+  <p class="progress-label" id="progress-label">0 de 15 respondidas</p>
+</div>
+<div class="questions" id="questions-container"></div>
+<div class="submit-area" id="submit-area">
+  <button class="submit-btn" onclick="showResult()">Ver mi resultado</button>
+  <p class="submit-note">Basado en sus respuestas, calculamos la fase de su organización.</p>
+</div>
+<div id="result">
+  <div id="phase-badge" class="phase-badge"></div>
+  <span class="result-score" id="result-score"></span>
+  <p class="result-score-label">señales de brecha mal diagnosticada detectadas</p>
+  <div class="result-divider"></div>
+  <h2 class="result-title" id="result-title"></h2>
+  <p class="result-desc" id="result-desc"></p>
+  <div class="result-cta">
+    <p class="result-cta-text" id="result-cta-text"></p>
+    <div class="contact-links">
+      <a class="contact-link" href="mailto:mhboiero@gmail.com">mhboiero@gmail.com</a>
+      <a class="contact-link" href="https://wa.me/5491130444992">WhatsApp +54 9 11 3044 4992</a>
+      <a class="contact-link" href="https://marianoboiero.com.ar" target="_blank">marianoboiero.com.ar</a>
+    </div>
+    <a class="doc-link" href="https://gamma.app/docs/Scanner-de-Capacidades-Documento-Tecnico-vpeb9y09fyh6frs" target="_blank">Leer el documento técnico</a>
+    <button class="restart-btn" onclick="restart()">Volver a empezar</button>
+  </div>
+</div>
+<footer><a href="https://marianoboiero.com.ar">Mariano Boiero — Consultor en diagnóstico organizacional</a></footer>
+<script>
+const questions = ["¿Su organización invirtió en capacitación en los últimos dos años y el problema que la motivó sigue igual?", "¿Hay personas que saben perfectamente qué hacer pero no lo hacen — y nadie entiende por qué?", "¿El conocimiento crítico de su organización está en los procesos o en la cabeza de personas específicas?", "¿Cuando alguien se va, se lleva saber que después cuesta meses reconstruir?", "¿Su organización diferencia entre alguien que no sabe hacer algo y alguien que no puede hacerlo por las condiciones en que trabaja?", "¿Las capacitaciones que hacen están conectadas con problemas reales de la operación o responden a una oferta disponible?", "¿Hay tareas críticas que solo una o dos personas saben ejecutar correctamente?", "¿Cuando cambia una normativa o un proceso, la organización tiene forma de que todos lo incorporen — o depende de que alguien se entere y lo cuente?", "¿Los errores más frecuentes de su organización se repiten aunque ya se haya capacitado sobre ellos?", "¿Su organización sabe distinguir si un problema de desempeño es de conocimiento, de habilidad, de condiciones o de motivación?", "¿Las personas nuevas tardan más de seis meses en ser productivas — y eso se naturaliza?", "¿Hay procesos que dependen de que «alguien se acuerde» en lugar de estar documentados?", "¿Su organización aprendió algo de la pandemia o volvió a hacer exactamente lo mismo que antes?", "¿Cuando hay un error repetido, la respuesta es capacitar o es revisar el proceso?", "¿Si mañana tuviera que incorporar diez personas nuevas, su organización tiene forma de transferirles el saber que necesitan — o dependería de la buena voluntad de quienes ya están?"];
+const problemAnswer = ["si", "si", "si", "si", "no", "si", "si", "si", "si", "no", "si", "si", "si", "si", "no"];
+let answers = new Array(15).fill(null);
+function buildQuestions() {
+  const container = document.getElementById('questions-container');
+  questions.forEach((q, i) => {
+    const div = document.createElement('div');
+    div.className = 'question';
+    div.style.animationDelay = (i * 0.04) + 's';
+    div.innerHTML = `<p class="question-number">${String(i+1).padStart(2,'0')}</p><p class="question-text">${q}</p><div class="options"><button class="option-btn" onclick="answer(${i},'si',this)">Sí</button><button class="option-btn" onclick="answer(${i},'no',this)">No</button><button class="option-btn" onclick="answer(${i},'ns',this)">No sé</button></div>`;
+    container.appendChild(div);
+  });
+}
+function answer(index, value, btn) {
+  answers[index] = value;
+  btn.parentElement.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
+  btn.classList.add('selected');
+  updateProgress();
+}
+function updateProgress() {
+  const answered = answers.filter(a => a !== null).length;
+  document.getElementById('progress').style.width = ((answered/15)*100) + '%';
+  document.getElementById('progress-label').textContent = answered + ' de 15 respondidas';
+  if (answered === 15) { const sa = document.getElementById('submit-area'); sa.classList.add('visible'); sa.scrollIntoView({behavior:'smooth',block:'nearest'}); }
+}
+function countProblems() {
+  let count = 0;
+  answers.forEach((ans, i) => { if (ans === problemAnswer[i]) count++; if (ans === 'ns') count += 0.5; });
+  return Math.round(count);
+}
+const phases = [{"phase": "Sistema estable", "badgeClass": "phase-stable", "scoreClass": "score-stable", "title": "Organización con capacidad instalada", "desc": "El saber está sistematizado, distribuido y sostenible. La formación responde a brechas reales. La rotación no destruye capacidad porque el conocimiento le pertenece a la organización, no a las personas.", "cta": "Si le parece que hay cosas para hacer, conversemos."}, {"phase": "Sistema bajo presión", "badgeClass": "phase-pressure", "scoreClass": "score-pressure", "title": "Brecha mal diagnosticada", "desc": "La organización forma, pero no siempre donde hace falta. El problema puede ser de habilidad, de condiciones o de sistema — y se responde con capacitación. El esfuerzo es real pero apunta al lugar equivocado. Por eso los resultados no se sostienen.", "cta": "Su organización merece saber exactamente qué tipo de brecha tiene antes de invertir en formación. Conversemos."}, {"phase": "Sistema en riesgo", "badgeClass": "phase-risk", "scoreClass": "score-risk", "title": "El saber vive en personas, no en la organización", "desc": "Hay talento individual, hay experiencia acumulada, hay personas que saben. Pero ese saber no le pertenece a la organización — le pertenece a las personas que lo tienen. Cuando se van, se va con ellas. Y la organización empieza de cero cada vez.", "cta": "Esto tiene solución, pero requiere sistematizar antes de seguir formando. Conversemos."}];
+function showResult() {
+  const score = countProblems();
+  document.getElementById('questions-container').style.display = 'none';
+  document.getElementById('submit-area').style.display = 'none';
+  document.querySelector('.progress-bar').style.display = 'none';
+  const result = document.getElementById('result');
+  result.classList.add('visible');
+  const scoreEl = document.getElementById('result-score');
+  scoreEl.textContent = score;
+  let p = score <= 4 ? phases[0] : score <= 9 ? phases[1] : phases[2];
+  document.getElementById('phase-badge').textContent = p.phase;
+  document.getElementById('phase-badge').className = 'phase-badge ' + p.badgeClass;
+  scoreEl.className = 'result-score ' + p.scoreClass;
+  document.getElementById('result-title').textContent = p.title;
+  document.getElementById('result-desc').textContent = p.desc;
+  document.getElementById('result-cta-text').textContent = p.cta;
+  result.scrollIntoView({behavior:'smooth'});
+}
+function restart() {
+  answers = new Array(15).fill(null);
+  document.getElementById('questions-container').style.display = 'block';
+  document.getElementById('questions-container').querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
+  document.querySelector('.progress-bar').style.display = 'block';
+  document.getElementById('progress').style.width = '0%';
+  document.getElementById('progress-label').textContent = '0 de 15 respondidas';
+  document.getElementById('submit-area').style.display = 'none';
+  document.getElementById('submit-area').classList.remove('visible');
+  document.getElementById('result').classList.remove('visible');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+buildQuestions();
+</script>
+</body>
+</html>
