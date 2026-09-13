@@ -428,6 +428,35 @@ footer {
   color: #7a6a58;
 }
 
+/* TRAYECTORIA */
+.exp-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.exp-item {
+  padding: 28px 0;
+  border-bottom: 1px solid var(--divider);
+}
+
+.exp-item:last-child { border-bottom: none; }
+
+.exp-hook {
+  font-size: 19px;
+  color: var(--text);
+  line-height: 1.55;
+  margin-bottom: 10px;
+  max-width: 640px;
+}
+
+.exp-detail {
+  font-size: 15px;
+  color: var(--text-light);
+  font-style: italic;
+  line-height: 1.5;
+}
+
 /* HERRAMIENTAS */
 .tools-intro {
   font-size: 18px;
@@ -703,48 +732,62 @@ footer {
 <section id="experiencia">
   <div class="container">
     <p class="section-label">Trayectoria</p>
-    <h2 class="section-title">Más de veinte años de experiencia</h2>
+    <h2 class="section-title">Lo que se hizo, con quién y con qué respaldo</h2>
     <div class="section-divider"></div>
-    <p class="clients-intro">Intervenciones desarrolladas en organismos públicos, empresas, organizaciones gremiales y organismos internacionales a lo largo de más de dos décadas de práctica profesional en Argentina y América Latina.</p>
-    <div class="clients-grid">
-      <div>
-        <p class="client-group-title">Sector Público</p>
-        <ul class="client-list">
-          <li>Jefatura de Gabinete de Ministros</li>
-          <li>Ministerio de Desarrollo Social</li>
-          <li>ARBA</li>
-          <li>Educ.ar</li>
-          <li>IPAP</li>
-        </ul>
+    <p class="clients-intro">Más de veinte años de intervenciones en organizaciones públicas, gremiales e internacionales en Argentina y América Latina. Lo que sigue no es una lista de logos — es lo que efectivamente ocurrió.</p>
+
+    <div class="exp-list">
+
+      <div class="exp-item">
+        <p class="exp-hook">El sindicato metalúrgico más grande del país certificó ISO 9001 y aprobó su plan estratégico en congreso de delegados.</p>
+        <p class="exp-detail">Unión Obrera Metalúrgica — Argentina, 2024-2026. Certificado LCSG-92 vigente hasta 2029. PEI 2026-2030 aprobado en Mar del Plata, abril 2026.</p>
       </div>
-      <div>
-        <p class="client-group-title">Sector Privado</p>
-        <ul class="client-list">
-          <li>Banco BICE</li>
-          <li>Hospital Español</li>
-          <li>Maitén Agro</li>
-        </ul>
+
+      <div class="exp-item">
+        <p class="exp-hook">Una agencia recaudadora provincial formó a sus mandos medios con un programa de 84 horas diseñado a medida.</p>
+        <p class="exp-detail">ARBA / IPAP — Provincia de Buenos Aires, 2026. Dos ediciones, modalidad híbrida. Carta de referencia de la Subgerenta de Desarrollo del Capital Humano.</p>
       </div>
-      <div>
-        <p class="client-group-title">Organizaciones Gremiales y Sociales</p>
-        <ul class="client-list">
-          <li>UOM</li>
-          <li>OSUOMRA</li>
-          <li>UPCN</li>
-          <li>CAME</li>
-        </ul>
+
+      <div class="exp-item">
+        <p class="exp-hook">Un organismo internacional contrató al mismo consultor dos veces seguidas para formar servidores públicos en República Dominicana.</p>
+        <p class="exp-detail">CLAD — Santo Domingo, enero y marzo 2026. Gestión Estratégica de RRHH e Innovación y Gobernanza. Carta de referencia del Coordinador de la Escuela del CLAD, Caracas.</p>
       </div>
-      <div>
-        <p class="client-group-title">Cooperación Internacional y Academia</p>
-        <ul class="client-list">
-          <li>Banco Mundial</li>
-          <li>Banco Interamericano de Desarrollo</li>
-          <li>Save the Children</li>
-          <li>Gobierno de la República Dominicana</li>
-          <li>CLAD</li>
-          <li>UNLAM · UNLZ · UNDEF · UNSAM</li>
-        </ul>
+
+      <div class="exp-item">
+        <p class="exp-hook">Un ministerio nacional implementó ISO 9001 junto a un equipo de especialistas.</p>
+        <p class="exp-detail">Ministerio de Desarrollo Social — Argentina, 2023. Implementación del sistema de gestión de calidad con auditoría IRAM.</p>
       </div>
+
+      <div class="exp-item">
+        <p class="exp-hook">Un organismo nacional construyó su plan estratégico de modo participativo. El proceso quedó publicado en argentina.gob.ar.</p>
+        <p class="exp-detail">INASE — Chapadmalal y Buenos Aires, 2022-2024. PEI 2024-2028 con registro audiovisual oficial.</p>
+      </div>
+
+      <div class="exp-item">
+        <p class="exp-hook">Una empresa pública de educación digital fue diagnosticada por gerencia en contexto de reducción de dotación.</p>
+        <p class="exp-detail">Educ.ar S.A.U. — Argentina, 2026. Diagnóstico organizacional, PEI y POA.</p>
+      </div>
+
+      <div class="exp-item">
+        <p class="exp-hook">La Junta de Seguridad del Transporte organizó sus procesos, manuales e indicadores desde cero.</p>
+        <p class="exp-detail">JST — Argentina, 2024-2026. Sistema de gestión de calidad, masterplan institucional y plan de formación para mandos medios.</p>
+      </div>
+
+      <div class="exp-item">
+        <p class="exp-hook">El Poder Legislativo de Paraguay modernizó su estructura con asistencia del Banco Mundial.</p>
+        <p class="exp-detail">Congreso de Paraguay — 2007. Transformación organizacional y profesionalización de la carrera legislativa.</p>
+      </div>
+
+      <div class="exp-item">
+        <p class="exp-hook">El Senado de la Nación implementó su plan estratégico de formación con financiamiento del BID.</p>
+        <p class="exp-detail">HSN-BID 1603/OC-AR — Argentina, 2004-2007. Jefe de proyecto, equipos multidisciplinarios de consultoría.</p>
+      </div>
+
+      <div class="exp-item">
+        <p class="exp-hook">Desde la Subsecretaría de Empleo Público se desarrollaron los sistemas que hoy regulan la carrera en la administración pública nacional.</p>
+        <p class="exp-detail">Jefatura de Gabinete de Ministros — Argentina, 2019-2022. CONCURSAR 2.0 y Base Integrada de Información de Empleo Público.</p>
+      </div>
+
     </div>
   </div>
 </section>
