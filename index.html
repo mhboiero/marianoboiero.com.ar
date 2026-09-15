@@ -89,45 +89,6 @@ nav {
 
 .nav-links a:hover { color: var(--copper); }
 
-/* HAMBURGUESA */
-.nav-toggle {
-  display: none;
-  flex-direction: column;
-  gap: 5px;
-  cursor: pointer;
-  background: none;
-  border: none;
-  padding: 4px;
-}
-.nav-toggle span {
-  display: block;
-  width: 24px;
-  height: 2px;
-  background: var(--text);
-  transition: all 0.3s;
-}
-@media (max-width: 640px) {
-  .nav-toggle { display: flex; }
-  .nav-links {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    background: var(--white);
-    border-bottom: 1px solid var(--divider);
-    flex-direction: column;
-    gap: 0;
-    padding: 8px 0;
-    z-index: 100;
-  }
-  .nav-links.open { display: flex; }
-  .nav-links li { padding: 12px 32px; }
-  .nav-links a { font-size: 12px; }
-  nav { position: relative; }
-}
-
-
 /* HERO */
 .hero {
   background: var(--white);
@@ -595,6 +556,7 @@ footer {
   .clients-grid { grid-template-columns: 1fr; }
   .method-steps { grid-template-columns: 1fr 1fr; }
   .hsd-block { flex-direction: column; }
+  .nav-links { display: none; }
   .tools-grid { grid-template-columns: 1fr; }
 }
 </style>
@@ -606,9 +568,6 @@ footer {
 <nav>
   <div class="nav-inner">
     <a href="#" class="nav-logo">MARIANO BOIERO</a>
-    <button class="nav-toggle" aria-label="Menú" onclick="this.parentElement.querySelector('.nav-links').classList.toggle('open')">
-      <span></span><span></span><span></span>
-    </button>
     <ul class="nav-links">
       <li><a href="#areas">Áreas</a></li>
       <li><a href="#herramientas">Herramientas</a></li>
@@ -631,7 +590,6 @@ footer {
       <p class="hero-text" style="font-size: 17px; color: var(--text-mid); margin-top: 8px;">El mismo criterio que se aplica al Estado se aplica a una empresa o un gremio. Los problemas estructurales no tienen sector.</p>
       <div style="display:flex; gap:16px; flex-wrap:wrap; margin-top:32px;">
         <a href="#contacto" class="hero-cta">Iniciar una conversación</a>
-        <a href="https://calendar.app.google/5CHKaUURm9C3Jm6m7" target="_blank" class="hero-cta" style="margin-left:16px;background:transparent;color:var(--copper);border:1px solid var(--copper);">Reservar un horario →</a>
         <a href="#herramientas" class="hero-cta" style="background:transparent; color:var(--copper); border:1px solid var(--copper);">Hacer un diagnóstico</a>
       </div>
     </div>
@@ -658,8 +616,7 @@ footer {
           <li>Gobernanza y gestión por resultados</li>
           <li>Facilitación estratégica</li>
         </ul>
-        <a href="docs/Estrategia-y-Gobernanza-Ficha-Comercial.pdf" target="_blank" class="tool-link" style="margin-top:16px;display:inline-block;">Ver propuesta →</a>
-        <a href="/sidi-cuestionario.html" class="tool-link" style="margin-top:8px;display:inline-block;color:var(--text-light);">Hacer el diagnóstico →</a>
+        <a href="/docs/estrategia-ficha.pdf" target="_blank" class="tool-link" style="margin-top:16px;display:inline-block;">Ver propuesta →</a>
       </div>
       <div class="area-card">
         <p class="area-number">02</p>
@@ -671,8 +628,7 @@ footer {
           <li>Diseño organizacional</li>
           <li>Acompañamiento ejecutivo</li>
         </ul>
-        <a href="docs/Transformacion-Organizacional-Ficha-Comercial.pdf" target="_blank" class="tool-link" style="margin-top:16px;display:inline-block;">Ver propuesta →</a>
-        <a href="/barometro-cuestionario.html" class="tool-link" style="margin-top:8px;display:inline-block;color:var(--text-light);">Hacer el diagnóstico →</a>
+        <a href="/docs/transformacion-ficha.pdf" target="_blank" class="tool-link" style="margin-top:16px;display:inline-block;">Ver propuesta →</a>
       </div>
       <div class="area-card">
         <p class="area-number">03</p>
@@ -684,8 +640,7 @@ footer {
           <li>Planes de sucesión</li>
           <li>Clima organizacional</li>
         </ul>
-        <a href="docs/Gestion-del-Talento-Ficha-Comercial.pdf" target="_blank" class="tool-link" style="margin-top:16px;display:inline-block;">Ver propuesta →</a>
-        <a href="/trama-cuestionario.html" class="tool-link" style="margin-top:8px;display:inline-block;color:var(--text-light);">Hacer el diagnóstico →</a>
+        <a href="/docs/talento-ficha.pdf" target="_blank" class="tool-link" style="margin-top:16px;display:inline-block;">Ver propuesta →</a>
       </div>
       <div class="area-card">
         <p class="area-number">04</p>
@@ -697,8 +652,7 @@ footer {
           <li>Aprendizaje organizacional</li>
           <li>Gestión del conocimiento</li>
         </ul>
-        <a href="docs/Formacion-and-Desarrollo-Ficha-Comercial.pdf" target="_blank" class="tool-link" style="margin-top:16px;display:inline-block;">Ver propuesta →</a>
-        <a href="/scanner-cuestionario.html" class="tool-link" style="margin-top:8px;display:inline-block;color:var(--text-light);">Hacer el diagnóstico →</a>
+        <a href="/docs/formacion-ficha.pdf" target="_blank" class="tool-link" style="margin-top:16px;display:inline-block;">Ver propuesta →</a>
       </div>
     </div>
   </div>
@@ -783,23 +737,18 @@ footer {
     <div class="exp-list">
 
       <div class="exp-item">
-        <p class="exp-hook">Una plataforma regional de organizaciones de defensa de derechos de niñez elaboró su plan estratégico con consultoría desde Buenos Aires.</p>
-        <p class="exp-detail">Acción por los Niños / Save The Children International — América Latina y el Caribe, 2025.</p>
-      </div>
-
-      <div class="exp-item">
         <p class="exp-hook">El sindicato metalúrgico más grande del país certificó ISO 9001 y aprobó su plan estratégico en congreso de delegados.</p>
-        <p class="exp-detail">Unión Obrera Metalúrgica — Argentina, 2024-2026. PEI 2026-2030 aprobado en congreso de delegados.</p>
+        <p class="exp-detail">Unión Obrera Metalúrgica — Argentina, 2024-2026. Certificado LCSG-92 vigente hasta 2029. PEI 2026-2030 aprobado en Mar del Plata, abril 2026.</p>
       </div>
 
       <div class="exp-item">
         <p class="exp-hook">Una agencia recaudadora provincial formó a sus mandos medios con un programa de 84 horas diseñado a medida.</p>
-        <p class="exp-detail">ARBA / IPAP — Provincia de Buenos Aires, 2026. Dos ediciones, modalidad híbrida.</p>
+        <p class="exp-detail">ARBA / IPAP — Provincia de Buenos Aires, 2026. Dos ediciones, modalidad híbrida. Carta de referencia de la Subgerenta de Desarrollo del Capital Humano.</p>
       </div>
 
       <div class="exp-item">
         <p class="exp-hook">Un organismo internacional contrató al mismo consultor dos veces seguidas para formar servidores públicos en República Dominicana.</p>
-        <p class="exp-detail">CLAD — Santo Domingo, enero y marzo 2026. Gestión Estratégica de RRHH e Innovación y Gobernanza.</p>
+        <p class="exp-detail">CLAD — Santo Domingo, enero y marzo 2026. Gestión Estratégica de RRHH e Innovación y Gobernanza. Carta de referencia del Coordinador de la Escuela del CLAD, Caracas.</p>
       </div>
 
       <div class="exp-item">
@@ -809,7 +758,7 @@ footer {
 
       <div class="exp-item">
         <p class="exp-hook">Un organismo nacional construyó su plan estratégico de modo participativo. El proceso quedó publicado en argentina.gob.ar.</p>
-        <p class="exp-detail">INASE — Chapadmalal y Buenos Aires, 2022-2024. PEI 2024-2028.</p>
+        <p class="exp-detail">INASE — Chapadmalal y Buenos Aires, 2022-2024. PEI 2024-2028 con registro audiovisual oficial.</p>
       </div>
 
       <div class="exp-item">
@@ -833,7 +782,7 @@ footer {
       </div>
 
       <div class="exp-item">
-        <p class="exp-hook">Desde la Subsecretaría de Empleo Público se diseñaron e implementaron los sistemas de información de carrera y selección a escala de toda la administración pública nacional.</p>
+        <p class="exp-hook">Desde la Subsecretaría de Empleo Público se desarrollaron los sistemas que hoy regulan la carrera en la administración pública nacional.</p>
         <p class="exp-detail">Jefatura de Gabinete de Ministros — Argentina, 2019-2022. CONCURSAR 2.0 y Base Integrada de Información de Empleo Público.</p>
       </div>
 
@@ -899,14 +848,6 @@ footer {
         <li>
           <span class="contact-label">LinkedIn</span>
           <a href="https://www.linkedin.com/in/marianoboiero" target="_blank">linkedin.com/in/marianoboiero</a>
-        </li>
-        <li>
-          <span class="contact-label">WhatsApp</span>
-          <a href="https://wa.me/5491130444992" target="_blank">+54 9 11 3044-4992</a>
-        </li>
-        <li>
-          <span class="contact-label">Agenda</span>
-          <a href="https://calendar.app.google/5CHKaUURm9C3Jm6m7" target="_blank">Reservar una conversación inicial</a>
         </li>
       </ul>
     </div>
