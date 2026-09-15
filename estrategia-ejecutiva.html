@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Estrategia y Gobernanza — Mariano Boiero</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root { --cream: #f7f4ef; --copper: #9a6a3a; --copper-dark: #7a5228; --copper-faint: #e8d8c4; --text: #1a1410; --text-mid: #4a3a28; --text-light: #7a6a58; --divider: #d8cfc4; --white: #ffffff; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--cream); color: var(--text); font-family: 'EB Garamond', Georgia, serif; font-size: 18px; line-height: 1.75; }
+  .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: flex-end; padding: 0 0 80px; position: relative; overflow: hidden; border-bottom: 1px solid var(--divider); }
+  .hero-bg { position: absolute; inset: 0; background: linear-gradient(160deg, #ede8e0 0%, #f7f4ef 60%, #e8d8c4 100%); z-index: 0; }
+  .hero-ornament { position: absolute; top: 40px; right: 60px; width: 280px; height: 280px; border: 1px solid var(--copper-faint); border-radius: 50%; opacity: 0.5; z-index: 0; }
+  .hero-ornament::after { content: ''; position: absolute; inset: 24px; border: 1px solid var(--copper-faint); border-radius: 50%; }
+  .hero-content { position: relative; z-index: 1; max-width: 780px; margin: 0 auto; padding: 0 40px; width: 100%; }
+  .hero-label { font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 0.35em; color: var(--copper); text-transform: uppercase; margin-bottom: 28px; display: block; }
+  .hero-title { font-family: 'Cinzel', serif; font-size: clamp(32px, 6vw, 56px); font-weight: 600; color: var(--text); line-height: 1.1; margin-bottom: 32px; max-width: 560px; }
+  .hero-statement { font-size: clamp(18px, 2.5vw, 22px); color: var(--text-mid); font-style: italic; max-width: 520px; line-height: 1.6; border-left: 2px solid var(--copper); padding-left: 24px; }
+  .section { max-width: 780px; margin: 0 auto; padding: 80px 40px; border-bottom: 1px solid var(--divider); }
+  .section-number { font-family: 'Cinzel', serif; font-size: 11px; color: var(--copper); letter-spacing: 0.3em; margin-bottom: 24px; display: block; }
+  .section-title { font-family: 'Cinzel', serif; font-size: clamp(20px, 3vw, 28px); font-weight: 600; color: var(--text); line-height: 1.2; margin-bottom: 28px; max-width: 500px; }
+  .section-body { font-size: 19px; color: var(--text-mid); line-height: 1.75; max-width: 580px; }
+  .section-body p + p { margin-top: 20px; }
+  .emphasis { color: var(--text); font-style: italic; }
+  .deliverables { margin-top: 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .deliverable { padding: 24px; border: 1px solid var(--divider); background: var(--white); }
+  .deliverable-title { font-family: 'Cinzel', serif; font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 10px; line-height: 1.3; }
+  .deliverable-desc { font-size: 15px; color: var(--text-light); line-height: 1.6; }
+  .cta-section { max-width: 780px; margin: 0 auto; padding: 80px 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+  .cta-contact h3 { font-family: 'Cinzel', serif; font-size: 14px; font-weight: 600; color: var(--text); letter-spacing: 0.1em; margin-bottom: 20px; }
+  .contact-item { font-size: 16px; color: var(--text-mid); margin-bottom: 10px; display: block; text-decoration: none; }
+  .contact-item:hover { color: var(--copper); }
+  .cta-more { border-left: 1px solid var(--divider); padding-left: 40px; }
+  .cta-more h3 { font-family: 'Cinzel', serif; font-size: 14px; font-weight: 600; color: var(--text); letter-spacing: 0.1em; margin-bottom: 16px; }
+  .cta-more p { font-size: 16px; color: var(--text-light); font-style: italic; line-height: 1.6; margin-bottom: 24px; }
+  .cta-btn { display: inline-block; font-family: 'Cinzel', serif; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; padding: 14px 32px; background: var(--copper); color: var(--white); text-decoration: none; transition: background 0.2s ease; }
+  .cta-btn:hover { background: var(--copper-dark); }
+  footer { border-top: 1px solid var(--divider); padding: 24px 40px; max-width: 780px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 0.15em; color: var(--text-light); }
+  footer a { color: var(--copper); text-decoration: none; }
+  @media (max-width: 640px) {
+    .hero { min-height: 80vh; padding-bottom: 60px; }
+    .hero-content, .section, .cta-section { padding-left: 24px; padding-right: 24px; }
+    .hero-ornament { display: none; }
+    .deliverables { grid-template-columns: 1fr; }
+    .cta-section { grid-template-columns: 1fr; gap: 40px; }
+    .cta-more { border-left: none; padding-left: 0; border-top: 1px solid var(--divider); padding-top: 40px; }
+    footer { flex-direction: column; gap: 8px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-ornament"></div>
+  <div class="hero-content">
+    <span class="hero-label">Asuntos Organizacionales · Mariano Boiero</span>
+    <h1 class="hero-title">Cuando las decisiones no llegan a ningún lado</h1>
+    <p class="hero-statement">Reuniones sin acuerdos. Planes que quedan en el papel. Áreas que empujan en direcciones distintas. El problema no es la gente — es la arquitectura de gobierno.</p>
+  </div>
+</div>
+
+<div class="section">
+  <span class="section-number">01</span>
+  <h2 class="section-title">El diagnóstico habitual apunta al lugar equivocado</h2>
+  <div class="section-body">
+    <p>Liderazgo, comunicación, cultura. Son los sospechosos habituales cuando las decisiones no se implementan. Y rara vez son el problema real.</p>
+    <p>El problema suele estar en la arquitectura de gobierno: cómo se decide, quién decide, con qué información, con qué criterio, y qué pasa cuando nadie puede decidir.</p>
+    <p class="emphasis">Una organización que no implementa lo que decide no tiene un problema de personas. Tiene un problema de diseño institucional.</p>
+  </div>
+</div>
+
+<div class="section">
+  <span class="section-number">02</span>
+  <h2 class="section-title">Medimos lo que efectivamente ocurre</h2>
+  <div class="section-body">
+    <p>No lo que la organización dice que hace. Lo que efectivamente produce. Con 25 indicadores en 7 dimensiones, con fórmulas verificables y fuentes auditables.</p>
+    <p>El resultado no es una opinión sobre la gestión. Es un tablero que muestra dónde está el desvío, qué lo genera y qué requiere intervención.</p>
+    <p class="emphasis">Con datos verificables. Sin diagnósticos de pasillo.</p>
+    <div class="deliverables">
+      <div class="deliverable">
+        <p class="deliverable-title">Transparencia y trazabilidad</p>
+        <p class="deliverable-desc">Disponibilidad real de información institucional para la toma de decisiones.</p>
+      </div>
+      <div class="deliverable">
+        <p class="deliverable-title">Eficacia y eficiencia</p>
+        <p class="deliverable-desc">Cumplimiento de objetivos y uso de recursos con evidencia medible.</p>
+      </div>
+      <div class="deliverable">
+        <p class="deliverable-title">Calidad y efectividad</p>
+        <p class="deliverable-desc">Lo que produce la organización y el impacto real que genera.</p>
+      </div>
+      <div class="deliverable">
+        <p class="deliverable-title">Gobernanza y ética</p>
+        <p class="deliverable-desc">Cómo se decide y con qué criterios — lo que sostiene o erosiona la legitimidad.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <span class="section-number">03</span>
+  <h2 class="section-title">Para quién tiene sentido</h2>
+  <div class="section-body">
+    <p>Organizaciones que necesitan pasar de gestión intuitiva a gestión basada en evidencia. Equipos directivos que quieren saber si sus decisiones están produciendo los resultados que esperan.</p>
+    <p>Instituciones que enfrentan exigencias de socios, inversores, financiadores o directorios sobre la calidad de su gestión — y necesitan demostrarlo con algo más que una presentación.</p>
+  </div>
+</div>
+
+<div class="cta-section">
+  <div class="cta-contact">
+    <h3>Hablemos</h3>
+    <a href="mailto:mariano@marianoboiero.com.ar" class="contact-item">mariano@marianoboiero.com.ar</a>
+    <a href="https://wa.me/5491130444992" class="contact-item">WhatsApp +54 9 11 3044 4992</a>
+    <a href="https://linkedin.com/in/marianoboiero" target="_blank" class="contact-item">linkedin.com/in/marianoboiero</a>
+    <a href="https://marianoboiero.com.ar" target="_blank" class="contact-item">marianoboiero.com.ar</a>
+  </div>
+  <div class="cta-more">
+    <h3>¿Querés la propuesta completa?</h3>
+    <p>Metodología, instrumentos, modalidades de trabajo y casos de aplicación.</p>
+    <a href="/docs/estrategia-ficha.pdf" class="cta-btn" target="_blank">Descargar propuesta</a>
+  </div>
+</div>
+
+<footer>
+  <span>Mariano Boiero — Consultor en Asuntos Organizacionales</span>
+  <a href="https://marianoboiero.com.ar">marianoboiero.com.ar</a>
+</footer>
+</body>
+</html>
