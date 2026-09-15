@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Formación & Desarrollo — Mariano Boiero</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root { --cream: #f7f4ef; --copper: #9a6a3a; --copper-dark: #7a5228; --copper-faint: #e8d8c4; --text: #1a1410; --text-mid: #4a3a28; --text-light: #7a6a58; --divider: #d8cfc4; --white: #ffffff; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--cream); color: var(--text); font-family: 'EB Garamond', Georgia, serif; font-size: 18px; line-height: 1.75; }
+  .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: flex-end; padding: 0 0 80px; position: relative; overflow: hidden; border-bottom: 1px solid var(--divider); }
+  .hero-bg { position: absolute; inset: 0; background: linear-gradient(160deg, #ede8e0 0%, #f7f4ef 60%, #e8d8c4 100%); z-index: 0; }
+  .hero-ornament { position: absolute; top: 40px; right: 60px; width: 280px; height: 280px; border: 1px solid var(--copper-faint); border-radius: 50%; opacity: 0.5; z-index: 0; }
+  .hero-ornament::after { content: ''; position: absolute; inset: 24px; border: 1px solid var(--copper-faint); border-radius: 50%; }
+  .hero-content { position: relative; z-index: 1; max-width: 780px; margin: 0 auto; padding: 0 40px; width: 100%; }
+  .hero-label { font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 0.35em; color: var(--copper); text-transform: uppercase; margin-bottom: 28px; display: block; }
+  .hero-title { font-family: 'Cinzel', serif; font-size: clamp(32px, 6vw, 56px); font-weight: 600; color: var(--text); line-height: 1.1; margin-bottom: 32px; max-width: 560px; }
+  .hero-statement { font-size: clamp(18px, 2.5vw, 22px); color: var(--text-mid); font-style: italic; max-width: 520px; line-height: 1.6; border-left: 2px solid var(--copper); padding-left: 24px; }
+  .section { max-width: 780px; margin: 0 auto; padding: 80px 40px; border-bottom: 1px solid var(--divider); }
+  .section-number { font-family: 'Cinzel', serif; font-size: 11px; color: var(--copper); letter-spacing: 0.3em; margin-bottom: 24px; display: block; }
+  .section-title { font-family: 'Cinzel', serif; font-size: clamp(20px, 3vw, 28px); font-weight: 600; color: var(--text); line-height: 1.2; margin-bottom: 28px; max-width: 500px; }
+  .section-body { font-size: 19px; color: var(--text-mid); line-height: 1.75; max-width: 580px; }
+  .section-body p + p { margin-top: 20px; }
+  .emphasis { color: var(--text); font-style: italic; }
+  .deliverables { margin-top: 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .deliverable { padding: 24px; border: 1px solid var(--divider); background: var(--white); }
+  .deliverable-title { font-family: 'Cinzel', serif; font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 10px; line-height: 1.3; }
+  .deliverable-desc { font-size: 15px; color: var(--text-light); line-height: 1.6; }
+  .cta-section { max-width: 780px; margin: 0 auto; padding: 80px 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+  .cta-contact h3 { font-family: 'Cinzel', serif; font-size: 14px; font-weight: 600; color: var(--text); letter-spacing: 0.1em; margin-bottom: 20px; }
+  .contact-item { font-size: 16px; color: var(--text-mid); margin-bottom: 10px; display: block; text-decoration: none; }
+  .contact-item:hover { color: var(--copper); }
+  .cta-more { border-left: 1px solid var(--divider); padding-left: 40px; }
+  .cta-more h3 { font-family: 'Cinzel', serif; font-size: 14px; font-weight: 600; color: var(--text); letter-spacing: 0.1em; margin-bottom: 16px; }
+  .cta-more p { font-size: 16px; color: var(--text-light); font-style: italic; line-height: 1.6; margin-bottom: 24px; }
+  .cta-btn { display: inline-block; font-family: 'Cinzel', serif; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; padding: 14px 32px; background: var(--copper); color: var(--white); text-decoration: none; transition: background 0.2s ease; }
+  .cta-btn:hover { background: var(--copper-dark); }
+  footer { border-top: 1px solid var(--divider); padding: 24px 40px; max-width: 780px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 0.15em; color: var(--text-light); }
+  footer a { color: var(--copper); text-decoration: none; }
+  @media (max-width: 640px) {
+    .hero { min-height: 80vh; padding-bottom: 60px; }
+    .hero-content, .section, .cta-section { padding-left: 24px; padding-right: 24px; }
+    .hero-ornament { display: none; }
+    .deliverables { grid-template-columns: 1fr; }
+    .cta-section { grid-template-columns: 1fr; gap: 40px; }
+    .cta-more { border-left: none; padding-left: 0; border-top: 1px solid var(--divider); padding-top: 40px; }
+    footer { flex-direction: column; gap: 8px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-ornament"></div>
+  <div class="hero-content">
+    <span class="hero-label">Asuntos Organizacionales · Mariano Boiero</span>
+    <h1 class="hero-title">Capacitar no alcanza si el sistema no puede sostenerlo</h1>
+    <p class="hero-statement">Cursos que no cambian nada. Conocimiento que se va con las personas cuando se van. El mismo error que se repite aunque ya se capacitó sobre él.</p>
+  </div>
+</div>
+
+<div class="section">
+  <span class="section-number">01</span>
+  <h2 class="section-title">El problema: no se diagnostica antes de formar</h2>
+  <div class="section-body">
+    <p>La decisión de capacitar suele tomarse antes de entender qué tipo de brecha existe. Y cada tipo de brecha requiere una intervención completamente distinta.</p>
+    <p>Confundirlos no es un error menor. Define si la inversión produce resultados o se evapora. Y explica por qué los mismos errores se repiten aunque la organización haya capacitado sobre ellos.</p>
+    <p class="emphasis">El problema no es la capacitación. Es que nadie leyó qué tipo de brecha había antes de diseñarla.</p>
+  </div>
+</div>
+
+<div class="section">
+  <span class="section-number">02</span>
+  <h2 class="section-title">Diagnosticamos primero. Formamos después.</h2>
+  <div class="section-body">
+    <p>Antes de diseñar cualquier intervención formativa, identificamos qué tipo de brecha existe realmente — y dónde está: en las personas o en el sistema.</p>
+    <p class="emphasis">Formamos para que quede. No para generar dependencia del consultor.</p>
+    <div class="deliverables">
+      <div class="deliverable">
+        <p class="deliverable-title">Entrenamiento</p>
+        <p class="deliverable-desc">Cuando la persona no sabe ejecutar un proceso. Problema de habilidad operativa.</p>
+      </div>
+      <div class="deliverable">
+        <p class="deliverable-title">Capacitación</p>
+        <p class="deliverable-desc">Cuando no comprende el marco normativo o estructural en el que opera. Problema de conocimiento.</p>
+      </div>
+      <div class="deliverable">
+        <p class="deliverable-title">Aprendizaje organizacional</p>
+        <p class="deliverable-desc">Cuando la organización no puede incorporar lo que aprende. Problema sistémico.</p>
+      </div>
+      <div class="deliverable">
+        <p class="deliverable-title">Gestión del conocimiento</p>
+        <p class="deliverable-desc">Cuando el saber crítico vive en pocas personas y no está sistematizado. Problema de continuidad.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <span class="section-number">03</span>
+  <h2 class="section-title">Para quién tiene sentido</h2>
+  <div class="section-body">
+    <p>Organizaciones que invierten en formación sin ver resultados sostenidos. Áreas con conocimiento concentrado en pocas personas y riesgo de continuidad cuando alguien se va.</p>
+    <p>Equipos directivos que necesitan desarrollar capacidades en mandos medios sin saber por dónde empezar — y que quieren que lo que construyan quede en la organización, no en el consultor.</p>
+  </div>
+</div>
+
+<div class="cta-section">
+  <div class="cta-contact">
+    <h3>Hablemos</h3>
+    <a href="mailto:mariano@marianoboiero.com.ar" class="contact-item">mariano@marianoboiero.com.ar</a>
+    <a href="https://wa.me/5491130444992" class="contact-item">WhatsApp +54 9 11 3044 4992</a>
+    <a href="https://linkedin.com/in/marianoboiero" target="_blank" class="contact-item">linkedin.com/in/marianoboiero</a>
+    <a href="https://marianoboiero.com.ar" target="_blank" class="contact-item">marianoboiero.com.ar</a>
+  </div>
+  <div class="cta-more">
+    <h3>¿Querés la propuesta completa?</h3>
+    <p>Metodología, instrumentos, modalidades de trabajo y casos de aplicación.</p>
+    <a href="/docs/formacion-ficha.pdf" class="cta-btn" target="_blank">Descargar propuesta</a>
+  </div>
+</div>
+
+<footer>
+  <span>Mariano Boiero — Consultor en Asuntos Organizacionales</span>
+  <a href="https://marianoboiero.com.ar">marianoboiero.com.ar</a>
+</footer>
+</body>
+</html>
