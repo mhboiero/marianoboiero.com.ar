@@ -4,357 +4,230 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Transformación Organizacional — Mariano Boiero</title>
+<meta name="description" content="Gestión del cambio sin glitter. Intervenciones reales para organizaciones en transformación profunda: nuevos sistemas, fusiones, reestructuraciones, crisis.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-  :root {
-    --cream: #f7f4ef;
-    --copper: #9a6a3a;
-    --copper-dark: #7a5228;
-    --copper-faint: #e8d8c4;
-    --text: #1a1410;
-    --text-mid: #4a3a28;
-    --text-light: #7a6a58;
-    --divider: #d8cfc4;
-    --white: #ffffff;
-  }
-
-  html { scroll-behavior: smooth; }
-
-  body {
-    background: var(--cream);
-    color: var(--text);
-    font-family: 'EB Garamond', Georgia, serif;
-    font-size: 18px;
-    line-height: 1.75;
-  }
-
-  /* HERO */
-  .hero {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    padding: 0 0 80px;
-    position: relative;
-    overflow: hidden;
-    border-bottom: 1px solid var(--divider);
-  }
-
-  .hero-bg {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(160deg, #ede8e0 0%, #f7f4ef 60%, #e8d8c4 100%);
-    z-index: 0;
-  }
-
-  .hero-ornament {
-    position: absolute;
-    top: 40px;
-    right: 60px;
-    width: 280px;
-    height: 280px;
-    border: 1px solid var(--copper-faint);
-    border-radius: 50%;
-    opacity: 0.5;
-    z-index: 0;
-  }
-
-  .hero-ornament::after {
-    content: '';
-    position: absolute;
-    inset: 24px;
-    border: 1px solid var(--copper-faint);
-    border-radius: 50%;
-  }
-
-  .hero-content {
-    position: relative;
-    z-index: 1;
-    max-width: 780px;
-    margin: 0 auto;
-    padding: 0 40px;
-    width: 100%;
-  }
-
-  .hero-label {
-    font-family: 'Cinzel', serif;
-    font-size: 11px;
-    letter-spacing: 0.35em;
-    color: var(--copper);
-    text-transform: uppercase;
-    margin-bottom: 28px;
-    display: block;
-  }
-
-  .hero-title {
-    font-family: 'Cinzel', serif;
-    font-size: clamp(32px, 6vw, 56px);
-    font-weight: 600;
-    color: var(--text);
-    line-height: 1.1;
-    margin-bottom: 32px;
-    max-width: 560px;
-  }
-
-  .hero-statement {
-    font-size: clamp(18px, 2.5vw, 22px);
-    color: var(--text-mid);
-    font-style: italic;
-    max-width: 520px;
-    line-height: 1.6;
-    border-left: 2px solid var(--copper);
-    padding-left: 24px;
-  }
-
-  /* SECTIONS */
-  .section {
-    max-width: 780px;
-    margin: 0 auto;
-    padding: 80px 40px;
-    border-bottom: 1px solid var(--divider);
-  }
-
-  .section:last-of-type { border-bottom: none; }
-
-  .section-number {
-    font-family: 'Cinzel', serif;
-    font-size: 11px;
-    color: var(--copper);
-    letter-spacing: 0.3em;
-    margin-bottom: 24px;
-    display: block;
-  }
-
-  .section-title {
-    font-family: 'Cinzel', serif;
-    font-size: clamp(20px, 3vw, 28px);
-    font-weight: 600;
-    color: var(--text);
-    line-height: 1.2;
-    margin-bottom: 28px;
-    max-width: 500px;
-  }
-
-  .section-body {
-    font-size: 19px;
-    color: var(--text-mid);
-    line-height: 1.75;
-    max-width: 580px;
-  }
-
-  .section-body p + p { margin-top: 20px; }
-
-  .emphasis {
-    color: var(--text);
-    font-style: italic;
-  }
-
-  /* ENTREGABLES */
-  .deliverables {
-    margin-top: 40px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-  }
-
-  .deliverable {
-    padding: 24px;
-    border: 1px solid var(--divider);
-    background: var(--white);
-  }
-
-  .deliverable-title {
-    font-family: 'Cinzel', serif;
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--text);
-    margin-bottom: 10px;
-    line-height: 1.3;
-  }
-
-  .deliverable-desc {
-    font-size: 15px;
-    color: var(--text-light);
-    line-height: 1.6;
-  }
-
-  /* CTA */
-  .cta-section {
-    max-width: 780px;
-    margin: 0 auto;
-    padding: 80px 40px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 60px;
-    align-items: start;
-  }
-
-  .cta-contact h3 {
-    font-family: 'Cinzel', serif;
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--text);
-    letter-spacing: 0.1em;
-    margin-bottom: 20px;
-  }
-
-  .contact-item {
-    font-size: 16px;
-    color: var(--text-mid);
-    margin-bottom: 10px;
-    display: block;
-    text-decoration: none;
-  }
-
-  .contact-item:hover { color: var(--copper); }
-
-  .cta-more {
-    border-left: 1px solid var(--divider);
-    padding-left: 40px;
-  }
-
-  .cta-more h3 {
-    font-family: 'Cinzel', serif;
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--text);
-    letter-spacing: 0.1em;
-    margin-bottom: 16px;
-  }
-
-  .cta-more p {
-    font-size: 16px;
-    color: var(--text-light);
-    font-style: italic;
-    line-height: 1.6;
-    margin-bottom: 24px;
-  }
-
-  .cta-btn {
-    display: inline-block;
-    font-family: 'Cinzel', serif;
-    font-size: 12px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    padding: 14px 32px;
-    background: var(--copper);
-    color: var(--white);
-    text-decoration: none;
-    transition: background 0.2s ease;
-  }
-
-  .cta-btn:hover { background: var(--copper-dark); }
-
-  /* FIRMA */
-  footer {
-    border-top: 1px solid var(--divider);
-    padding: 24px 40px;
-    max-width: 780px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-family: 'Cinzel', serif;
-    font-size: 11px;
-    letter-spacing: 0.15em;
-    color: var(--text-light);
-  }
-
-  footer a { color: var(--copper); text-decoration: none; }
-
-  @media (max-width: 640px) {
-    .hero { min-height: 80vh; padding-bottom: 60px; }
-    .hero-content, .section, .cta-section { padding-left: 24px; padding-right: 24px; }
-    .hero-ornament { display: none; }
-    .deliverables { grid-template-columns: 1fr; }
-    .cta-section { grid-template-columns: 1fr; gap: 40px; }
-    .cta-more { border-left: none; padding-left: 0; border-top: 1px solid var(--divider); padding-top: 40px; }
-    footer { flex-direction: column; gap: 8px; text-align: center; }
-  }
+:root {
+  --bg: #0e0c0a; --copper: #b87333; --copper-dim: #8a5a2a;
+  --copper-faint: #1e1510; --text: #e8e0d4; --text-mid: #b0a898;
+  --text-light: #7a7068; --divider: #2a2420; --white: #f5f0ea;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'EB Garamond', Georgia, serif; background: var(--bg); color: var(--text); font-size: 18px; line-height: 1.7; }
+a { color: var(--copper); text-decoration: none; }
+a:hover { color: var(--white); }
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 2rem; height: 60px;
+  background: rgba(14,12,10,0.97); border-bottom: 1px solid var(--divider);
+}
+.nav-brand { font-family: 'Cinzel', serif; font-size: 1rem; letter-spacing: .06em; color: var(--copper); }
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a { font-family: 'Cinzel', serif; font-size: .78rem; letter-spacing: .08em; color: var(--text-mid); }
+.nav-links a:hover { color: var(--copper); }
+.nav-toggle { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
+.nav-toggle span { display: block; width: 22px; height: 2px; background: var(--text-mid); }
+@media (max-width: 700px) {
+  .nav-toggle { display: flex; }
+  .nav-links { display: none; flex-direction: column; gap: 0; position: absolute; top: 60px; left: 0; right: 0; background: rgba(14,12,10,.98); border-bottom: 1px solid var(--divider); padding: 1rem 2rem 1.5rem; }
+  .nav-links.open { display: flex; }
+  .nav-links li { padding: .6rem 0; border-bottom: 1px solid var(--divider); }
+  .nav-links li:last-child { border-bottom: none; }
+}
+.breadcrumb { margin-top: 60px; padding: .7rem 2rem; font-size: .82rem; color: var(--text-light); border-bottom: 1px solid var(--divider); }
+.breadcrumb a { color: var(--text-light); }
+.breadcrumb a:hover { color: var(--copper); }
+.breadcrumb span { margin: 0 .5rem; }
+.hero-area { padding: 5rem 2rem 4rem; max-width: 860px; margin: 0 auto; }
+.area-tag { display: inline-block; font-family: 'Cinzel', serif; font-size: .72rem; letter-spacing: .14em; color: var(--copper); border: 1px solid var(--copper-dim); padding: .3rem .9rem; margin-bottom: 1.5rem; }
+.hero-area h1 { font-family: 'Cinzel', serif; font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 400; color: var(--white); line-height: 1.25; margin-bottom: 1.5rem; }
+.lead { font-size: 1.22rem; color: var(--text); line-height: 1.75; margin-bottom: 1rem; max-width: 720px; }
+.sublead { font-size: 1.05rem; color: var(--text-mid); line-height: 1.75; max-width: 680px; }
+section { padding: 3.5rem 2rem; border-top: 1px solid var(--divider); max-width: 860px; margin: 0 auto; }
+.section-label { font-family: 'Cinzel', serif; font-size: .72rem; letter-spacing: .14em; color: var(--copper); text-transform: uppercase; margin-bottom: 1.2rem; }
+h2 { font-family: 'Cinzel', serif; font-size: 1.35rem; font-weight: 400; color: var(--white); margin-bottom: 1.2rem; }
+h3 { font-family: 'Cinzel', serif; font-size: 1rem; font-weight: 600; color: var(--copper); margin-bottom: .6rem; }
+p { margin-bottom: 1rem; color: var(--text); }
+p:last-child { margin-bottom: 0; }
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 1.5rem; }
+@media (max-width: 640px) { .two-col { grid-template-columns: 1fr; } }
+.deliverable-box { border: 1px solid var(--divider); padding: 1.5rem; background: var(--copper-faint); }
+.deliverable-box ul { list-style: none; margin-top: .5rem; }
+.deliverable-box li { padding: .4rem 0; border-bottom: 1px solid var(--divider); font-size: .97rem; color: var(--text-mid); }
+.deliverable-box li:last-child { border-bottom: none; }
+.deliverable-box li::before { content: '—'; color: var(--copper-dim); margin-right: .6rem; }
+.case-block { margin-top: 1.5rem; padding: 1.5rem 1.5rem 1.5rem 2rem; border-left: 2px solid var(--copper-dim); background: #12100d; }
+.case-block .case-org { font-family: 'Cinzel', serif; font-size: .78rem; letter-spacing: .1em; color: var(--copper); margin-bottom: .5rem; }
+.case-block p { color: var(--text-mid); font-style: italic; }
+.for-whom-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; margin-top: 1.2rem; }
+.whom-tag { border: 1px solid var(--divider); padding: .7rem 1rem; font-size: .92rem; color: var(--text-mid); background: #12100d; }
+.phase-list { margin-top: 1.5rem; }
+.phase-item { display: flex; gap: 1.5rem; padding: 1.2rem 0; border-bottom: 1px solid var(--divider); }
+.phase-item:last-child { border-bottom: none; }
+.phase-number { font-family: 'Cinzel', serif; font-size: .85rem; color: var(--copper-dim); min-width: 60px; padding-top: .2rem; }
+.phase-content h3 { font-size: .95rem; margin-bottom: .3rem; }
+.phase-content p { font-size: .95rem; color: var(--text-mid); }
+.cta-section { padding: 4rem 2rem; border-top: 1px solid var(--divider); text-align: center; max-width: 860px; margin: 0 auto; }
+.cta-section p { color: var(--text-mid); max-width: 540px; margin: 0 auto 2rem; }
+.cta-group { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+.btn-primary { font-family: 'Cinzel', serif; font-size: .82rem; letter-spacing: .1em; color: var(--bg); background: var(--copper); border: none; padding: .85rem 2rem; cursor: pointer; text-decoration: none; display: inline-block; transition: background .2s; }
+.btn-primary:hover { background: var(--white); color: var(--bg); }
+.btn-outline { font-family: 'Cinzel', serif; font-size: .82rem; letter-spacing: .1em; color: var(--copper); border: 1px solid var(--copper-dim); padding: .85rem 2rem; text-decoration: none; display: inline-block; transition: .2s; }
+.btn-outline:hover { border-color: var(--copper); color: var(--white); }
+footer { border-top: 1px solid var(--divider); padding: 2rem; text-align: center; font-size: .85rem; color: var(--text-light); font-family: 'Cinzel', serif; letter-spacing: .06em; }
+footer a { color: var(--text-light); }
+footer a:hover { color: var(--copper); }
 </style>
 </head>
 <body>
 
-<div class="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-ornament"></div>
-  <div class="hero-content">
-    <span class="hero-label">Asuntos Organizacionales · Mariano Boiero</span>
-    <h1 class="hero-title">Cuando el problema no está donde duele</h1>
-    <p class="hero-statement">Rotación, mandos medios agotados, iniciativas que no aterrizan. Los síntomas son visibles. Las condiciones que los generan, no.</p>
-  </div>
+<nav>
+  <a href="index.html" class="nav-brand">Mariano Boiero</a>
+  <button class="nav-toggle" aria-label="Menú" onclick="this.closest('nav').querySelector('.nav-links').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links">
+    <li><a href="index.html#areas">Áreas</a></li>
+    <li><a href="index.html#herramientas">Herramientas</a></li>
+    <li><a href="index.html#experiencia">Experiencia</a></li>
+    <li><a href="como-trabajo.html">Cómo trabajo</a></li>
+    <li><a href="index.html#contacto">Contacto</a></li>
+  </ul>
+</nav>
+
+<div class="breadcrumb">
+  <a href="index.html">Inicio</a><span>›</span> Áreas de trabajo <span>›</span> Transformación Organizacional
 </div>
 
-<div class="section">
-  <span class="section-number">01</span>
-  <h2 class="section-title">Lo que las respuestas convencionales no resuelven</h2>
-  <div class="section-body">
-    <p>Encuesta de clima, programa de bienestar, taller de liderazgo. Son respuestas razonables a síntomas visibles. El problema es que actúan sobre lo que se ve — y las condiciones estructurales que producen esos síntomas siguen intactas.</p>
-    <p>La tensión persiste, muta de forma y reaparece. Seis meses después, el mismo problema con otro nombre.</p>
-    <p class="emphasis">El problema rara vez está donde duele. Está en la arquitectura que nadie leyó antes de intervenir.</p>
-  </div>
+<div class="hero-area">
+  <div class="area-tag">Área de trabajo</div>
+  <h1>Transformación Organizacional</h1>
+  <p class="lead">El cambio no se gestiona con slogans. Tampoco con talleres de sensibilización ni con consultores que venden el mismo modelo a todos. Se gestiona con estructura, poder, tiempos y política.</p>
+  <p class="sublead">Trabajo con organizaciones que están en medio de un cambio real: nuevo sistema, fusión, reestructuración, cambio de modelo. Diseño un proceso adaptado a lo que la organización efectivamente puede sostener.</p>
 </div>
 
-<div class="section">
-  <span class="section-number">02</span>
-  <h2 class="section-title">Leemos primero. Intervenimos después.</h2>
-  <div class="section-body">
-    <p>Antes de cualquier intervención, diagnosticamos las condiciones reales de la organización: dónde está la tensión, en qué fase se encuentra, si el problema es de conducción o de diseño estructural.</p>
-    <p>Esa distinción lo cambia todo. Intervenir sobre conducción cuando el problema es de diseño — o viceversa — no produce resultados neutros. Los produce negativos.</p>
-    <p class="emphasis">La lectura precede a la intervención. Siempre.</p>
+<section>
+  <div class="section-label">El problema real</div>
+  <h2>Por qué fracasan la mayoría de los procesos de cambio</h2>
+  <p>Los procesos de cambio fracasan porque se aplican modelos universales a organizaciones particulares. Se ignoran las estructuras de poder reales. Se subestiman las resistencias. Se sobreestiman los plazos y la capacidad de absorción.</p>
+  <p>El resultado es predecible: mucho ruido, poco cambio, y una organización más resistente a la próxima intervención que a la anterior.</p>
+  <div class="two-col">
+    <div>
+      <h3>Lo que no funciona</h3>
+      <p style="color:var(--text-mid); font-size:.97rem;">Talleres motivacionales. Presentaciones de PowerPoint a todo el personal. Consultores que no se quedan a ver qué pasa. Planes de comunicación sin análisis de actores.</p>
+    </div>
+    <div>
+      <h3>Lo que sí funciona</h3>
+      <p style="color:var(--text-mid); font-size:.97rem;">Diagnóstico real de resistencias y alianzas. Trabajo con quien tiene el poder de mover el sistema. Diseño de proceso viable, no ideal. Presencia técnica en los momentos críticos.</p>
+    </div>
+  </div>
+</section>
 
-    <div class="deliverables">
-      <div class="deliverable">
-        <p class="deliverable-title">¿Dónde está la tensión?</p>
-        <p class="deliverable-desc">Localización por área, nivel jerárquico o colectivo específico.</p>
+<section>
+  <div class="section-label">Metodología</div>
+  <h2>Cómo se trabaja un proceso de cambio real</h2>
+  <div class="phase-list">
+    <div class="phase-item">
+      <div class="phase-number">Fase 1</div>
+      <div class="phase-content">
+        <h3>Diagnóstico de clima, estructuras y tensiones</h3>
+        <p>Lectura del estado organizacional antes de intervenir: qué está funcionando, dónde están las resistencias, quiénes son los actores clave, cuáles son los nudos de conflicto no resuelto.</p>
       </div>
-      <div class="deliverable">
-        <p class="deliverable-title">¿En qué fase?</p>
-        <p class="deliverable-desc">Desconexión, ausentismo, protesta — con sus condiciones de reversibilidad.</p>
+    </div>
+    <div class="phase-item">
+      <div class="phase-number">Fase 2</div>
+      <div class="phase-content">
+        <h3>Diseño del plan de cambio situado</h3>
+        <p>Un plan que parte de lo real, no de lo ideal. Etapas, hitos, actores responsables, mecanismos de seguimiento. Adaptado al tempo político de la organización y a su capacidad efectiva de movimiento.</p>
       </div>
-      <div class="deliverable">
-        <p class="deliverable-title">¿Conducción o diseño?</p>
-        <p class="deliverable-desc">La distinción más operativamente crítica de cualquier diagnóstico.</p>
+    </div>
+    <div class="phase-item">
+      <div class="phase-number">Fase 3</div>
+      <div class="phase-content">
+        <h3>Acompañamiento técnico y político</h3>
+        <p>Presencia en los momentos críticos: reuniones de conducción, comunicaciones clave, puntos de conflicto. No solo diseño: también acompañamiento en la ejecución cuando el sistema se tensa.</p>
       </div>
-      <div class="deliverable">
-        <p class="deliverable-title">¿Cuál es el foco?</p>
-        <p class="deliverable-desc">Prioridades de intervención orientadas a donde más impacto produce.</p>
+    </div>
+    <div class="phase-item">
+      <div class="phase-number">Fase 4</div>
+      <div class="phase-content">
+        <h3>Cierre y transferencia</h3>
+        <p>El proceso no termina con el consultor: termina con la organización en capacidad de sostener lo que cambió. Documentación, formación de referentes internos, validación del nuevo estado.</p>
       </div>
     </div>
   </div>
-</div>
+</section>
 
-<div class="section">
-  <span class="section-number">03</span>
-  <h2 class="section-title">Para quién tiene sentido</h2>
-  <div class="section-body">
-    <p>Organizaciones privadas, públicas y gremiales que enfrentan procesos de cambio, crecimiento o reestructuración — y necesitan saber si las condiciones están dadas para implementar lo que se proponen.</p>
-    <p>Equipos directivos que invirtieron en intervenciones que no funcionaron y quieren entender por qué antes de volver a intentarlo.</p>
+<section>
+  <div class="section-label">Entregables</div>
+  <h2>Qué produce esta intervención</h2>
+  <div class="two-col">
+    <div class="deliverable-box">
+      <h3>Diagnóstico previo</h3>
+      <ul>
+        <li>Mapa de actores y resistencias</li>
+        <li>Estado emocional-organizacional</li>
+        <li>Análisis de clima y tensiones</li>
+        <li>Focos de conflicto identificados</li>
+      </ul>
+    </div>
+    <div class="deliverable-box">
+      <h3>Plan de cambio</h3>
+      <ul>
+        <li>Hoja de ruta adaptada al contexto</li>
+        <li>Estrategia de actores</li>
+        <li>Plan de comunicación interna</li>
+        <li>Mecanismos de seguimiento</li>
+      </ul>
+    </div>
   </div>
-</div>
+</section>
+
+<section>
+  <div class="section-label">¿Para quién?</div>
+  <h2>Organizaciones con un cambio real en proceso</h2>
+  <p>Esta intervención requiere un sponsor interno con poder real y disposición a poner el cuerpo. Sin eso, no hay condiciones para trabajar.</p>
+  <div class="for-whom-grid">
+    <div class="whom-tag">Implementación de nuevos sistemas</div>
+    <div class="whom-tag">Fusiones y absorciones</div>
+    <div class="whom-tag">Cambio de modelo de gestión</div>
+    <div class="whom-tag">Reestructuraciones post-crisis</div>
+    <div class="whom-tag">Organismos en transición política</div>
+    <div class="whom-tag">Empresas en crecimiento acelerado</div>
+  </div>
+</section>
+
+<section>
+  <div class="section-label">Referencias</div>
+  <h2>Contextos donde se trabajó transformación</h2>
+  <div class="case-block">
+    <div class="case-org">Sector Privado — JST Argentina / Maitén Agro</div>
+    <p>Procesos de cambio organizacional y acompañamiento en reestructuración de equipos de gestión en empresas del sector privado con presencia regional.</p>
+  </div>
+  <div class="case-block">
+    <div class="case-org">Sector Público — Ministerio de Desarrollo Social</div>
+    <p>Intervención en procesos de cambio institucional, rediseño de estructuras de gestión y acompañamiento en implementación de nuevos modelos operativos.</p>
+  </div>
+  <div class="case-block">
+    <div class="case-org">Internacional — Save the Children / CLAD</div>
+    <p>Diseño y acompañamiento de procesos de transformación organizacional en el ámbito de organismos de cooperación internacional y desarrollo regional.</p>
+  </div>
+</section>
 
 <div class="cta-section">
-  <div class="cta-contact">
-    <h3>Hablemos</h3>
-    <a href="mailto:mariano@marianoboiero.com.ar" class="contact-item">mariano@marianoboiero.com.ar</a>
-    <a href="https://wa.me/5491130444992" class="contact-item">WhatsApp +54 9 11 3044 4992</a>
-    <a href="https://linkedin.com/in/marianoboiero" target="_blank" class="contact-item">linkedin.com/in/marianoboiero</a>
-    <a href="https://marianoboiero.com.ar" target="_blank" class="contact-item">marianoboiero.com.ar</a>
-  </div>
-  <div class="cta-more">
-    <h3>¿Querés la propuesta completa?</h3>
-    <p>Metodología, instrumentos, modalidades de trabajo y casos de aplicación.</p>
-    <a href="/docs/transformacion-ficha.pdf" class="cta-btn" target="_blank">Descargar propuesta</a>
+  <h2>¿Tu organización está en medio de un cambio?</h2>
+  <p>Si el proceso ya empezó y no está yendo bien, también se puede entrar en marcha. El mejor momento para llamar es antes; el segundo mejor es ahora.</p>
+  <div class="cta-group">
+    <a href="https://wa.me/5491130444992" class="btn-primary" target="_blank">Hablar por WhatsApp</a>
+    <a href="https://calendar.app.google/5CHKaUURm9C3Jm6m7" class="btn-outline" target="_blank">Agendar reunión</a>
   </div>
 </div>
 
 <footer>
-  <span>Mariano Boiero — Consultor en Asuntos Organizacionales</span>
-  <a href="https://marianoboiero.com.ar">marianoboiero.com.ar</a>
+  <a href="index.html">marianoboiero.com.ar</a> &nbsp;·&nbsp; mhboiero@gmail.com &nbsp;·&nbsp; +54 9 11 3044-4992
 </footer>
 
 </body>
