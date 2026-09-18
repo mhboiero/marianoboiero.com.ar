@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cómo trabajo | Mariano Boiero</title>
+<meta name="description" content="No llego con soluciones prediseñadas. Llego antes de que el problema esté formulado — y eso cambia todo lo que sigue.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0e0c0a;
+    --copper: #b87333;
+    --copper-dim: #8a5a2a;
+    --copper-faint: #1e1510;
+    --text: #e8e0d4;
+    --text-mid: #b0a898;
+    --text-light: #7a7068;
+    --divider: #2a2420;
+    --white: #f5f0ea;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--bg); color: var(--text); font-family: 'EB Garamond', serif; font-size: 18px; line-height: 1.75; }
+
+  /* NAV */
+  nav { border-bottom: 1px solid var(--divider); padding: 1.2rem 2rem; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; background: var(--bg); z-index: 100; }
+  .nav-logo { font-family: 'Cinzel', serif; font-size: 1rem; letter-spacing: .15em; color: var(--copper); text-decoration: none; }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { color: var(--text-mid); text-decoration: none; font-size: .9rem; letter-spacing: .08em; transition: color .2s; }
+  .nav-links a:hover { color: var(--copper); }
+
+  /* BREADCRUMB */
+  .breadcrumb { padding: 1.2rem 2rem; font-size: .85rem; color: var(--text-light); }
+  .breadcrumb a { color: var(--text-light); text-decoration: none; }
+  .breadcrumb a:hover { color: var(--copper); }
+  .breadcrumb span { margin: 0 .5rem; }
+
+  /* HERO */
+  .hero { max-width: 780px; margin: 0 auto; padding: 6rem 2rem 5rem; }
+  .page-tag { display: inline-block; border: 1px solid var(--copper-dim); color: var(--copper); font-size: .75rem; letter-spacing: .2em; text-transform: uppercase; padding: .35rem 1rem; margin-bottom: 2.5rem; }
+  .hero h1 { font-family: 'Cinzel', serif; font-size: clamp(2rem, 5vw, 3rem); font-weight: 400; color: var(--white); letter-spacing: .04em; line-height: 1.2; margin-bottom: 2rem; }
+  .hero-lead { font-size: 1.25rem; color: var(--text-mid); line-height: 1.8; max-width: 640px; }
+
+  /* PRINCIPLES */
+  .principle { max-width: 820px; margin: 0 auto; padding: 4rem 2rem; border-top: 1px solid var(--divider); display: grid; grid-template-columns: 80px 1fr; gap: 2.5rem; align-items: start; }
+  .principle-num { font-family: 'Cinzel', serif; font-size: 2.5rem; color: var(--copper-dim); font-weight: 400; line-height: 1; padding-top: .3rem; }
+  .principle-content h2 { font-family: 'Cinzel', serif; font-size: 1.3rem; font-weight: 400; color: var(--white); letter-spacing: .06em; margin-bottom: 1.2rem; }
+  .principle-content p { color: var(--text-mid); margin-bottom: 1.1rem; }
+  .principle-content p:last-child { margin-bottom: 0; }
+  .principle-content em { color: var(--text); font-style: italic; }
+
+  /* QUOTE BLOCK */
+  .pull-quote { border-left: 3px solid var(--copper); padding: 1rem 1.5rem; margin: 1.5rem 0; background: var(--copper-faint); }
+  .pull-quote p { color: var(--white); font-style: italic; font-size: 1.05rem; margin: 0; }
+
+  /* SEQUENCE */
+  .sequence { max-width: 820px; margin: 0 auto; padding: 4rem 2rem; border-top: 1px solid var(--divider); }
+  .sequence h2 { font-family: 'Cinzel', serif; font-size: 1.4rem; font-weight: 400; color: var(--white); letter-spacing: .06em; margin-bottom: 2rem; }
+  .steps { display: grid; gap: 0; }
+  .step { display: grid; grid-template-columns: 40px 1fr; gap: 1.5rem; align-items: start; padding: 1.8rem 0; border-bottom: 1px solid var(--divider); }
+  .step:last-child { border-bottom: none; }
+  .step-marker { display: flex; flex-direction: column; align-items: center; gap: .5rem; }
+  .step-dot { width: 12px; height: 12px; border-radius: 50%; background: var(--copper); flex-shrink: 0; margin-top: .4rem; }
+  .step-line { width: 1px; flex-grow: 1; background: var(--divider); min-height: 30px; }
+  .step:last-child .step-line { display: none; }
+  .step-body h3 { font-family: 'Cinzel', serif; font-size: 1rem; color: var(--white); letter-spacing: .06em; margin-bottom: .5rem; }
+  .step-body p { font-size: .95rem; color: var(--text-mid); margin: 0; }
+  .step-body em { color: var(--text); }
+
+  /* NOT THIS */
+  .contrast { max-width: 820px; margin: 0 auto; padding: 4rem 2rem; border-top: 1px solid var(--divider); }
+  .contrast h2 { font-family: 'Cinzel', serif; font-size: 1.4rem; font-weight: 400; color: var(--white); letter-spacing: .06em; margin-bottom: 2rem; }
+  .contrast-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--divider); }
+  .contrast-col { background: var(--bg); padding: 2rem; }
+  .contrast-col h3 { font-family: 'Cinzel', serif; font-size: .85rem; letter-spacing: .2em; text-transform: uppercase; margin-bottom: 1.2rem; }
+  .contrast-col.not h3 { color: var(--text-light); }
+  .contrast-col.yes h3 { color: var(--copper); }
+  .contrast-col ul { list-style: none; }
+  .contrast-col ul li { font-size: .95rem; padding: .6rem 0; border-bottom: 1px solid var(--divider); color: var(--text-mid); }
+  .contrast-col ul li:last-child { border-bottom: none; }
+  .contrast-col.not ul li { text-decoration: line-through; color: var(--text-light); }
+  .contrast-col.yes ul li { color: var(--text); }
+
+  /* FOR WHOM */
+  .for-whom { max-width: 820px; margin: 0 auto; padding: 4rem 2rem; border-top: 1px solid var(--divider); }
+  .for-whom h2 { font-family: 'Cinzel', serif; font-size: 1.4rem; font-weight: 400; color: var(--white); letter-spacing: .06em; margin-bottom: 1.5rem; }
+  .whom-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-top: 1.5rem; }
+  .whom-card { background: var(--copper-faint); border: 1px solid var(--divider); padding: 1.4rem; }
+  .whom-card h3 { font-family: 'Cinzel', serif; font-size: .95rem; color: var(--copper); letter-spacing: .06em; margin-bottom: .7rem; }
+  .whom-card p { font-size: .9rem; color: var(--text-mid); margin: 0; }
+
+  /* CTA */
+  .cta-section { max-width: 820px; margin: 0 auto; padding: 4rem 2rem 6rem; text-align: center; border-top: 1px solid var(--divider); }
+  .cta-section h2 { font-family: 'Cinzel', serif; font-size: 1.6rem; font-weight: 400; color: var(--white); margin-bottom: 1rem; }
+  .cta-section p { color: var(--text-mid); max-width: 480px; margin: 0 auto 2.5rem; }
+  .cta-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+  .btn-primary { background: var(--copper); color: #0e0c0a; font-family: 'Cinzel', serif; font-size: .85rem; letter-spacing: .15em; text-transform: uppercase; padding: .9rem 2rem; text-decoration: none; transition: background .2s; }
+  .btn-primary:hover { background: #c8833d; }
+  .btn-secondary { border: 1px solid var(--copper); color: var(--copper); font-family: 'Cinzel', serif; font-size: .85rem; letter-spacing: .15em; text-transform: uppercase; padding: .9rem 2rem; text-decoration: none; transition: all .2s; }
+  .btn-secondary:hover { background: var(--copper); color: #0e0c0a; }
+
+  /* FOOTER */
+  footer { border-top: 1px solid var(--divider); padding: 2rem; text-align: center; color: var(--text-light); font-size: .85rem; }
+  footer a { color: var(--text-light); text-decoration: none; }
+  footer a:hover { color: var(--copper); }
+
+  @media (max-width: 640px) {
+    .nav-links { display: none; }
+    .hero { padding: 4rem 1.5rem 3rem; }
+    .principle { grid-template-columns: 1fr; gap: 1rem; padding: 3rem 1.5rem; }
+    .principle-num { font-size: 1.5rem; }
+    .sequence, .contrast, .for-whom, .cta-section { padding: 3rem 1.5rem; }
+    .contrast-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Mariano Boiero</a>
+  <ul class="nav-links">
+    <li><a href="index.html#areas">Áreas</a></li>
+    <li><a href="index.html#instrumentos">Instrumentos</a></li>
+    <li><a href="index.html#diagnostico">Diagnóstico gratuito</a></li>
+    <li><a href="index.html#contacto">Contacto</a></li>
+  </ul>
+</nav>
+
+<div class="breadcrumb">
+  <a href="index.html">Inicio</a><span>›</span>
+  Cómo trabajo
+</div>
+
+<div class="hero">
+  <div class="page-tag">Lógica de intervención</div>
+  <h1>Cómo trabajo</h1>
+  <p class="hero-lead">No llego con soluciones prediseñadas. Llego antes de que el problema esté formulado — y eso cambia todo lo que sigue.</p>
+</div>
+
+<div class="principle">
+  <div class="principle-num">01</div>
+  <div class="principle-content">
+    <h2>Primero determino el problema real</h2>
+    <p>La mayoría de las intervenciones fracasan porque empiezan por la solución. Alguien dice "necesitamos capacitar a los jefes" o "hay que cambiar la cultura" — y eso se convierte en el mandato, sin que nadie haya preguntado si ese es el diagnóstico correcto.</p>
+    <p>Cuando entro a una organización, lo primero que hago es suspender esa formulación. No porque sea incorrecta — puede serlo — sino porque todavía no sé si es el problema real o el síntoma que la organización eligió nombrar.</p>
+    <div class="pull-quote">
+      <p>El problema que se declara y el problema que existe rara vez son el mismo. La diferencia entre los dos es donde está el trabajo real.</p>
+    </div>
+    <p>Eso requiere una fase de lectura antes de cualquier intervención. No una auditoría ni un relevamiento genérico: una lectura estructural de cómo funciona esa organización particular, con sus tensiones particulares, en su contexto particular.</p>
+  </div>
+</div>
+
+<div class="principle">
+  <div class="principle-num">02</div>
+  <div class="principle-content">
+    <h2>Leo la estructura, no el relato</h2>
+    <p>Las organizaciones tienen dos versiones de sí mismas: la que cuentan y la que operan. El organigrama, el plan estratégico, los valores declarados — eso es el relato. Lo que realmente ocurre cuando hay que decidir, cuando hay recursos escasos, cuando hay conflicto — eso es la estructura.</p>
+    <p>La consultoría que trabaja solo con el relato produce recomendaciones que son correctas en abstracto e inútiles en concreto. Porque la organización real no es la que está en el documento de planificación.</p>
+    <p>Mi trabajo es leer la estructura. Quién decide realmente. Dónde está la tensión que nadie nombra. Qué capacidades hay disponibles y cuáles son ficticias. Qué puede cambiar y qué no puede, con este equipo, en este momento.</p>
+    <div class="pull-quote">
+      <p>No trabajo con la organización que la organización dice ser. Trabajo con la que es.</p>
+    </div>
+  </div>
+</div>
+
+<div class="principle">
+  <div class="principle-num">03</div>
+  <div class="principle-content">
+    <h2>Diseño intervenciones que tienen posibilidades de funcionar</h2>
+    <p>Una intervención bien diseñada en el ambiente equivocado no funciona. Antes de proponer cualquier cosa, necesito saber en qué terreno voy a operar: qué margen real hay para moverse, qué resistencias van a aparecer, qué recursos están disponibles más allá de los que figuran en el presupuesto.</p>
+    <p>Eso determina el tipo de intervención que tiene sentido. A veces es trabajo de conducción. A veces es rediseño estructural. A veces es formación — pero formación real, que parte de un diagnóstico de qué tipo de brecha existe y a qué nivel. No capacitación como respuesta refleja a cualquier problema que involucre personas.</p>
+    <p>Y siempre — siempre — hay una secuencia. Primero se lee, después se diseña, después se interviene. No en simultáneo, no en paralelo, no "mientras avanzamos vamos viendo".</p>
+  </div>
+</div>
+
+<div class="principle">
+  <div class="principle-num">04</div>
+  <div class="principle-content">
+    <h2>Trabajo para que la organización pueda seguir sin mí</h2>
+    <p>La dependencia del consultor es un fracaso del consultor, no un éxito. Si al final de un proceso la organización necesita que yo vuelva para que las cosas funcionen, algo salió mal.</p>
+    <p>Lo que me interesa dejar instalado no son recomendaciones — son capacidades. La organización debería poder leer sus propias tensiones, tomar sus propias decisiones estratégicas y gestionar sus propios procesos de cambio. Mi trabajo es fortalecer esa capacidad, no reemplazarla.</p>
+    <p>Eso no significa que no vuelva. Vuelvo cuando hay una nueva situación que lo requiere. Pero la vuelta es por elección, no por necesidad.</p>
+  </div>
+</div>
+
+<div class="sequence">
+  <h2>La secuencia de trabajo</h2>
+  <div class="steps">
+    <div class="step">
+      <div class="step-marker"><div class="step-dot"></div><div class="step-line"></div></div>
+      <div class="step-body">
+        <h3>Conversación de entrada</h3>
+        <p>Antes de cualquier propuesta, hay una conversación. No para vender — para entender si hay condiciones para trabajar y si puedo aportar algo real a esa situación. A veces de esa conversación sale que no soy la persona indicada.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-marker"><div class="step-dot"></div><div class="step-line"></div></div>
+      <div class="step-body">
+        <h3>Diagnóstico de situación</h3>
+        <p>Lectura estructural de la organización: tensiones reales, capacidades disponibles, contexto de operación. Dependiendo de la situación, uso uno o más de mis instrumentos diagnósticos propios. El resultado es un mapa de lo que está ocurriendo, no un listado de problemas.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-marker"><div class="step-dot"></div><div class="step-line"></div></div>
+      <div class="step-body">
+        <h3>Diseño de intervención</h3>
+        <p>Con el diagnóstico en mano, se diseña lo que tiene posibilidades de funcionar <em>en este contexto</em>. No lo que funcionó en otro lado, no lo que está de moda, no lo que el cliente ya tenía en mente antes de llamarme. Lo que responde al problema real con los recursos reales disponibles.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-marker"><div class="step-dot"></div><div class="step-line"></div></div>
+      <div class="step-body">
+        <h3>Intervención y acompañamiento</h3>
+        <p>La implementación tiene su propia complejidad. Las organizaciones no cambian según el plan — cambian según las tensiones que aparecen durante el proceso. El acompañamiento sirve para leer esas tensiones en tiempo real y ajustar sin perder el rumbo.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-marker"><div class="step-dot"></div><div class="step-line"></div></div>
+      <div class="step-body">
+        <h3>Cierre y transferencia</h3>
+        <p>Todo proceso tiene un momento de cierre. No solo evaluación de resultados — transferencia de capacidad. La organización sale sabiendo leer mejor lo que pasó y mejor equipada para gestionar la próxima situación por su cuenta.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="contrast">
+  <h2>Lo que hago y lo que no</h2>
+  <div class="contrast-grid">
+    <div class="contrast-col not">
+      <h3>No es esto</h3>
+      <ul>
+        <li>Metodologías enlatadas</li>
+        <li>Diagnósticos genéricos de clima</li>
+        <li>Capacitación como respuesta refleja</li>
+        <li>Recomendaciones sin implementación</li>
+        <li>Facilitación de retiros de planeamiento</li>
+        <li>Presentaciones de buenas prácticas</li>
+        <li>Asesoramiento remoto sin lectura del campo</li>
+      </ul>
+    </div>
+    <div class="contrast-col yes">
+      <h3>Es esto</h3>
+      <ul>
+        <li>Lectura estructural del problema real</li>
+        <li>Diagnóstico propio con instrumentos propios</li>
+        <li>Intervención diseñada para este contexto</li>
+        <li>Acompañamiento durante la implementación</li>
+        <li>Formación que parte de un diagnóstico de brecha</li>
+        <li>Trabajo con quienes conducen, no en paralelo a ellos</li>
+        <li>Transferencia de capacidad al cierre</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="for-whom">
+  <h2>Con quién trabajo</h2>
+  <p style="color: var(--text-mid); max-width: 640px; margin-bottom: 2rem;">No trabajo con cualquier organización en cualquier momento. Trabajo con organizaciones que están en una situación que lo requiere y con conducción que está dispuesta a trabajar.</p>
+  <div class="whom-grid">
+    <div class="whom-card">
+      <h3>Organizaciones en movimiento</h3>
+      <p>Crecimiento, cambio de etapa, fusión, crisis, nueva conducción. Momentos donde la configuración anterior ya no alcanza.</p>
+    </div>
+    <div class="whom-card">
+      <h3>Organismos públicos</h3>
+      <p>Con demandas de modernización, mejora de gestión, formación de equipos o rediseño institucional. Sector público, gremial, internacional.</p>
+    </div>
+    <div class="whom-card">
+      <h3>Dirección con disposición real</h3>
+      <p>La consultoría requiere que quien conduce quiera entender lo que está ocurriendo, no solo confirmar lo que ya cree.</p>
+    </div>
+    <div class="whom-card">
+      <h3>Proyectos con alcance definido</h3>
+      <p>Trabajo por proyectos con objetivos claros. No servicios permanentes de asesoramiento sin resultado definido.</p>
+    </div>
+  </div>
+</div>
+
+<div class="cta-section">
+  <h2>Si esto resuena con lo que necesitás</h2>
+  <p>El primer paso es una conversación. No para vender — para ver si hay algo para trabajar juntos.</p>
+  <div class="cta-buttons">
+    <a href="https://wa.me/5491168805604?text=Vi%20tu%20sitio%20y%20quiero%20conversar" class="btn-primary" target="_blank" rel="noopener">Iniciar conversación →</a>
+    <a href="index.html#instrumentos" class="btn-secondary">Ver los instrumentos →</a>
+  </div>
+</div>
+
+<footer>
+  <p>© 2026 Mariano Boiero · <a href="mailto:mhboiero@gmail.com">mhboiero@gmail.com</a></p>
+</footer>
+
+</body>
+</html>
