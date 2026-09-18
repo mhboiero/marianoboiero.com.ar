@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SIDI · Sistema Integral de Desempeño Institucional | Mariano Boiero</title>
+<meta name="description" content="SIDI mide el desempeño institucional en 7 dimensiones y 25 indicadores. Tablero ejecutivo con semáforo. 100% remoto. Resultados en una semana.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0e0c0a;
+    --copper: #b87333;
+    --copper-dim: #8a5a2a;
+    --copper-faint: #1e1510;
+    --text: #e8e0d4;
+    --text-mid: #b0a898;
+    --text-light: #7a7068;
+    --divider: #2a2420;
+    --white: #f5f0ea;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--bg); color: var(--text); font-family: 'EB Garamond', serif; font-size: 18px; line-height: 1.75; }
+  nav { border-bottom: 1px solid var(--divider); padding: 1.2rem 2rem; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; background: var(--bg); z-index: 100; }
+  .nav-logo { font-family: 'Cinzel', serif; font-size: 1rem; letter-spacing: .15em; color: var(--copper); text-decoration: none; }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { color: var(--text-mid); text-decoration: none; font-size: .9rem; letter-spacing: .08em; transition: color .2s; }
+  .nav-links a:hover { color: var(--copper); }
+  .breadcrumb { padding: 1.2rem 2rem; font-size: .85rem; color: var(--text-light); }
+  .breadcrumb a { color: var(--text-light); text-decoration: none; }
+  .breadcrumb a:hover { color: var(--copper); }
+  .breadcrumb span { margin: 0 .5rem; }
+  .hero { max-width: 780px; margin: 0 auto; padding: 5rem 2rem 4rem; text-align: center; }
+  .instrument-tag { display: inline-block; border: 1px solid var(--copper-dim); color: var(--copper); font-size: .75rem; letter-spacing: .2em; text-transform: uppercase; padding: .35rem 1rem; margin-bottom: 2rem; }
+  .hero h1 { font-family: 'Cinzel', serif; font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 400; color: var(--white); letter-spacing: .04em; line-height: 1.2; margin-bottom: 1.5rem; }
+  .hero-sub { font-size: 1.2rem; color: var(--text-mid); font-style: italic; max-width: 580px; margin: 0 auto; }
+  section { max-width: 820px; margin: 0 auto; padding: 4rem 2rem; border-top: 1px solid var(--divider); }
+  h2 { font-family: 'Cinzel', serif; font-size: 1.4rem; font-weight: 400; color: var(--white); letter-spacing: .06em; margin-bottom: 1.5rem; }
+  p { margin-bottom: 1.2rem; }
+  p:last-child { margin-bottom: 0; }
+
+  /* DIMENSIONS */
+  .dim-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: .8rem; margin: 1.5rem 0; }
+  .dim-item { background: var(--copper-faint); border: 1px solid var(--divider); padding: 1rem; text-align: center; }
+  .dim-item span { font-family: 'Cinzel', serif; font-size: .85rem; color: var(--copper); letter-spacing: .06em; display: block; margin-bottom: .3rem; }
+  .dim-item p { font-size: .8rem; color: var(--text-light); margin: 0; }
+
+  /* SEMAFORO */
+  .semaforo { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 1.5rem 0; }
+  .semaforo-item { text-align: center; padding: 1.4rem 1rem; }
+  .semaforo-dot { width: 28px; height: 28px; border-radius: 50%; margin: 0 auto .8rem; }
+  .dot-verde { background: #4a8c5c; }
+  .dot-amarillo { background: #b8960a; }
+  .dot-rojo { background: #8c3a35; }
+  .semaforo-label { font-family: 'Cinzel', serif; font-size: .85rem; color: var(--white); letter-spacing: .06em; display: block; margin-bottom: .4rem; }
+  .semaforo-desc { font-size: .85rem; color: var(--text-mid); }
+
+  /* SPECS */
+  .specs { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin: 1.5rem 0; background: var(--copper-faint); padding: 1.5rem; border: 1px solid var(--divider); }
+  .spec { text-align: center; }
+  .spec-num { font-family: 'Cinzel', serif; font-size: 2rem; color: var(--copper); display: block; }
+  .spec-label { font-size: .85rem; color: var(--text-mid); }
+
+  /* DELIVERABLES */
+  .deliverable-list { display: grid; gap: 1rem; margin-top: 1.5rem; }
+  .deliverable { display: flex; gap: 1rem; align-items: flex-start; background: var(--copper-faint); border-left: 3px solid var(--copper); padding: 1rem 1.2rem; }
+  .deliverable-icon { color: var(--copper); font-size: 1.2rem; flex-shrink: 0; margin-top: .1rem; }
+  .deliverable-text strong { display: block; color: var(--white); margin-bottom: .2rem; font-style: normal; }
+  .deliverable-text { font-size: .95rem; }
+  .context-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-top: 1.5rem; }
+  .context-card { background: var(--copper-faint); border: 1px solid var(--divider); padding: 1.4rem; }
+  .context-card h3 { font-family: 'Cinzel', serif; font-size: .95rem; color: var(--copper); letter-spacing: .08em; margin-bottom: .7rem; }
+  .context-card p { font-size: .9rem; color: var(--text-mid); margin: 0; }
+  .cta-section { max-width: 820px; margin: 0 auto; padding: 4rem 2rem 6rem; text-align: center; border-top: 1px solid var(--divider); }
+  .cta-section h2 { font-family: 'Cinzel', serif; font-size: 1.6rem; font-weight: 400; color: var(--white); margin-bottom: 1rem; }
+  .cta-section p { color: var(--text-mid); max-width: 540px; margin: 0 auto 2.5rem; }
+  .cta-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+  .btn-primary { background: var(--copper); color: #0e0c0a; font-family: 'Cinzel', serif; font-size: .85rem; letter-spacing: .15em; text-transform: uppercase; padding: .9rem 2rem; text-decoration: none; transition: background .2s; }
+  .btn-primary:hover { background: #c8833d; }
+  .btn-secondary { border: 1px solid var(--copper); color: var(--copper); font-family: 'Cinzel', serif; font-size: .85rem; letter-spacing: .15em; text-transform: uppercase; padding: .9rem 2rem; text-decoration: none; transition: all .2s; }
+  .btn-secondary:hover { background: var(--copper); color: #0e0c0a; }
+  .cta-note { font-size: .85rem; color: var(--text-light); margin-top: 1.5rem; font-style: italic; }
+  footer { border-top: 1px solid var(--divider); padding: 2rem; text-align: center; color: var(--text-light); font-size: .85rem; }
+  footer a { color: var(--text-light); text-decoration: none; }
+  footer a:hover { color: var(--copper); }
+  @media (max-width: 600px) {
+    .nav-links { display: none; }
+    .hero { padding: 3rem 1.5rem 2.5rem; }
+    section { padding: 3rem 1.5rem; }
+    .cta-section { padding: 3rem 1.5rem 4rem; }
+    .semaforo { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Mariano Boiero</a>
+  <ul class="nav-links">
+    <li><a href="index.html#areas">Áreas</a></li>
+    <li><a href="index.html#instrumentos">Instrumentos</a></li>
+    <li><a href="index.html#diagnostico">Diagnóstico gratuito</a></li>
+    <li><a href="index.html#contacto">Contacto</a></li>
+  </ul>
+</nav>
+
+<div class="breadcrumb">
+  <a href="index.html">Inicio</a><span>›</span>
+  <a href="index.html#instrumentos">Instrumentos</a><span>›</span>
+  SIDI
+</div>
+
+<div class="hero">
+  <div class="instrument-tag">Instrumento diagnóstico</div>
+  <h1>SIDI</h1>
+  <p class="hero-sub" style="font-family:'Cinzel',serif; font-size:1rem; letter-spacing:.06em; font-style:normal; margin-bottom:.5rem; color:var(--text-mid);">Sistema Integral de Desempeño Institucional</p>
+  <p class="hero-sub">25 indicadores. 7 dimensiones. Un tablero que dice, sin eufemismos, cómo está funcionando la organización.</p>
+</div>
+
+<section>
+  <h2>¿Qué problema resuelve?</h2>
+  <p>Las organizaciones suelen saber que algo no está funcionando. Lo que no saben es <em>qué exactamente</em>, <em>dónde</em> y con qué profundidad. Sin eso, las decisiones se toman sobre intuición o sobre el síntoma más visible, no sobre la causa.</p>
+  <p>El SIDI mide el desempeño institucional de forma integral: no solo qué resultados produce la organización, sino si los está produciendo de manera ética, sostenible, eficiente y con calidad. Y lo hace de forma comparativa, con indicadores que permiten ver qué está bien, qué está en zona de alerta y qué requiere intervención inmediata.</p>
+
+  <div style="margin-top: 2rem;">
+    <p style="color: var(--text-mid); margin-bottom: 1rem;">Las 7 dimensiones que mide:</p>
+    <div class="dim-grid">
+      <div class="dim-item"><span>Transparencia</span><p>Acceso y claridad de la información institucional</p></div>
+      <div class="dim-item"><span>Sustentabilidad</span><p>Viabilidad de mediano y largo plazo</p></div>
+      <div class="dim-item"><span>Calidad</span><p>Estándares de los procesos y entregables</p></div>
+      <div class="dim-item"><span>Eficacia</span><p>Logro de los objetivos propuestos</p></div>
+      <div class="dim-item"><span>Eficiencia</span><p>Relación entre resultados y recursos utilizados</p></div>
+      <div class="dim-item"><span>Efectividad</span><p>Impacto real en el entorno</p></div>
+      <div class="dim-item"><span>Ética</span><p>Coherencia entre valores declarados y conducta organizacional</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Qué produce</h2>
+  <p>Un tablero ejecutivo con lectura de semáforo por cada dimensión e indicador:</p>
+  <div class="semaforo">
+    <div class="semaforo-item">
+      <div class="semaforo-dot dot-verde"></div>
+      <span class="semaforo-label">Verde</span>
+      <span class="semaforo-desc">Funcionando correctamente. Mantener.</span>
+    </div>
+    <div class="semaforo-item">
+      <div class="semaforo-dot dot-amarillo"></div>
+      <span class="semaforo-label">Amarillo</span>
+      <span class="semaforo-desc">En zona de alerta. Monitorear y ajustar.</span>
+    </div>
+    <div class="semaforo-item">
+      <div class="semaforo-dot dot-rojo"></div>
+      <span class="semaforo-label">Rojo</span>
+      <span class="semaforo-desc">Requiere intervención. No seguir sin atender.</span>
+    </div>
+  </div>
+
+  <div class="specs">
+    <div class="spec"><span class="spec-num">25</span><span class="spec-label">indicadores medidos</span></div>
+    <div class="spec"><span class="spec-num">7</span><span class="spec-label">dimensiones de desempeño</span></div>
+    <div class="spec"><span class="spec-num">1 sem.</span><span class="spec-label">hasta tener resultados</span></div>
+    <div class="spec"><span class="spec-num">100%</span><span class="spec-label">aplicación remota</span></div>
+  </div>
+
+  <div class="deliverable-list" style="margin-top: 1rem;">
+    <div class="deliverable">
+      <div class="deliverable-icon">◆</div>
+      <div class="deliverable-text">
+        <strong>Tablero ejecutivo de desempeño institucional</strong>
+        Visualización completa con estado por dimensión, cruces entre indicadores y zonas de atención prioritaria.
+      </div>
+    </div>
+    <div class="deliverable">
+      <div class="deliverable-icon">◆</div>
+      <div class="deliverable-text">
+        <strong>Lectura narrativa de resultados</strong>
+        Informe con interpretación de los datos, no solo los números: qué significan, cómo se relacionan entre sí.
+      </div>
+    </div>
+    <div class="deliverable">
+      <div class="deliverable-icon">◆</div>
+      <div class="deliverable-text">
+        <strong>Agenda de intervención priorizada</strong>
+        Qué atender primero, con qué urgencia y con qué lógica de secuencia.
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Para quién</h2>
+  <div class="context-grid">
+    <div class="context-card">
+      <h3>Organismos públicos</h3>
+      <p>Que necesitan medir desempeño institucional con criterios más completos que la ejecución presupuestaria.</p>
+    </div>
+    <div class="context-card">
+      <h3>Empresas con problemas sistémicos</h3>
+      <p>Donde hay síntomas pero no está claro si el problema es de personas, procesos o estructura.</p>
+    </div>
+    <div class="context-card">
+      <h3>Antes de un rediseño</h3>
+      <p>Como diagnóstico de partida antes de una reestructuración, certificación o proceso de mejora continua.</p>
+    </div>
+    <div class="context-card">
+      <h3>Dirección nueva</h3>
+      <p>Para tener una fotografía completa del estado real de la organización al asumir la conducción.</p>
+    </div>
+  </div>
+</section>
+
+<div class="cta-section">
+  <h2>Dos formas de empezar</h2>
+  <p>Podés explorar el instrumento con el cuestionario gratuito, o si ya saben que necesitan medir el desempeño institucional, hablemos directamente.</p>
+  <div class="cta-buttons">
+    <a href="sidi-cuestionario.html" class="btn-primary">Hacer el diagnóstico gratuito →</a>
+    <a href="https://wa.me/5491168805604?text=Quiero%20saber%20m%C3%A1s%20sobre%20el%20SIDI" class="btn-secondary" target="_blank" rel="noopener">Hablar con Mariano →</a>
+  </div>
+  <p class="cta-note">El cuestionario es autoadministrado, gratuito y produce una devolución inmediata con lectura de tu situación institucional.</p>
+</div>
+
+<footer>
+  <p>© 2026 Mariano Boiero · <a href="mailto:mhboiero@gmail.com">mhboiero@gmail.com</a></p>
+</footer>
+
+</body>
+</html>
