@@ -4,130 +4,235 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Gestión del Talento — Mariano Boiero</title>
+<meta name="description" content="Selección, desarrollo y retención de talento con perspectiva estructural. Modelos de competencias, diagnóstico de equipos y acompañamiento a líderes.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  :root { --cream: #f7f4ef; --copper: #9a6a3a; --copper-dark: #7a5228; --copper-faint: #e8d8c4; --text: #1a1410; --text-mid: #4a3a28; --text-light: #7a6a58; --divider: #d8cfc4; --white: #ffffff; }
-  html { scroll-behavior: smooth; }
-  body { background: var(--cream); color: var(--text); font-family: 'EB Garamond', Georgia, serif; font-size: 18px; line-height: 1.75; }
-  .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: flex-end; padding: 0 0 80px; position: relative; overflow: hidden; border-bottom: 1px solid var(--divider); }
-  .hero-bg { position: absolute; inset: 0; background: linear-gradient(160deg, #ede8e0 0%, #f7f4ef 60%, #e8d8c4 100%); z-index: 0; }
-  .hero-ornament { position: absolute; top: 40px; right: 60px; width: 280px; height: 280px; border: 1px solid var(--copper-faint); border-radius: 50%; opacity: 0.5; z-index: 0; }
-  .hero-ornament::after { content: ''; position: absolute; inset: 24px; border: 1px solid var(--copper-faint); border-radius: 50%; }
-  .hero-content { position: relative; z-index: 1; max-width: 780px; margin: 0 auto; padding: 0 40px; width: 100%; }
-  .hero-label { font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 0.35em; color: var(--copper); text-transform: uppercase; margin-bottom: 28px; display: block; }
-  .hero-title { font-family: 'Cinzel', serif; font-size: clamp(32px, 6vw, 56px); font-weight: 600; color: var(--text); line-height: 1.1; margin-bottom: 32px; max-width: 560px; }
-  .hero-statement { font-size: clamp(18px, 2.5vw, 22px); color: var(--text-mid); font-style: italic; max-width: 520px; line-height: 1.6; border-left: 2px solid var(--copper); padding-left: 24px; }
-  .section { max-width: 780px; margin: 0 auto; padding: 80px 40px; border-bottom: 1px solid var(--divider); }
-  .section-number { font-family: 'Cinzel', serif; font-size: 11px; color: var(--copper); letter-spacing: 0.3em; margin-bottom: 24px; display: block; }
-  .section-title { font-family: 'Cinzel', serif; font-size: clamp(20px, 3vw, 28px); font-weight: 600; color: var(--text); line-height: 1.2; margin-bottom: 28px; max-width: 500px; }
-  .section-body { font-size: 19px; color: var(--text-mid); line-height: 1.75; max-width: 580px; }
-  .section-body p + p { margin-top: 20px; }
-  .emphasis { color: var(--text); font-style: italic; }
-  .deliverables { margin-top: 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-  .deliverable { padding: 24px; border: 1px solid var(--divider); background: var(--white); }
-  .deliverable-title { font-family: 'Cinzel', serif; font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 10px; line-height: 1.3; }
-  .deliverable-desc { font-size: 15px; color: var(--text-light); line-height: 1.6; }
-  .cta-section { max-width: 780px; margin: 0 auto; padding: 80px 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
-  .cta-contact h3 { font-family: 'Cinzel', serif; font-size: 14px; font-weight: 600; color: var(--text); letter-spacing: 0.1em; margin-bottom: 20px; }
-  .contact-item { font-size: 16px; color: var(--text-mid); margin-bottom: 10px; display: block; text-decoration: none; }
-  .contact-item:hover { color: var(--copper); }
-  .cta-more { border-left: 1px solid var(--divider); padding-left: 40px; }
-  .cta-more h3 { font-family: 'Cinzel', serif; font-size: 14px; font-weight: 600; color: var(--text); letter-spacing: 0.1em; margin-bottom: 16px; }
-  .cta-more p { font-size: 16px; color: var(--text-light); font-style: italic; line-height: 1.6; margin-bottom: 24px; }
-  .cta-btn { display: inline-block; font-family: 'Cinzel', serif; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; padding: 14px 32px; background: var(--copper); color: var(--white); text-decoration: none; transition: background 0.2s ease; }
-  .cta-btn:hover { background: var(--copper-dark); }
-  footer { border-top: 1px solid var(--divider); padding: 24px 40px; max-width: 780px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 0.15em; color: var(--text-light); }
-  footer a { color: var(--copper); text-decoration: none; }
-  @media (max-width: 640px) {
-    .hero { min-height: 80vh; padding-bottom: 60px; }
-    .hero-content, .section, .cta-section { padding-left: 24px; padding-right: 24px; }
-    .hero-ornament { display: none; }
-    .deliverables { grid-template-columns: 1fr; }
-    .cta-section { grid-template-columns: 1fr; gap: 40px; }
-    .cta-more { border-left: none; padding-left: 0; border-top: 1px solid var(--divider); padding-top: 40px; }
-    footer { flex-direction: column; gap: 8px; text-align: center; }
-  }
+:root {
+  --bg: #0e0c0a; --copper: #b87333; --copper-dim: #8a5a2a;
+  --copper-faint: #1e1510; --text: #e8e0d4; --text-mid: #b0a898;
+  --text-light: #7a7068; --divider: #2a2420; --white: #f5f0ea;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'EB Garamond', Georgia, serif; background: var(--bg); color: var(--text); font-size: 18px; line-height: 1.7; }
+a { color: var(--copper); text-decoration: none; }
+a:hover { color: var(--white); }
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 2rem; height: 60px; background: rgba(14,12,10,0.97); border-bottom: 1px solid var(--divider); }
+.nav-brand { font-family: 'Cinzel', serif; font-size: 1rem; letter-spacing: .06em; color: var(--copper); }
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a { font-family: 'Cinzel', serif; font-size: .78rem; letter-spacing: .08em; color: var(--text-mid); }
+.nav-links a:hover { color: var(--copper); }
+.nav-toggle { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
+.nav-toggle span { display: block; width: 22px; height: 2px; background: var(--text-mid); }
+@media (max-width: 700px) {
+  .nav-toggle { display: flex; }
+  .nav-links { display: none; flex-direction: column; gap: 0; position: absolute; top: 60px; left: 0; right: 0; background: rgba(14,12,10,.98); border-bottom: 1px solid var(--divider); padding: 1rem 2rem 1.5rem; }
+  .nav-links.open { display: flex; }
+  .nav-links li { padding: .6rem 0; border-bottom: 1px solid var(--divider); }
+  .nav-links li:last-child { border-bottom: none; }
+}
+.breadcrumb { margin-top: 60px; padding: .7rem 2rem; font-size: .82rem; color: var(--text-light); border-bottom: 1px solid var(--divider); }
+.breadcrumb a { color: var(--text-light); }
+.breadcrumb a:hover { color: var(--copper); }
+.breadcrumb span { margin: 0 .5rem; }
+.hero-area { padding: 5rem 2rem 4rem; max-width: 860px; margin: 0 auto; }
+.area-tag { display: inline-block; font-family: 'Cinzel', serif; font-size: .72rem; letter-spacing: .14em; color: var(--copper); border: 1px solid var(--copper-dim); padding: .3rem .9rem; margin-bottom: 1.5rem; }
+.hero-area h1 { font-family: 'Cinzel', serif; font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 400; color: var(--white); line-height: 1.25; margin-bottom: 1.5rem; }
+.lead { font-size: 1.22rem; color: var(--text); line-height: 1.75; margin-bottom: 1rem; max-width: 720px; }
+.sublead { font-size: 1.05rem; color: var(--text-mid); line-height: 1.75; max-width: 680px; }
+section { padding: 3.5rem 2rem; border-top: 1px solid var(--divider); max-width: 860px; margin: 0 auto; }
+.section-label { font-family: 'Cinzel', serif; font-size: .72rem; letter-spacing: .14em; color: var(--copper); text-transform: uppercase; margin-bottom: 1.2rem; }
+h2 { font-family: 'Cinzel', serif; font-size: 1.35rem; font-weight: 400; color: var(--white); margin-bottom: 1.2rem; }
+h3 { font-family: 'Cinzel', serif; font-size: 1rem; font-weight: 600; color: var(--copper); margin-bottom: .6rem; }
+p { margin-bottom: 1rem; color: var(--text); }
+p:last-child { margin-bottom: 0; }
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 1.5rem; }
+@media (max-width: 640px) { .two-col { grid-template-columns: 1fr; } }
+.deliverable-box { border: 1px solid var(--divider); padding: 1.5rem; background: var(--copper-faint); }
+.deliverable-box ul { list-style: none; margin-top: .5rem; }
+.deliverable-box li { padding: .4rem 0; border-bottom: 1px solid var(--divider); font-size: .97rem; color: var(--text-mid); }
+.deliverable-box li:last-child { border-bottom: none; }
+.deliverable-box li::before { content: '—'; color: var(--copper-dim); margin-right: .6rem; }
+.case-block { margin-top: 1.5rem; padding: 1.5rem 1.5rem 1.5rem 2rem; border-left: 2px solid var(--copper-dim); background: #12100d; }
+.case-block .case-org { font-family: 'Cinzel', serif; font-size: .78rem; letter-spacing: .1em; color: var(--copper); margin-bottom: .5rem; }
+.case-block p { color: var(--text-mid); font-style: italic; }
+.for-whom-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; margin-top: 1.2rem; }
+.whom-tag { border: 1px solid var(--divider); padding: .7rem 1rem; font-size: .92rem; color: var(--text-mid); background: #12100d; }
+.product-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 1.5rem; }
+@media (max-width: 640px) { .product-cards { grid-template-columns: 1fr; } }
+.product-card { border: 1px solid var(--divider); padding: 1.5rem; }
+.product-card h3 { font-size: .9rem; margin-bottom: .6rem; }
+.product-card p { font-size: .95rem; color: var(--text-mid); }
+.product-card .duration { display: inline-block; margin-top: .8rem; font-size: .78rem; font-family: 'Cinzel', serif; letter-spacing: .08em; color: var(--copper-dim); }
+.cta-section { padding: 4rem 2rem; border-top: 1px solid var(--divider); text-align: center; max-width: 860px; margin: 0 auto; }
+.cta-section p { color: var(--text-mid); max-width: 540px; margin: 0 auto 2rem; }
+.cta-group { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+.btn-primary { font-family: 'Cinzel', serif; font-size: .82rem; letter-spacing: .1em; color: var(--bg); background: var(--copper); border: none; padding: .85rem 2rem; cursor: pointer; text-decoration: none; display: inline-block; transition: background .2s; }
+.btn-primary:hover { background: var(--white); color: var(--bg); }
+.btn-outline { font-family: 'Cinzel', serif; font-size: .82rem; letter-spacing: .1em; color: var(--copper); border: 1px solid var(--copper-dim); padding: .85rem 2rem; text-decoration: none; display: inline-block; transition: .2s; }
+.btn-outline:hover { border-color: var(--copper); color: var(--white); }
+footer { border-top: 1px solid var(--divider); padding: 2rem; text-align: center; font-size: .85rem; color: var(--text-light); font-family: 'Cinzel', serif; letter-spacing: .06em; }
+footer a { color: var(--text-light); }
+footer a:hover { color: var(--copper); }
 </style>
 </head>
 <body>
-<div class="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-ornament"></div>
-  <div class="hero-content">
-    <span class="hero-label">Asuntos Organizacionales · Mariano Boiero</span>
-    <h1 class="hero-title">El talento no se va por falta de oportunidades</h1>
-    <p class="hero-statement">Se va porque la organización no puede sostener lo que construye. El problema no es la gente — es la arquitectura que impide que crezca.</p>
-  </div>
+
+<nav>
+  <a href="index.html" class="nav-brand">Mariano Boiero</a>
+  <button class="nav-toggle" aria-label="Menú" onclick="this.closest('nav').querySelector('.nav-links').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links">
+    <li><a href="index.html#areas">Áreas</a></li>
+    <li><a href="index.html#herramientas">Herramientas</a></li>
+    <li><a href="index.html#experiencia">Experiencia</a></li>
+    <li><a href="como-trabajo.html">Cómo trabajo</a></li>
+    <li><a href="index.html#contacto">Contacto</a></li>
+  </ul>
+</nav>
+
+<div class="breadcrumb">
+  <a href="index.html">Inicio</a><span>›</span> Áreas de trabajo <span>›</span> Gestión del Talento
 </div>
 
-<div class="section">
-  <span class="section-number">01</span>
-  <h2 class="section-title">Lo que la inversión en formación no resuelve</h2>
-  <div class="section-body">
-    <p>Formación, certificaciones, talleres de liderazgo. Las personas mejoran individualmente. El sistema sigue funcionando igual. El talento crítico se va.</p>
-    <p>El diagnóstico habitual apunta a las personas: falta motivación, falta compromiso, falta cultura. El problema rara vez está ahí.</p>
-    <p class="emphasis">Está en la arquitectura que sostiene — o destruye — el desarrollo. Y esa arquitectura no se ve en el organigrama.</p>
-  </div>
+<div class="hero-area">
+  <div class="area-tag">Área de trabajo</div>
+  <h1>Gestión del Talento</h1>
+  <p class="lead">El talento no se gestiona en el aire. Se gestiona en una estructura, con una cultura, dentro de un sistema de poder. Ignorar eso es el error más caro que cometen las organizaciones cuando deciden "invertir en su gente".</p>
+  <p class="sublead">Trabajo en selección, desarrollo, retención y acompañamiento de líderes desde una perspectiva estructural: el talento importa, pero importa más el contexto que lo habilita o lo destruye.</p>
 </div>
 
-<div class="section">
-  <span class="section-number">02</span>
-  <h2 class="section-title">Leemos el campo, no a las personas</h2>
-  <div class="section-body">
-    <p>Diagnosticamos las condiciones que hacen posible — o imposible — que el talento crezca dentro de la organización. La dinámica real entre conductores y equipos: qué aporta cada parte, qué ofrece, cuánto margen real existe para operar.</p>
-    <p>El dato más valioso no es lo que dice el conductor ni lo que dice el equipo por separado. Es el gap entre las dos lecturas. Ese punto ciego es donde vive el problema real.</p>
-    <p class="emphasis">El conductor suele ser el último en saberlo.</p>
-    <div class="deliverables">
-      <div class="deliverable">
-        <p class="deliverable-title">Mapa de gaps</p>
-        <p class="deliverable-desc">Brecha entre lo que el conductor percibe y lo que el equipo efectivamente vive.</p>
-      </div>
-      <div class="deliverable">
-        <p class="deliverable-title">Aporte, oferta y margen</p>
-        <p class="deliverable-desc">Las tres dimensiones que determinan si un equipo puede operar con lo que tiene.</p>
-      </div>
-      <div class="deliverable">
-        <p class="deliverable-title">Capacidad o condiciones</p>
-        <p class="deliverable-desc">La distinción que define si la respuesta es formación o intervención estructural.</p>
-      </div>
-      <div class="deliverable">
-        <p class="deliverable-title">Salida accionable</p>
-        <p class="deliverable-desc">No un ranking de personas. Una lectura del campo que orienta dónde y cómo intervenir.</p>
-      </div>
+<section>
+  <div class="section-label">El problema real</div>
+  <h2>Por qué se van los mejores y se quedan los peores</h2>
+  <p>No es un problema de sueldos. O no solo de sueldos. Es un problema de cómo está organizado el trabajo, quién decide qué, qué se premia y qué se castiga, y cuánto margen real tiene cada persona para hacer algo que valga la pena.</p>
+  <p>Las organizaciones que pierden talento tienen casi siempre el mismo patrón: recompensan la lealtad política por encima de la competencia, confunden antigüedad con mérito, y no tienen sistemas claros de progresión.</p>
+  <div class="two-col">
+    <div>
+      <h3>Síntomas frecuentes</h3>
+      <p style="color:var(--text-mid); font-size:.97rem;">Alta rotación en posiciones clave. Cuadros medios desenganchados. Líderes que no lideran. Procesos de selección que traen a los candidatos equivocados. Planes de carrera que no se usan.</p>
+    </div>
+    <div>
+      <h3>Lo que está detrás</h3>
+      <p style="color:var(--text-mid); font-size:.97rem;">Modelos de competencias desactualizados o inexistentes. Ausencia de criterios de evaluación claros. Líderes sin herramientas para conducir. Cultura que no acompaña lo que dice valorar.</p>
     </div>
   </div>
-</div>
+</section>
 
-<div class="section">
-  <span class="section-number">03</span>
-  <h2 class="section-title">Para quién tiene sentido</h2>
-  <div class="section-body">
-    <p>Organizaciones que pierden talento sin entender por qué. Equipos directivos que sienten que sus mandos medios no rinden lo que deberían — y no saben si el problema es de ellos o del sistema.</p>
-    <p>Áreas con alta rotación, baja iniciativa o liderazgos que no logran desarrollar a sus equipos a pesar de la inversión.</p>
+<section>
+  <div class="section-label">Intervenciones</div>
+  <h2>Qué hago en esta área</h2>
+  <div class="product-cards">
+    <div class="product-card">
+      <h3>Modelo de Competencias Organizacionales</h3>
+      <p>Definición de competencias basadas en las capacidades estratégicas reales de la organización. No un catálogo genérico: un modelo que habla el idioma de lo que efectivamente se necesita.</p>
+      <span class="duration">4 a 8 semanas</span>
+    </div>
+    <div class="product-card">
+      <h3>Diagnóstico de Equipos</h3>
+      <p>Lectura estructural del funcionamiento del equipo: composición, dinámicas, brechas de desempeño, tensiones no resueltas. Base para intervenciones de desarrollo con dirección.</p>
+      <span class="duration">2 a 3 semanas</span>
+    </div>
+    <div class="product-card">
+      <h3>Acompañamiento Ejecutivo</h3>
+      <p>Trabajo uno a uno con líderes que necesitan ampliar su capacidad de conducción, gestionar complejidad política, o navegar decisiones de alta presión. No coaching motivacional.</p>
+      <span class="duration">3 a 6 meses</span>
+    </div>
+    <div class="product-card">
+      <h3>Diseño de Carrera y Sucesión</h3>
+      <p>Sistemas de progresión, mapa de sucesión y estrategia de retención para posiciones críticas. Conectado con el modelo de competencias y la estructura real de la organización.</p>
+      <span class="duration">6 a 10 semanas</span>
+    </div>
   </div>
-</div>
+</section>
+
+<section>
+  <div class="section-label">Entregables</div>
+  <h2>Qué produce cada intervención</h2>
+  <div class="two-col">
+    <div class="deliverable-box">
+      <h3>Modelo de Competencias</h3>
+      <ul>
+        <li>Competencias definidas por nivel</li>
+        <li>Indicadores de desempeño observable</li>
+        <li>Guía de evaluación para líderes</li>
+        <li>Vinculación con selección y desarrollo</li>
+      </ul>
+    </div>
+    <div class="deliverable-box">
+      <h3>Diagnóstico de Equipo</h3>
+      <ul>
+        <li>Perfil de funcionamiento del equipo</li>
+        <li>Brechas identificadas por rol</li>
+        <li>Mapa de tensiones y dinámicas</li>
+        <li>Recomendaciones de intervención</li>
+      </ul>
+    </div>
+    <div class="deliverable-box">
+      <h3>Acompañamiento Ejecutivo</h3>
+      <ul>
+        <li>Diagnóstico del líder y su contexto</li>
+        <li>Plan de desarrollo individualizado</li>
+        <li>Sesiones de trabajo quincenales</li>
+        <li>Informe de evolución al cierre</li>
+      </ul>
+    </div>
+    <div class="deliverable-box">
+      <h3>Carrera y Sucesión</h3>
+      <ul>
+        <li>Mapa de posiciones críticas</li>
+        <li>Perfil de candidatos internos</li>
+        <li>Plan de desarrollo para sucesión</li>
+        <li>Estrategia de retención específica</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-label">¿Para quién?</div>
+  <h2>Quién necesita este trabajo</h2>
+  <div class="for-whom-grid">
+    <div class="whom-tag">Empresas en crecimiento acelerado</div>
+    <div class="whom-tag">Organismos en proceso de profesionalización</div>
+    <div class="whom-tag">Organizaciones con alta rotación</div>
+    <div class="whom-tag">Líderes en posiciones nuevas o complejas</div>
+    <div class="whom-tag">Equipos post-fusión o reestructuración</div>
+    <div class="whom-tag">Sindicatos y cámaras con conducción renovada</div>
+  </div>
+</section>
+
+<section>
+  <div class="section-label">Referencias</div>
+  <h2>Contextos donde se trabajó talento y liderazgo</h2>
+  <div class="case-block">
+    <div class="case-org">Sector Privado — Banco BICE / Hospital Español</div>
+    <p>Desarrollo de competencias, diagnóstico de equipos y acompañamiento de líderes en organizaciones del sector financiero y de salud con estructuras complejas.</p>
+  </div>
+  <div class="case-block">
+    <div class="case-org">Sector Público — Subsecretaría de Empleo Público / ARBA · IPAP</div>
+    <p>Diseño de modelos de competencias, sistemas de evaluación y programas de desarrollo para la gestión pública provincial.</p>
+  </div>
+  <div class="case-block">
+    <div class="case-org">Sector Gremial — UPCN / CAME</div>
+    <p>Acompañamiento ejecutivo y desarrollo de equipos de conducción en el ámbito de organizaciones sindicales y empresariales.</p>
+  </div>
+</section>
 
 <div class="cta-section">
-  <div class="cta-contact">
-    <h3>Hablemos</h3>
-    <a href="mailto:mariano@marianoboiero.com.ar" class="contact-item">mariano@marianoboiero.com.ar</a>
-    <a href="https://wa.me/5491130444992" class="contact-item">WhatsApp +54 9 11 3044 4992</a>
-    <a href="https://linkedin.com/in/marianoboiero" target="_blank" class="contact-item">linkedin.com/in/marianoboiero</a>
-    <a href="https://marianoboiero.com.ar" target="_blank" class="contact-item">marianoboiero.com.ar</a>
-  </div>
-  <div class="cta-more">
-    <h3>¿Querés la propuesta completa?</h3>
-    <p>Metodología, instrumentos, modalidades de trabajo y casos de aplicación.</p>
-    <a href="/docs/talento-ficha.pdf" class="cta-btn" target="_blank">Descargar propuesta</a>
+  <h2>¿Tenés un problema de talento o de liderazgo?</h2>
+  <p>Empezamos identificando qué es lo que realmente está pasando, antes de definir qué intervención tiene sentido.</p>
+  <div class="cta-group">
+    <a href="https://wa.me/5491130444992" class="btn-primary" target="_blank">Hablar por WhatsApp</a>
+    <a href="https://calendar.app.google/5CHKaUURm9C3Jm6m7" class="btn-outline" target="_blank">Agendar reunión</a>
   </div>
 </div>
 
 <footer>
-  <span>Mariano Boiero — Consultor en Asuntos Organizacionales</span>
-  <a href="https://marianoboiero.com.ar">marianoboiero.com.ar</a>
+  <a href="index.html">marianoboiero.com.ar</a> &nbsp;·&nbsp; mhboiero@gmail.com &nbsp;·&nbsp; +54 9 11 3044-4992
 </footer>
+
 </body>
 </html>
