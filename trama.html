@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TRAMA · Diagnóstico de Equipo | Mariano Boiero</title>
+<meta name="description" content="TRAMA diagnostica la relación entre conductor y equipo desde dos lecturas simultáneas. El diagnóstico está en la brecha entre lo que cada parte percibe.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0e0c0a;
+    --copper: #b87333;
+    --copper-dim: #8a5a2a;
+    --copper-faint: #1e1510;
+    --text: #e8e0d4;
+    --text-mid: #b0a898;
+    --text-light: #7a7068;
+    --divider: #2a2420;
+    --white: #f5f0ea;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--bg); color: var(--text); font-family: 'EB Garamond', serif; font-size: 18px; line-height: 1.75; }
+  nav { border-bottom: 1px solid var(--divider); padding: 1.2rem 2rem; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; background: var(--bg); z-index: 100; }
+  .nav-logo { font-family: 'Cinzel', serif; font-size: 1rem; letter-spacing: .15em; color: var(--copper); text-decoration: none; }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { color: var(--text-mid); text-decoration: none; font-size: .9rem; letter-spacing: .08em; transition: color .2s; }
+  .nav-links a:hover { color: var(--copper); }
+  .breadcrumb { padding: 1.2rem 2rem; font-size: .85rem; color: var(--text-light); }
+  .breadcrumb a { color: var(--text-light); text-decoration: none; }
+  .breadcrumb a:hover { color: var(--copper); }
+  .breadcrumb span { margin: 0 .5rem; }
+  .hero { max-width: 780px; margin: 0 auto; padding: 5rem 2rem 4rem; text-align: center; }
+  .instrument-tag { display: inline-block; border: 1px solid var(--copper-dim); color: var(--copper); font-size: .75rem; letter-spacing: .2em; text-transform: uppercase; padding: .35rem 1rem; margin-bottom: 2rem; }
+  .hero h1 { font-family: 'Cinzel', serif; font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 400; color: var(--white); letter-spacing: .04em; line-height: 1.2; margin-bottom: 1.5rem; }
+  .hero-sub { font-size: 1.2rem; color: var(--text-mid); font-style: italic; max-width: 580px; margin: 0 auto; }
+  section { max-width: 820px; margin: 0 auto; padding: 4rem 2rem; border-top: 1px solid var(--divider); }
+  h2 { font-family: 'Cinzel', serif; font-size: 1.4rem; font-weight: 400; color: var(--white); letter-spacing: .06em; margin-bottom: 1.5rem; }
+  p { margin-bottom: 1.2rem; }
+  p:last-child { margin-bottom: 0; }
+
+  /* MIRROR LOGIC */
+  .mirror { display: grid; grid-template-columns: 1fr auto 1fr; gap: 1rem; align-items: center; margin: 2rem 0; }
+  .mirror-side { background: var(--copper-faint); border: 1px solid var(--divider); padding: 1.4rem; text-align: center; }
+  .mirror-side h3 { font-family: 'Cinzel', serif; font-size: .95rem; color: var(--copper); letter-spacing: .08em; margin-bottom: .6rem; }
+  .mirror-side p { font-size: .9rem; color: var(--text-mid); margin: 0; }
+  .mirror-arrow { color: var(--copper); font-size: 1.4rem; text-align: center; }
+  .gap-box { background: var(--copper-faint); border: 2px solid var(--copper); padding: 1.4rem; text-align: center; margin: 1rem 0; }
+  .gap-box p { color: var(--white); font-style: italic; margin: 0; }
+
+  /* THREE AXES */
+  .axes { display: grid; gap: 1rem; margin: 2rem 0; }
+  .axis { background: var(--copper-faint); border-left: 3px solid var(--copper); padding: 1.2rem 1.4rem; }
+  .axis h3 { font-family: 'Cinzel', serif; font-size: 1rem; color: var(--white); letter-spacing: .06em; margin-bottom: .5rem; }
+  .axis p { font-size: .9rem; color: var(--text-mid); margin: 0; }
+  .axis .axis-q { font-style: italic; color: var(--text-light); font-size: .85rem; margin-top: .4rem; }
+
+  /* DELIVERABLES */
+  .deliverable-list { display: grid; gap: 1rem; margin-top: 1.5rem; }
+  .deliverable { display: flex; gap: 1rem; align-items: flex-start; background: var(--copper-faint); border-left: 3px solid var(--copper); padding: 1rem 1.2rem; }
+  .deliverable-icon { color: var(--copper); font-size: 1.2rem; flex-shrink: 0; margin-top: .1rem; }
+  .deliverable-text strong { display: block; color: var(--white); margin-bottom: .2rem; font-style: normal; }
+  .deliverable-text { font-size: .95rem; }
+  .context-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-top: 1.5rem; }
+  .context-card { background: var(--copper-faint); border: 1px solid var(--divider); padding: 1.4rem; }
+  .context-card h3 { font-family: 'Cinzel', serif; font-size: .95rem; color: var(--copper); letter-spacing: .08em; margin-bottom: .7rem; }
+  .context-card p { font-size: .9rem; color: var(--text-mid); margin: 0; }
+  .cta-section { max-width: 820px; margin: 0 auto; padding: 4rem 2rem 6rem; text-align: center; border-top: 1px solid var(--divider); }
+  .cta-section h2 { font-family: 'Cinzel', serif; font-size: 1.6rem; font-weight: 400; color: var(--white); margin-bottom: 1rem; }
+  .cta-section p { color: var(--text-mid); max-width: 540px; margin: 0 auto 2.5rem; }
+  .cta-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+  .btn-primary { background: var(--copper); color: #0e0c0a; font-family: 'Cinzel', serif; font-size: .85rem; letter-spacing: .15em; text-transform: uppercase; padding: .9rem 2rem; text-decoration: none; transition: background .2s; }
+  .btn-primary:hover { background: #c8833d; }
+  .btn-secondary { border: 1px solid var(--copper); color: var(--copper); font-family: 'Cinzel', serif; font-size: .85rem; letter-spacing: .15em; text-transform: uppercase; padding: .9rem 2rem; text-decoration: none; transition: all .2s; }
+  .btn-secondary:hover { background: var(--copper); color: #0e0c0a; }
+  .cta-note { font-size: .85rem; color: var(--text-light); margin-top: 1.5rem; font-style: italic; }
+  footer { border-top: 1px solid var(--divider); padding: 2rem; text-align: center; color: var(--text-light); font-size: .85rem; }
+  footer a { color: var(--text-light); text-decoration: none; }
+  footer a:hover { color: var(--copper); }
+  @media (max-width: 600px) {
+    .nav-links { display: none; }
+    .hero { padding: 3rem 1.5rem 2.5rem; }
+    section { padding: 3rem 1.5rem; }
+    .cta-section { padding: 3rem 1.5rem 4rem; }
+    .mirror { grid-template-columns: 1fr; }
+    .mirror-arrow { transform: rotate(90deg); }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Mariano Boiero</a>
+  <ul class="nav-links">
+    <li><a href="index.html#areas">Áreas</a></li>
+    <li><a href="index.html#instrumentos">Instrumentos</a></li>
+    <li><a href="index.html#diagnostico">Diagnóstico gratuito</a></li>
+    <li><a href="index.html#contacto">Contacto</a></li>
+  </ul>
+</nav>
+
+<div class="breadcrumb">
+  <a href="index.html">Inicio</a><span>›</span>
+  <a href="index.html#instrumentos">Instrumentos</a><span>›</span>
+  TRAMA
+</div>
+
+<div class="hero">
+  <div class="instrument-tag">Instrumento diagnóstico</div>
+  <h1>TRAMA</h1>
+  <p class="hero-sub" style="font-family:'Cinzel',serif; font-size:1rem; letter-spacing:.06em; font-style:normal; margin-bottom:.5rem; color:var(--text-mid);">Diagnóstico de campo conductor-equipo</p>
+  <p class="hero-sub">Un equipo disfuncional no siempre tiene un problema de personas. A veces tiene un problema de condiciones. TRAMA lo separa.</p>
+</div>
+
+<section>
+  <h2>¿Qué problema resuelve?</h2>
+  <p>Cuando un equipo no funciona, la primera respuesta suele ser intervenir en las personas: capacitación, coaching, rotación. Pero si el problema no es de saber o de actitud sino de las condiciones en las que el equipo opera, esa intervención no solo no resuelve — agota.</p>
+  <p>TRAMA diagnostica la relación entre quien conduce y el equipo a cargo, en tres ejes simultáneos. Y lo hace de una manera que otros instrumentos no hacen: con dos cuestionarios espejados — uno para el conductor, uno para los integrantes del equipo. El diagnóstico real no está en las respuestas de cada uno por separado. Está en la <em>brecha entre ambas lecturas</em>.</p>
+
+  <div class="mirror">
+    <div class="mirror-side">
+      <h3>El conductor</h3>
+      <p>Cómo percibe la relación con el equipo, qué cree que está ofreciendo y qué margen da</p>
+    </div>
+    <div class="mirror-arrow">⇄</div>
+    <div class="mirror-side">
+      <h3>El equipo</h3>
+      <p>Cómo percibe la conducción, qué recibe realmente y cuánta autonomía tiene para operar</p>
+    </div>
+  </div>
+  <div class="gap-box">
+    <p>«La brecha entre lo que el conductor cree dar y lo que el equipo percibe recibir es el dato más importante del diagnóstico.»</p>
+  </div>
+</section>
+
+<section>
+  <h2>Los tres ejes</h2>
+  <div class="axes">
+    <div class="axis">
+      <h3>Aporte</h3>
+      <p>¿Lo que cada parte hace es necesario para el funcionamiento del equipo? ¿El rol tiene sentido en la práctica o solo en el organigrama?</p>
+      <p class="axis-q">Pregunta central: ¿qué valor real aporta cada parte al conjunto?</p>
+    </div>
+    <div class="axis">
+      <h3>Oferta</h3>
+      <p>¿El vínculo justifica el esfuerzo de estar? ¿Lo que la conducción ofrece y lo que el equipo recibe están en equilibrio razonable?</p>
+      <p class="axis-q">Pregunta central: ¿vale la pena para ambas partes?</p>
+    </div>
+    <div class="axis">
+      <h3>Margen</h3>
+      <p>¿El equipo tiene autonomía real para operar? ¿La conducción habilita o concentra las decisiones que el equipo necesita tomar?</p>
+      <p class="axis-q">Pregunta central: ¿hay espacio para funcionar?</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Qué produce</h2>
+  <div class="deliverable-list">
+    <div class="deliverable">
+      <div class="deliverable-icon">◆</div>
+      <div class="deliverable-text">
+        <strong>Mapa de brecha conductor-equipo</strong>
+        La distancia entre la lectura de quien conduce y la del equipo, eje por eje. Visualiza dónde está el mayor desajuste.
+      </div>
+    </div>
+    <div class="deliverable">
+      <div class="deliverable-icon">◆</div>
+      <div class="deliverable-text">
+        <strong>Diagnóstico diferencial: saber vs. condiciones</strong>
+        Si el problema es de conocimiento o habilidad (resuelve formación) o de condiciones estructurales (requiere intervención en el diseño del vínculo).
+      </div>
+    </div>
+    <div class="deliverable">
+      <div class="deliverable-icon">◆</div>
+      <div class="deliverable-text">
+        <strong>Recomendación de intervención</strong>
+        Qué tipo de respuesta tiene más posibilidades de mejorar la situación: proceso formativo, trabajo de conducción, rediseño del equipo o conversación de ajuste.
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Para quién</h2>
+  <div class="context-grid">
+    <div class="context-card">
+      <h3>Conductores en dificultad</h3>
+      <p>Jefes, gerentes o coordinadores que sienten que el equipo no responde pero no entienden por qué.</p>
+    </div>
+    <div class="context-card">
+      <h3>Equipos con conflicto instalado</h3>
+      <p>Donde ya hay tensión visible entre la conducción y el equipo y se necesita entender qué la está generando.</p>
+    </div>
+    <div class="context-card">
+      <h3>Antes de capacitar</h3>
+      <p>Para saber si el problema es de saber o de condiciones. Capacitar a un equipo que tiene un problema de diseño es tirar recursos.</p>
+    </div>
+    <div class="context-card">
+      <h3>Cambios de conducción</h3>
+      <p>Un conductor nuevo que hereda un equipo necesita saber en qué estado está el vínculo antes de operar sobre él.</p>
+    </div>
+  </div>
+</section>
+
+<div class="cta-section">
+  <h2>Dos formas de empezar</h2>
+  <p>El cuestionario gratuito da una primera lectura de tu situación. Si ya sabés que hay algo que no funciona en la relación conductor-equipo, hablemos directamente.</p>
+  <div class="cta-buttons">
+    <a href="trama-cuestionario.html" class="btn-primary">Hacer el diagnóstico gratuito →</a>
+    <a href="https://wa.me/5491168805604?text=Quiero%20saber%20m%C3%A1s%20sobre%20TRAMA" class="btn-secondary" target="_blank" rel="noopener">Hablar con Mariano →</a>
+  </div>
+  <p class="cta-note">El cuestionario es autoadministrado, gratuito y produce una devolución inmediata con lectura de la situación conductor-equipo.</p>
+</div>
+
+<footer>
+  <p>© 2026 Mariano Boiero · <a href="mailto:mhboiero@gmail.com">mhboiero@gmail.com</a></p>
+</footer>
+
+</body>
+</html>
