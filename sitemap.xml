@@ -61,6 +61,12 @@
     <priority>0.8</priority>
   </url>
 
+  <url>
+    <loc>https://marianoboiero.com.ar/como-trabajo.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
   <!-- Cuestionarios diagnóstico -->
   <url>
     <loc>https://marianoboiero.com.ar/barometro-cuestionario.html</loc>
