@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Radar Organizacional | Mariano Boiero</title>
+<meta name="description" content="El Radar lee el contexto real en el que opera una organización: qué tiene para trabajar, qué libertad real tiene para hacerlo, y qué tensiones dominan el campo.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0e0c0a;
+    --copper: #b87333;
+    --copper-dim: #8a5a2a;
+    --copper-faint: #1e1510;
+    --text: #e8e0d4;
+    --text-mid: #b0a898;
+    --text-light: #7a7068;
+    --divider: #2a2420;
+    --white: #f5f0ea;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--bg); color: var(--text); font-family: 'EB Garamond', serif; font-size: 18px; line-height: 1.75; }
+  nav { border-bottom: 1px solid var(--divider); padding: 1.2rem 2rem; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; background: var(--bg); z-index: 100; }
+  .nav-logo { font-family: 'Cinzel', serif; font-size: 1rem; letter-spacing: .15em; color: var(--copper); text-decoration: none; }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { color: var(--text-mid); text-decoration: none; font-size: .9rem; letter-spacing: .08em; transition: color .2s; }
+  .nav-links a:hover { color: var(--copper); }
+  .breadcrumb { padding: 1.2rem 2rem; font-size: .85rem; color: var(--text-light); }
+  .breadcrumb a { color: var(--text-light); text-decoration: none; }
+  .breadcrumb a:hover { color: var(--copper); }
+  .breadcrumb span { margin: 0 .5rem; }
+  .hero { max-width: 780px; margin: 0 auto; padding: 5rem 2rem 4rem; text-align: center; }
+  .instrument-tag { display: inline-block; border: 1px solid var(--copper-dim); color: var(--copper); font-size: .75rem; letter-spacing: .2em; text-transform: uppercase; padding: .35rem 1rem; margin-bottom: 2rem; }
+  .hero h1 { font-family: 'Cinzel', serif; font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 400; color: var(--white); letter-spacing: .04em; line-height: 1.2; margin-bottom: 1.5rem; }
+  .hero-sub { font-size: 1.2rem; color: var(--text-mid); font-style: italic; max-width: 580px; margin: 0 auto; }
+  section { max-width: 820px; margin: 0 auto; padding: 4rem 2rem; border-top: 1px solid var(--divider); }
+  h2 { font-family: 'Cinzel', serif; font-size: 1.4rem; font-weight: 400; color: var(--white); letter-spacing: .06em; margin-bottom: 1.5rem; }
+  p { margin-bottom: 1.2rem; }
+  p:last-child { margin-bottom: 0; }
+
+  /* THREE DIMENSIONS */
+  .dim-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.2rem; margin: 2rem 0; }
+  .dim-card { background: var(--copper-faint); border-top: 3px solid var(--copper); padding: 1.6rem 1.4rem; }
+  .dim-card h3 { font-family: 'Cinzel', serif; font-size: 1rem; color: var(--white); letter-spacing: .06em; margin-bottom: .7rem; }
+  .dim-card p { font-size: .9rem; color: var(--text-mid); margin: 0; }
+
+  /* PROFILES */
+  .profile-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 1.5rem 0; }
+  .profile-card { text-align: center; padding: 1.2rem .8rem; border: 1px solid var(--divider); background: var(--copper-faint); }
+  .profile-label { font-family: 'Cinzel', serif; font-size: .85rem; letter-spacing: .08em; color: var(--copper); display: block; margin-bottom: .4rem; }
+  .profile-desc { font-size: .85rem; color: var(--text-mid); }
+
+  /* DELIVERABLES */
+  .deliverable-list { display: grid; gap: 1rem; margin-top: 1.5rem; }
+  .deliverable { display: flex; gap: 1rem; align-items: flex-start; background: var(--copper-faint); border-left: 3px solid var(--copper); padding: 1rem 1.2rem; }
+  .deliverable-icon { color: var(--copper); font-size: 1.2rem; flex-shrink: 0; margin-top: .1rem; }
+  .deliverable-text strong { display: block; color: var(--white); margin-bottom: .2rem; font-style: normal; }
+  .deliverable-text { font-size: .95rem; }
+  .context-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-top: 1.5rem; }
+  .context-card { background: var(--copper-faint); border: 1px solid var(--divider); padding: 1.4rem; }
+  .context-card h3 { font-family: 'Cinzel', serif; font-size: .95rem; color: var(--copper); letter-spacing: .08em; margin-bottom: .7rem; }
+  .context-card p { font-size: .9rem; color: var(--text-mid); margin: 0; }
+  .cta-section { max-width: 820px; margin: 0 auto; padding: 4rem 2rem 6rem; text-align: center; border-top: 1px solid var(--divider); }
+  .cta-section h2 { font-family: 'Cinzel', serif; font-size: 1.6rem; font-weight: 400; color: var(--white); margin-bottom: 1rem; }
+  .cta-section p { color: var(--text-mid); max-width: 540px; margin: 0 auto 2.5rem; }
+  .cta-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+  .btn-primary { background: var(--copper); color: #0e0c0a; font-family: 'Cinzel', serif; font-size: .85rem; letter-spacing: .15em; text-transform: uppercase; padding: .9rem 2rem; text-decoration: none; transition: background .2s; }
+  .btn-primary:hover { background: #c8833d; }
+  .btn-secondary { border: 1px solid var(--copper); color: var(--copper); font-family: 'Cinzel', serif; font-size: .85rem; letter-spacing: .15em; text-transform: uppercase; padding: .9rem 2rem; text-decoration: none; transition: all .2s; }
+  .btn-secondary:hover { background: var(--copper); color: #0e0c0a; }
+  .cta-note { font-size: .85rem; color: var(--text-light); margin-top: 1.5rem; font-style: italic; }
+  footer { border-top: 1px solid var(--divider); padding: 2rem; text-align: center; color: var(--text-light); font-size: .85rem; }
+  footer a { color: var(--text-light); text-decoration: none; }
+  footer a:hover { color: var(--copper); }
+  @media (max-width: 600px) {
+    .nav-links { display: none; }
+    .hero { padding: 3rem 1.5rem 2.5rem; }
+    section { padding: 3rem 1.5rem; }
+    .cta-section { padding: 3rem 1.5rem 4rem; }
+    .profile-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Mariano Boiero</a>
+  <ul class="nav-links">
+    <li><a href="index.html#areas">Áreas</a></li>
+    <li><a href="index.html#instrumentos">Instrumentos</a></li>
+    <li><a href="index.html#diagnostico">Diagnóstico gratuito</a></li>
+    <li><a href="index.html#contacto">Contacto</a></li>
+  </ul>
+</nav>
+
+<div class="breadcrumb">
+  <a href="index.html">Inicio</a><span>›</span>
+  <a href="index.html#instrumentos">Instrumentos</a><span>›</span>
+  Radar Organizacional
+</div>
+
+<div class="hero">
+  <div class="instrument-tag">Instrumento diagnóstico</div>
+  <h1>Radar Organizacional</h1>
+  <p class="hero-sub">No toda organización puede moverse igual. El Radar lee el campo real antes de diseñar la intervención.</p>
+</div>
+
+<section>
+  <h2>¿Qué problema resuelve?</h2>
+  <p>Muchas intervenciones fracasan no porque estén mal diseñadas, sino porque ignoran el contexto en el que van a operar. Se aplica la solución correcta en el ambiente equivocado.</p>
+  <p>El Radar Organizacional responde una pregunta que pocas organizaciones se hacen antes de actuar: <em>¿en qué terreno estamos parados?</em> No qué queremos lograr — sino con qué contamos, qué libertad real tenemos para operar, y qué tensiones están organizando el campo.</p>
+
+  <div style="margin-top: 2rem;">
+    <p style="color: var(--text-mid); margin-bottom: 1rem;">Lee tres dimensiones simultáneas:</p>
+    <div class="dim-grid">
+      <div class="dim-card">
+        <h3>Campo</h3>
+        <p>Qué autonomía real tiene la organización para moverse. Quién toma las decisiones que importan y desde dónde operan.</p>
+      </div>
+      <div class="dim-card">
+        <h3>Capital</h3>
+        <p>Con qué cuenta: capacidades instaladas, relaciones clave, conocimiento acumulado. Lo que tiene para trabajar.</p>
+      </div>
+      <div class="dim-card">
+        <h3>Tensión dominante</h3>
+        <p>Qué fuerza organiza el campo hoy: si es de generación, de distribución o de gobernanza. Eso determina qué tipo de intervención tiene posibilidades de funcionar.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Qué produce</h2>
+  <p>El Radar produce un perfil de navegabilidad en uno de tres contextos:</p>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <span class="profile-label">Favorable</span>
+      <span class="profile-desc">Campo con margen de acción. Las intervenciones tienen condiciones para avanzar.</span>
+    </div>
+    <div class="profile-card">
+      <span class="profile-label">Neutro</span>
+      <span class="profile-desc">Contexto mixto. Hay palancas disponibles pero también restricciones que hay que considerar.</span>
+    </div>
+    <div class="profile-card">
+      <span class="profile-label">Restrictivo</span>
+      <span class="profile-desc">Campo cerrado. Actuar sin diagnóstico previo puede amplificar el problema.</span>
+    </div>
+  </div>
+
+  <div class="deliverable-list" style="margin-top: 2rem;">
+    <div class="deliverable">
+      <div class="deliverable-icon">◆</div>
+      <div class="deliverable-text">
+        <strong>Mapa de campo organizacional</strong>
+        Visualización de las tres dimensiones y cómo se relacionan en la situación actual.
+      </div>
+    </div>
+    <div class="deliverable">
+      <div class="deliverable-icon">◆</div>
+      <div class="deliverable-text">
+        <strong>Perfil de navegabilidad</strong>
+        Favorable, neutro o restrictivo — con los factores que determinan ese estado.
+      </div>
+    </div>
+    <div class="deliverable">
+      <div class="deliverable-icon">◆</div>
+      <div class="deliverable-text">
+        <strong>Orientación estratégica</strong>
+        Qué tipo de intervención tiene más posibilidades de funcionar en este contexto y cuál tiene mayor riesgo de desgaste.
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Para quién</h2>
+  <div class="context-grid">
+    <div class="context-card">
+      <h3>Dirección ejecutiva</h3>
+      <p>Antes de lanzar una transformación o rediseño organizacional que va a requerir recursos y tiempo.</p>
+    </div>
+    <div class="context-card">
+      <h3>Equipos directivos nuevos</h3>
+      <p>Que llegaron a conducir una organización y necesitan leer el campo antes de tomar decisiones de estructura.</p>
+    </div>
+    <div class="context-card">
+      <h3>Organizaciones en cambio de etapa</h3>
+      <p>Expansión, fusión, crisis o reestructuración: momentos donde el contexto cambia y la estrategia anterior ya no lee bien.</p>
+    </div>
+    <div class="context-card">
+      <h3>Consultores y equipos de OD</h3>
+      <p>Como instrumento de entrada antes de diseñar cualquier intervención de cambio o desarrollo organizacional.</p>
+    </div>
+  </div>
+</section>
+
+<div class="cta-section">
+  <h2>Dos formas de empezar</h2>
+  <p>Podés hacer el cuestionario diagnóstico gratuito para explorar el instrumento, o hablar directamente si ya sabés que necesitás leer el campo antes de actuar.</p>
+  <div class="cta-buttons">
+    <a href="radar-cuestionario.html" class="btn-primary">Hacer el diagnóstico gratuito →</a>
+    <a href="https://wa.me/5491168805604?text=Quiero%20saber%20m%C3%A1s%20sobre%20el%20Radar%20Organizacional" class="btn-secondary" target="_blank" rel="noopener">Hablar con Mariano →</a>
+  </div>
+  <p class="cta-note">El cuestionario es autoadministrado, gratuito y produce una devolución inmediata con lectura de tu contexto.</p>
+</div>
+
+<footer>
+  <p>© 2026 Mariano Boiero · <a href="mailto:mhboiero@gmail.com">mhboiero@gmail.com</a></p>
+</footer>
+
+</body>
+</html>
