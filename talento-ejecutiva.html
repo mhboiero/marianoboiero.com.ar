@@ -4,30 +4,48 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Gestión del Talento — Mariano Boiero</title>
-<meta name="description" content="Selección, desarrollo y retención de talento con perspectiva estructural. Modelos de competencias, diagnóstico de equipos y acompañamiento a líderes.">
+<meta name="description" content="Sistemas de gestión del talento, modelos de competencias, evaluación del desempeño y planes de desarrollo para organizaciones complejas.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg: #0e0c0a; --copper: #b87333; --copper-dim: #8a5a2a;
-  --copper-faint: #1e1510; --text: #e8e0d4; --text-mid: #b0a898;
-  --text-light: #7a7068; --divider: #2a2420; --white: #f5f0ea;
+  --bg: #f7f4ef;
+  --copper: #9a6a3a;
+  --copper-dim: #b8895a;
+  --copper-faint: #ede8e0;
+  --text: #2a2420;
+  --text-mid: #5a4e44;
+  --text-light: #8a7e74;
+  --divider: #ddd8d0;
+  --white: #2a2420;
 }
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
-body { font-family: 'EB Garamond', Georgia, serif; background: var(--bg); color: var(--text); font-size: 18px; line-height: 1.7; }
+body {
+  font-family: 'EB Garamond', Georgia, serif;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 18px;
+  line-height: 1.7;
+}
 a { color: var(--copper); text-decoration: none; }
-a:hover { color: var(--white); }
-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 2rem; height: 60px; background: rgba(14,12,10,0.97); border-bottom: 1px solid var(--divider); }
+a:hover { color: var(--text); }
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 2rem; height: 60px;
+  background: rgba(247,244,239,0.97);
+  border-bottom: 1px solid var(--divider);
+}
 .nav-brand { font-family: 'Cinzel', serif; font-size: 1rem; letter-spacing: .06em; color: var(--copper); }
 .nav-links { display: flex; gap: 2rem; list-style: none; }
 .nav-links a { font-family: 'Cinzel', serif; font-size: .78rem; letter-spacing: .08em; color: var(--text-mid); }
 .nav-links a:hover { color: var(--copper); }
 .nav-toggle { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
-.nav-toggle span { display: block; width: 22px; height: 2px; background: var(--text-mid); }
+.nav-toggle span { display: block; width: 22px; height: 2px; background: var(--text-mid); transition: .2s; }
 @media (max-width: 700px) {
   .nav-toggle { display: flex; }
-  .nav-links { display: none; flex-direction: column; gap: 0; position: absolute; top: 60px; left: 0; right: 0; background: rgba(14,12,10,.98); border-bottom: 1px solid var(--divider); padding: 1rem 2rem 1.5rem; }
+  .nav-links { display: none; flex-direction: column; gap: 0; position: absolute; top: 60px; left: 0; right: 0; background: rgba(247,244,239,.98); border-bottom: 1px solid var(--divider); padding: 1rem 2rem 1.5rem; }
   .nav-links.open { display: flex; }
   .nav-links li { padding: .6rem 0; border-bottom: 1px solid var(--divider); }
   .nav-links li:last-child { border-bottom: none; }
@@ -38,12 +56,12 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; a
 .breadcrumb span { margin: 0 .5rem; }
 .hero-area { padding: 5rem 2rem 4rem; max-width: 860px; margin: 0 auto; }
 .area-tag { display: inline-block; font-family: 'Cinzel', serif; font-size: .72rem; letter-spacing: .14em; color: var(--copper); border: 1px solid var(--copper-dim); padding: .3rem .9rem; margin-bottom: 1.5rem; }
-.hero-area h1 { font-family: 'Cinzel', serif; font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 400; color: var(--white); line-height: 1.25; margin-bottom: 1.5rem; }
+.hero-area h1 { font-family: 'Cinzel', serif; font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 400; color: var(--text); line-height: 1.25; margin-bottom: 1.5rem; }
 .lead { font-size: 1.22rem; color: var(--text); line-height: 1.75; margin-bottom: 1rem; max-width: 720px; }
 .sublead { font-size: 1.05rem; color: var(--text-mid); line-height: 1.75; max-width: 680px; }
 section { padding: 3.5rem 2rem; border-top: 1px solid var(--divider); max-width: 860px; margin: 0 auto; }
 .section-label { font-family: 'Cinzel', serif; font-size: .72rem; letter-spacing: .14em; color: var(--copper); text-transform: uppercase; margin-bottom: 1.2rem; }
-h2 { font-family: 'Cinzel', serif; font-size: 1.35rem; font-weight: 400; color: var(--white); margin-bottom: 1.2rem; }
+h2 { font-family: 'Cinzel', serif; font-size: 1.35rem; font-weight: 400; color: var(--text); margin-bottom: 1.2rem; }
 h3 { font-family: 'Cinzel', serif; font-size: 1rem; font-weight: 600; color: var(--copper); margin-bottom: .6rem; }
 p { margin-bottom: 1rem; color: var(--text); }
 p:last-child { margin-bottom: 0; }
@@ -54,11 +72,11 @@ p:last-child { margin-bottom: 0; }
 .deliverable-box li { padding: .4rem 0; border-bottom: 1px solid var(--divider); font-size: .97rem; color: var(--text-mid); }
 .deliverable-box li:last-child { border-bottom: none; }
 .deliverable-box li::before { content: '—'; color: var(--copper-dim); margin-right: .6rem; }
-.case-block { margin-top: 1.5rem; padding: 1.5rem 1.5rem 1.5rem 2rem; border-left: 2px solid var(--copper-dim); background: #12100d; }
+.case-block { margin-top: 1.5rem; padding: 1.5rem 1.5rem 1.5rem 2rem; border-left: 2px solid var(--copper-dim); background: #ede8e0; }
 .case-block .case-org { font-family: 'Cinzel', serif; font-size: .78rem; letter-spacing: .1em; color: var(--copper); margin-bottom: .5rem; }
 .case-block p { color: var(--text-mid); font-style: italic; }
 .for-whom-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; margin-top: 1.2rem; }
-.whom-tag { border: 1px solid var(--divider); padding: .7rem 1rem; font-size: .92rem; color: var(--text-mid); background: #12100d; }
+.whom-tag { border: 1px solid var(--divider); padding: .7rem 1rem; font-size: .92rem; color: var(--text-mid); background: #ede8e0; }
 .product-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 1.5rem; }
 @media (max-width: 640px) { .product-cards { grid-template-columns: 1fr; } }
 .product-card { border: 1px solid var(--divider); padding: 1.5rem; }
@@ -69,16 +87,15 @@ p:last-child { margin-bottom: 0; }
 .cta-section p { color: var(--text-mid); max-width: 540px; margin: 0 auto 2rem; }
 .cta-group { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
 .btn-primary { font-family: 'Cinzel', serif; font-size: .82rem; letter-spacing: .1em; color: var(--bg); background: var(--copper); border: none; padding: .85rem 2rem; cursor: pointer; text-decoration: none; display: inline-block; transition: background .2s; }
-.btn-primary:hover { background: var(--white); color: var(--bg); }
+.btn-primary:hover { background: var(--text); color: var(--bg); }
 .btn-outline { font-family: 'Cinzel', serif; font-size: .82rem; letter-spacing: .1em; color: var(--copper); border: 1px solid var(--copper-dim); padding: .85rem 2rem; text-decoration: none; display: inline-block; transition: .2s; }
-.btn-outline:hover { border-color: var(--copper); color: var(--white); }
+.btn-outline:hover { border-color: var(--copper); color: var(--text); }
 footer { border-top: 1px solid var(--divider); padding: 2rem; text-align: center; font-size: .85rem; color: var(--text-light); font-family: 'Cinzel', serif; letter-spacing: .06em; }
 footer a { color: var(--text-light); }
 footer a:hover { color: var(--copper); }
 </style>
 </head>
 <body>
-
 <nav>
   <a href="index.html" class="nav-brand">Mariano Boiero</a>
   <button class="nav-toggle" aria-label="Menú" onclick="this.closest('nav').querySelector('.nav-links').classList.toggle('open')">
@@ -86,37 +103,34 @@ footer a:hover { color: var(--copper); }
   </button>
   <ul class="nav-links">
     <li><a href="index.html#areas">Áreas</a></li>
-    <li><a href="index.html#herramientas">Herramientas</a></li>
+    <li><a href="index.html#instrumentos">Instrumentos</a></li>
     <li><a href="index.html#experiencia">Experiencia</a></li>
     <li><a href="como-trabajo.html">Cómo trabajo</a></li>
     <li><a href="index.html#contacto">Contacto</a></li>
   </ul>
 </nav>
-
 <div class="breadcrumb">
   <a href="index.html">Inicio</a><span>›</span> Áreas de trabajo <span>›</span> Gestión del Talento
 </div>
-
 <div class="hero-area">
   <div class="area-tag">Área de trabajo</div>
   <h1>Gestión del Talento</h1>
-  <p class="lead">El talento no se gestiona en el aire. Se gestiona en una estructura, con una cultura, dentro de un sistema de poder. Ignorar eso es el error más caro que cometen las organizaciones cuando deciden "invertir en su gente".</p>
-  <p class="sublead">Trabajo en selección, desarrollo, retención y acompañamiento de líderes desde una perspectiva estructural: el talento importa, pero importa más el contexto que lo habilita o lo destruye.</p>
+  <p class="lead">El problema no es conseguir gente buena. El problema es saber qué capacidades necesita la organización, cómo se desarrollan, y cómo se evalúa si alguien las tiene.</p>
+  <p class="sublead">Trabajo con organizaciones que quieren construir sistemas de gestión de personas que funcionen en la práctica, no en el manual de RR.HH.</p>
 </div>
 
 <section>
   <div class="section-label">El problema real</div>
-  <h2>Por qué se van los mejores y se quedan los peores</h2>
-  <p>No es un problema de sueldos. O no solo de sueldos. Es un problema de cómo está organizado el trabajo, quién decide qué, qué se premia y qué se castiga, y cuánto margen real tiene cada persona para hacer algo que valga la pena.</p>
-  <p>Las organizaciones que pierden talento tienen casi siempre el mismo patrón: recompensan la lealtad política por encima de la competencia, confunden antigüedad con mérito, y no tienen sistemas claros de progresión.</p>
+  <h2>Cuando el talento se gestiona por intuición</h2>
+  <p>La mayoría de las organizaciones gestiona el talento por costumbre o por crisis. Evalúan cuando hay conflicto. Desarrollan cuando alguien lo pide. Seleccionan por cercanía. Y se preguntan por qué no pueden retener a los mejores.</p>
   <div class="two-col">
     <div>
       <h3>Síntomas frecuentes</h3>
-      <p style="color:var(--text-mid); font-size:.97rem;">Alta rotación en posiciones clave. Cuadros medios desenganchados. Líderes que no lideran. Procesos de selección que traen a los candidatos equivocados. Planes de carrera que no se usan.</p>
+      <p style="color:var(--text-mid); font-size:.97rem;">Evaluaciones de desempeño que nadie toma en serio. Competencias definidas que no describen a nadie real. Planes de carrera que existen en papel. Selecciones que dependen de quién te conoce.</p>
     </div>
     <div>
-      <h3>Lo que está detrás</h3>
-      <p style="color:var(--text-mid); font-size:.97rem;">Modelos de competencias desactualizados o inexistentes. Ausencia de criterios de evaluación claros. Líderes sin herramientas para conducir. Cultura que no acompaña lo que dice valorar.</p>
+      <h3>Lo que hay detrás</h3>
+      <p style="color:var(--text-mid); font-size:.97rem;">Ausencia de un modelo de competencias vinculado a la estrategia. Sistemas de evaluación desconectados de las decisiones reales. Liderazgo que no gestiona el desarrollo de su equipo. RR.HH. operativo sin capacidad estratégica.</p>
     </div>
   </div>
 </section>
@@ -127,23 +141,23 @@ footer a:hover { color: var(--copper); }
   <div class="product-cards">
     <div class="product-card">
       <h3>Modelo de Competencias Organizacionales</h3>
-      <p>Definición de competencias basadas en las capacidades estratégicas reales de la organización. No un catálogo genérico: un modelo que habla el idioma de lo que efectivamente se necesita.</p>
-      <span class="duration">4 a 8 semanas</span>
-    </div>
-    <div class="product-card">
-      <h3>Diagnóstico de Equipos</h3>
-      <p>Lectura estructural del funcionamiento del equipo: composición, dinámicas, brechas de desempeño, tensiones no resueltas. Base para intervenciones de desarrollo con dirección.</p>
-      <span class="duration">2 a 3 semanas</span>
-    </div>
-    <div class="product-card">
-      <h3>Acompañamiento Ejecutivo</h3>
-      <p>Trabajo uno a uno con líderes que necesitan ampliar su capacidad de conducción, gestionar complejidad política, o navegar decisiones de alta presión. No coaching motivacional.</p>
-      <span class="duration">3 a 6 meses</span>
-    </div>
-    <div class="product-card">
-      <h3>Diseño de Carrera y Sucesión</h3>
-      <p>Sistemas de progresión, mapa de sucesión y estrategia de retención para posiciones críticas. Conectado con el modelo de competencias y la estructura real de la organización.</p>
+      <p>Diseño del sistema de capacidades que la organización necesita para ejecutar su estrategia. Competencias reales, no listas copiadas de un manual.</p>
       <span class="duration">6 a 10 semanas</span>
+    </div>
+    <div class="product-card">
+      <h3>Sistema de Evaluación del Desempeño</h3>
+      <p>Diseño e implementación de un sistema que mide lo que importa y conecta con las decisiones reales de desarrollo y compensación.</p>
+      <span class="duration">8 a 12 semanas</span>
+    </div>
+    <div class="product-card">
+      <h3>Planes de Sucesión y Desarrollo</h3>
+      <p>Identificación de posiciones críticas, análisis de brechas y diseño de trayectorias de desarrollo para los perfiles clave.</p>
+      <span class="duration">6 a 10 semanas</span>
+    </div>
+    <div class="product-card">
+      <h3>Diagnóstico de Clima Organizacional</h3>
+      <p>Barómetro Organizacional: 7 dimensiones, 40 variables, lectura del estado real del equipo humano. Base para intervenciones de desarrollo.</p>
+      <span class="duration">4 a 6 semanas</span>
     </div>
   </div>
 </section>
@@ -155,37 +169,37 @@ footer a:hover { color: var(--copper); }
     <div class="deliverable-box">
       <h3>Modelo de Competencias</h3>
       <ul>
-        <li>Competencias definidas por nivel</li>
-        <li>Indicadores de desempeño observable</li>
-        <li>Guía de evaluación para líderes</li>
-        <li>Vinculación con selección y desarrollo</li>
+        <li>Diccionario de competencias adaptado</li>
+        <li>Perfiles por rol con niveles requeridos</li>
+        <li>Guías de evaluación conductual</li>
+        <li>Plan de implementación</li>
       </ul>
     </div>
     <div class="deliverable-box">
-      <h3>Diagnóstico de Equipo</h3>
+      <h3>Sistema de Evaluación</h3>
       <ul>
-        <li>Perfil de funcionamiento del equipo</li>
-        <li>Brechas identificadas por rol</li>
-        <li>Mapa de tensiones y dinámicas</li>
-        <li>Recomendaciones de intervención</li>
+        <li>Metodología y formularios adaptados</li>
+        <li>Manual del evaluador</li>
+        <li>Proceso de calibración</li>
+        <li>Dashboard de seguimiento</li>
       </ul>
     </div>
     <div class="deliverable-box">
-      <h3>Acompañamiento Ejecutivo</h3>
-      <ul>
-        <li>Diagnóstico del líder y su contexto</li>
-        <li>Plan de desarrollo individualizado</li>
-        <li>Sesiones de trabajo quincenales</li>
-        <li>Informe de evolución al cierre</li>
-      </ul>
-    </div>
-    <div class="deliverable-box">
-      <h3>Carrera y Sucesión</h3>
+      <h3>Sucesión y Desarrollo</h3>
       <ul>
         <li>Mapa de posiciones críticas</li>
-        <li>Perfil de candidatos internos</li>
-        <li>Plan de desarrollo para sucesión</li>
-        <li>Estrategia de retención específica</li>
+        <li>Análisis de brechas por perfil</li>
+        <li>Planes de desarrollo individuales</li>
+        <li>Sistema de seguimiento</li>
+      </ul>
+    </div>
+    <div class="deliverable-box">
+      <h3>Diagnóstico de Clima</h3>
+      <ul>
+        <li>Cuestionario aplicado (online)</li>
+        <li>Informe por dimensión y área</li>
+        <li>Brechas y alertas identificadas</li>
+        <li>Recomendaciones priorizadas</li>
       </ul>
     </div>
   </div>
@@ -193,39 +207,40 @@ footer a:hover { color: var(--copper); }
 
 <section>
   <div class="section-label">¿Para quién?</div>
-  <h2>Quién necesita este trabajo</h2>
+  <h2>Organizaciones que quieren construir sistemas, no parches</h2>
+  <p>No trabajo con todo el mundo. Trabajo con organizaciones que entienden que gestionar personas por intuición tiene un costo que no siempre se ve hasta que es tarde.</p>
   <div class="for-whom-grid">
-    <div class="whom-tag">Empresas en crecimiento acelerado</div>
-    <div class="whom-tag">Organismos en proceso de profesionalización</div>
-    <div class="whom-tag">Organizaciones con alta rotación</div>
-    <div class="whom-tag">Líderes en posiciones nuevas o complejas</div>
-    <div class="whom-tag">Equipos post-fusión o reestructuración</div>
-    <div class="whom-tag">Sindicatos y cámaras con conducción renovada</div>
+    <div class="whom-tag">Empresas medianas en crecimiento acelerado</div>
+    <div class="whom-tag">Organizaciones con alta rotación en posiciones clave</div>
+    <div class="whom-tag">Sindicatos con sistemas de personal sin estructura</div>
+    <div class="whom-tag">Áreas de RR.HH. que quieren profesionalizarse</div>
+    <div class="whom-tag">Organizaciones post-fusión con culturas distintas</div>
+    <div class="whom-tag">Instituciones que necesitan preparar el relevo</div>
   </div>
 </section>
 
 <section>
   <div class="section-label">Referencias</div>
-  <h2>Contextos donde se trabajó talento y liderazgo</h2>
+  <h2>Contextos donde se aplicó este trabajo</h2>
   <div class="case-block">
-    <div class="case-org">Sector Privado — Banco BICE / Hospital Español</div>
-    <p>Desarrollo de competencias, diagnóstico de equipos y acompañamiento de líderes en organizaciones del sector financiero y de salud con estructuras complejas.</p>
+    <div class="case-org">Sector Privado — Empresa Industrial</div>
+    <p>Diseño de modelo de competencias y sistema de evaluación del desempeño para una empresa industrial de tamaño mediano. Implementación con el equipo de RR.HH. interno y capacitación de evaluadores.</p>
   </div>
   <div class="case-block">
-    <div class="case-org">Sector Público — Subsecretaría de Empleo Público / ARBA · IPAP</div>
-    <p>Diseño de modelos de competencias, sistemas de evaluación y programas de desarrollo para la gestión pública provincial.</p>
+    <div class="case-org">Sector Gremial — OSUOMRA</div>
+    <p>Diagnóstico de clima organizacional y diseño de sistema de evaluación del desempeño en el marco del proceso de modernización de la obra social metalúrgica.</p>
   </div>
   <div class="case-block">
-    <div class="case-org">Sector Gremial — UPCN / CAME</div>
-    <p>Acompañamiento ejecutivo y desarrollo de equipos de conducción en el ámbito de organizaciones sindicales y empresariales.</p>
+    <div class="case-org">Sector Público — IPAP</div>
+    <p>Diseño e implementación de sistemas de evaluación del desempeño y programas de desarrollo de capacidades en el Instituto Provincial de la Administración Pública.</p>
   </div>
 </section>
 
 <div class="cta-section">
-  <h2>¿Tenés un problema de talento o de liderazgo?</h2>
-  <p>Empezamos identificando qué es lo que realmente está pasando, antes de definir qué intervención tiene sentido.</p>
+  <h2>¿Tu organización gestiona el talento por intuición o por sistema?</h2>
+  <p>Una conversación de 30 minutos para ver dónde está el problema y si tiene sentido trabajar juntos.</p>
   <div class="cta-group">
-    <a href="https://wa.me/5491130444992" class="btn-primary" target="_blank">Hablar por WhatsApp</a>
+    <a href="https://wa.me/5491130444992" class="btn-primary" target="_blank">Iniciar conversación por WhatsApp</a>
     <a href="https://calendar.app.google/5CHKaUURm9C3Jm6m7" class="btn-outline" target="_blank">Agendar reunión</a>
   </div>
 </div>
@@ -233,6 +248,5 @@ footer a:hover { color: var(--copper); }
 <footer>
   <a href="index.html">marianoboiero.com.ar</a> &nbsp;·&nbsp; mhboiero@gmail.com &nbsp;·&nbsp; +54 9 11 3044-4992
 </footer>
-
 </body>
 </html>
