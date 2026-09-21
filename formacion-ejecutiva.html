@@ -3,31 +3,49 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Formación y Desarrollo — Mariano Boiero</title>
-<meta name="description" content="Formación estructural sin eslóganes. Cursos, talleres y programas diseñados desde el pensamiento crítico y la experiencia real en organizaciones complejas.">
+<title>Formación & Desarrollo — Mariano Boiero</title>
+<meta name="description" content="Formación y desarrollo organizacional para líderes, jefaturas y equipos de conducción. Programas diseñados desde la práctica, no desde el manual.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg: #0e0c0a; --copper: #b87333; --copper-dim: #8a5a2a;
-  --copper-faint: #1e1510; --text: #e8e0d4; --text-mid: #b0a898;
-  --text-light: #7a7068; --divider: #2a2420; --white: #f5f0ea;
+  --bg: #f7f4ef;
+  --copper: #9a6a3a;
+  --copper-dim: #b8895a;
+  --copper-faint: #ede8e0;
+  --text: #2a2420;
+  --text-mid: #5a4e44;
+  --text-light: #8a7e74;
+  --divider: #ddd8d0;
+  --white: #2a2420;
 }
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
-body { font-family: 'EB Garamond', Georgia, serif; background: var(--bg); color: var(--text); font-size: 18px; line-height: 1.7; }
+body {
+  font-family: 'EB Garamond', Georgia, serif;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 18px;
+  line-height: 1.7;
+}
 a { color: var(--copper); text-decoration: none; }
-a:hover { color: var(--white); }
-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 2rem; height: 60px; background: rgba(14,12,10,0.97); border-bottom: 1px solid var(--divider); }
+a:hover { color: var(--text); }
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 2rem; height: 60px;
+  background: rgba(247,244,239,0.97);
+  border-bottom: 1px solid var(--divider);
+}
 .nav-brand { font-family: 'Cinzel', serif; font-size: 1rem; letter-spacing: .06em; color: var(--copper); }
 .nav-links { display: flex; gap: 2rem; list-style: none; }
 .nav-links a { font-family: 'Cinzel', serif; font-size: .78rem; letter-spacing: .08em; color: var(--text-mid); }
 .nav-links a:hover { color: var(--copper); }
 .nav-toggle { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
-.nav-toggle span { display: block; width: 22px; height: 2px; background: var(--text-mid); }
+.nav-toggle span { display: block; width: 22px; height: 2px; background: var(--text-mid); transition: .2s; }
 @media (max-width: 700px) {
   .nav-toggle { display: flex; }
-  .nav-links { display: none; flex-direction: column; gap: 0; position: absolute; top: 60px; left: 0; right: 0; background: rgba(14,12,10,.98); border-bottom: 1px solid var(--divider); padding: 1rem 2rem 1.5rem; }
+  .nav-links { display: none; flex-direction: column; gap: 0; position: absolute; top: 60px; left: 0; right: 0; background: rgba(247,244,239,.98); border-bottom: 1px solid var(--divider); padding: 1rem 2rem 1.5rem; }
   .nav-links.open { display: flex; }
   .nav-links li { padding: .6rem 0; border-bottom: 1px solid var(--divider); }
   .nav-links li:last-child { border-bottom: none; }
@@ -38,12 +56,12 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; a
 .breadcrumb span { margin: 0 .5rem; }
 .hero-area { padding: 5rem 2rem 4rem; max-width: 860px; margin: 0 auto; }
 .area-tag { display: inline-block; font-family: 'Cinzel', serif; font-size: .72rem; letter-spacing: .14em; color: var(--copper); border: 1px solid var(--copper-dim); padding: .3rem .9rem; margin-bottom: 1.5rem; }
-.hero-area h1 { font-family: 'Cinzel', serif; font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 400; color: var(--white); line-height: 1.25; margin-bottom: 1.5rem; }
+.hero-area h1 { font-family: 'Cinzel', serif; font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 400; color: var(--text); line-height: 1.25; margin-bottom: 1.5rem; }
 .lead { font-size: 1.22rem; color: var(--text); line-height: 1.75; margin-bottom: 1rem; max-width: 720px; }
 .sublead { font-size: 1.05rem; color: var(--text-mid); line-height: 1.75; max-width: 680px; }
 section { padding: 3.5rem 2rem; border-top: 1px solid var(--divider); max-width: 860px; margin: 0 auto; }
 .section-label { font-family: 'Cinzel', serif; font-size: .72rem; letter-spacing: .14em; color: var(--copper); text-transform: uppercase; margin-bottom: 1.2rem; }
-h2 { font-family: 'Cinzel', serif; font-size: 1.35rem; font-weight: 400; color: var(--white); margin-bottom: 1.2rem; }
+h2 { font-family: 'Cinzel', serif; font-size: 1.35rem; font-weight: 400; color: var(--text); margin-bottom: 1.2rem; }
 h3 { font-family: 'Cinzel', serif; font-size: 1rem; font-weight: 600; color: var(--copper); margin-bottom: .6rem; }
 p { margin-bottom: 1rem; color: var(--text); }
 p:last-child { margin-bottom: 0; }
@@ -54,35 +72,30 @@ p:last-child { margin-bottom: 0; }
 .deliverable-box li { padding: .4rem 0; border-bottom: 1px solid var(--divider); font-size: .97rem; color: var(--text-mid); }
 .deliverable-box li:last-child { border-bottom: none; }
 .deliverable-box li::before { content: '—'; color: var(--copper-dim); margin-right: .6rem; }
-.case-block { margin-top: 1.5rem; padding: 1.5rem 1.5rem 1.5rem 2rem; border-left: 2px solid var(--copper-dim); background: #12100d; }
+.case-block { margin-top: 1.5rem; padding: 1.5rem 1.5rem 1.5rem 2rem; border-left: 2px solid var(--copper-dim); background: #ede8e0; }
 .case-block .case-org { font-family: 'Cinzel', serif; font-size: .78rem; letter-spacing: .1em; color: var(--copper); margin-bottom: .5rem; }
 .case-block p { color: var(--text-mid); font-style: italic; }
 .for-whom-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; margin-top: 1.2rem; }
-.whom-tag { border: 1px solid var(--divider); padding: .7rem 1rem; font-size: .92rem; color: var(--text-mid); background: #12100d; }
-/* Program cards */
-.program-grid { display: grid; grid-template-columns: 1fr; gap: 1.2rem; margin-top: 1.5rem; }
-.program-card { border: 1px solid var(--divider); padding: 1.5rem; display: flex; gap: 1.5rem; }
-@media (max-width: 640px) { .program-card { flex-direction: column; gap: .8rem; } }
-.program-card .prog-meta { min-width: 120px; }
-.program-card .prog-meta h3 { font-size: .82rem; letter-spacing: .06em; margin-bottom: .4rem; }
-.program-card .prog-duration { font-size: .78rem; font-family: 'Cinzel', serif; color: var(--text-light); }
-.program-card .prog-body h3 { font-size: 1rem; margin-bottom: .4rem; }
-.program-card .prog-body p { font-size: .95rem; color: var(--text-mid); }
-.program-card .prog-body .prog-for { margin-top: .6rem; font-size: .88rem; color: var(--copper-dim); font-style: italic; }
+.whom-tag { border: 1px solid var(--divider); padding: .7rem 1rem; font-size: .92rem; color: var(--text-mid); background: #ede8e0; }
+.product-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 1.5rem; }
+@media (max-width: 640px) { .product-cards { grid-template-columns: 1fr; } }
+.product-card { border: 1px solid var(--divider); padding: 1.5rem; }
+.product-card h3 { font-size: .9rem; margin-bottom: .6rem; }
+.product-card p { font-size: .95rem; color: var(--text-mid); }
+.product-card .duration { display: inline-block; margin-top: .8rem; font-size: .78rem; font-family: 'Cinzel', serif; letter-spacing: .08em; color: var(--copper-dim); }
 .cta-section { padding: 4rem 2rem; border-top: 1px solid var(--divider); text-align: center; max-width: 860px; margin: 0 auto; }
 .cta-section p { color: var(--text-mid); max-width: 540px; margin: 0 auto 2rem; }
 .cta-group { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
 .btn-primary { font-family: 'Cinzel', serif; font-size: .82rem; letter-spacing: .1em; color: var(--bg); background: var(--copper); border: none; padding: .85rem 2rem; cursor: pointer; text-decoration: none; display: inline-block; transition: background .2s; }
-.btn-primary:hover { background: var(--white); color: var(--bg); }
+.btn-primary:hover { background: var(--text); color: var(--bg); }
 .btn-outline { font-family: 'Cinzel', serif; font-size: .82rem; letter-spacing: .1em; color: var(--copper); border: 1px solid var(--copper-dim); padding: .85rem 2rem; text-decoration: none; display: inline-block; transition: .2s; }
-.btn-outline:hover { border-color: var(--copper); color: var(--white); }
+.btn-outline:hover { border-color: var(--copper); color: var(--text); }
 footer { border-top: 1px solid var(--divider); padding: 2rem; text-align: center; font-size: .85rem; color: var(--text-light); font-family: 'Cinzel', serif; letter-spacing: .06em; }
 footer a { color: var(--text-light); }
 footer a:hover { color: var(--copper); }
 </style>
 </head>
 <body>
-
 <nav>
   <a href="index.html" class="nav-brand">Mariano Boiero</a>
   <button class="nav-toggle" aria-label="Menú" onclick="this.closest('nav').querySelector('.nav-links').classList.toggle('open')">
@@ -90,152 +103,103 @@ footer a:hover { color: var(--copper); }
   </button>
   <ul class="nav-links">
     <li><a href="index.html#areas">Áreas</a></li>
-    <li><a href="index.html#herramientas">Herramientas</a></li>
+    <li><a href="index.html#instrumentos">Instrumentos</a></li>
     <li><a href="index.html#experiencia">Experiencia</a></li>
     <li><a href="como-trabajo.html">Cómo trabajo</a></li>
     <li><a href="index.html#contacto">Contacto</a></li>
   </ul>
 </nav>
-
 <div class="breadcrumb">
-  <a href="index.html">Inicio</a><span>›</span> Áreas de trabajo <span>›</span> Formación y Desarrollo
+  <a href="index.html">Inicio</a><span>›</span> Áreas de trabajo <span>›</span> Formación &amp; Desarrollo
 </div>
-
 <div class="hero-area">
   <div class="area-tag">Área de trabajo</div>
-  <h1>Formación y Desarrollo</h1>
-  <p class="lead">La formación que no cambia nada es el gasto más costoso que puede hacer una organización. No en dinero: en tiempo, en credibilidad y en la posibilidad de que la gente vuelva a creer que aprender sirve para algo.</p>
-  <p class="sublead">Diseño cursos, talleres y programas desde el pensamiento crítico y la experiencia real. Sin eslóganes, sin humo, con contenido técnico que la gente pueda usar el lunes siguiente.</p>
+  <h1>Formación &amp; Desarrollo</h1>
+  <p class="lead">La formación que no cambia comportamientos no forma: entretiene. El problema no es la falta de contenido — es la falta de conexión entre lo que se aprende y lo que la persona tiene que resolver el lunes siguiente.</p>
+  <p class="sublead">Diseño e imparto programas de formación y desarrollo para equipos de conducción, jefaturas intermedias y líderes en formación. Desde la práctica, con casos reales, sin powerpoints de manual.</p>
 </div>
 
 <section>
   <div class="section-label">El problema real</div>
-  <h2>Por qué la mayoría de la formación no sirve</h2>
-  <p>No sirve porque parte de modelos genéricos aplicados a contextos que no los generaron. No sirve porque separa el aprendizaje de los problemas reales de la organización. No sirve porque la evalúa quien la vende.</p>
-  <p>La formación que funciona es la que parte del problema real, trabaja con quienes lo viven, y termina con algo concreto que se puede aplicar.</p>
+  <h2>Cuando la formación no transforma</h2>
+  <p>La formación ejecutiva suele ser un evento, no un proceso. Se hace el taller, se entregan los certificados, y todo vuelve a ser lo que era. No porque la gente no haya aprendido: porque no hay condiciones para aplicar lo aprendido.</p>
   <div class="two-col">
     <div>
-      <h3>Lo que no funciona</h3>
-      <p style="color:var(--text-mid); font-size:.97rem;">Talleres motivacionales de un día. Cursos enlatados sobre liderazgo. Contenido copiado de manuales de MBA. Capacitación obligatoria sin contexto. Evaluaciones de satisfacción que miden la merienda.</p>
+      <h3>Síntomas frecuentes</h3>
+      <p style="color:var(--text-mid); font-size:.97rem;">Talleres que no cambian nada. Participantes que aprueban pero no aplican. Programas que se repiten año a año sin impacto visible. Formación que se hace "para cumplir" con una exigencia normativa o sindical.</p>
     </div>
     <div>
-      <h3>Lo que sí funciona</h3>
-      <p style="color:var(--text-mid); font-size:.97rem;">Diagnóstico previo del grupo y sus necesidades reales. Diseño a medida. Facilitación con situaciones del propio trabajo. Seguimiento post-formación. Conexión con el sistema real.</p>
+      <h3>Lo que hay detrás</h3>
+      <p style="color:var(--text-mid); font-size:.97rem;">Diagnóstico ausente antes del diseño. Contenidos genéricos que no tocan el problema real. Sin transferencia al puesto. Sin seguimiento post-formación. Formadores que nunca gestionaron nada.</p>
     </div>
   </div>
 </section>
 
 <section>
   <div class="section-label">Programas</div>
-  <h2>Qué puedo diseñar y facilitar</h2>
-  <div class="program-grid">
-    <div class="program-card">
-      <div class="prog-meta">
-        <h3>Gestión &amp; Estructura</h3>
-        <div class="prog-duration">8 a 20 hs</div>
-      </div>
-      <div class="prog-body">
-        <h3>Gerencia en Trinchera</h3>
-        <p>Para gerentes y mandos medios que gestionan en contextos complejos, con recursos escasos y presión política. Cómo tomar decisiones cuando no hay manual.</p>
-        <div class="prog-for">Para: gerentes de primera línea, jefes de área, supervisores</div>
-      </div>
+  <h2>Qué hago en esta área</h2>
+  <div class="product-cards">
+    <div class="product-card">
+      <h3>Gerencia en Trinchera</h3>
+      <p>Programa para jefaturas intermedias que gestionan en condiciones reales: con recursos escasos, mandos que no deciden y equipos que no siempre acompañan. Anti-motivacional, pragmático, sin frases de inspiración.</p>
+      <span class="duration">4 a 6 encuentros</span>
     </div>
-    <div class="program-card">
-      <div class="prog-meta">
-        <h3>Liderazgo</h3>
-        <div class="prog-duration">6 a 16 hs</div>
-      </div>
-      <div class="prog-body">
-        <h3>Liderazgo Lúcido</h3>
-        <p>Conducción de equipos desde la comprensión estructural del poder, la autoridad y el conflicto. Cómo liderar sin confundir jerarquía con conducción.</p>
-        <div class="prog-for">Para: equipos de conducción, líderes en posiciones nuevas</div>
-      </div>
+    <div class="product-card">
+      <h3>Escuela de Liderazgo</h3>
+      <p>Programa modular para equipos de conducción. Diagnóstico, estrategia, gestión del equipo, comunicación y toma de decisiones. Adaptado a la organización, no copiado de un catálogo.</p>
+      <span class="duration">6 a 12 módulos</span>
     </div>
-    <div class="program-card">
-      <div class="prog-meta">
-        <h3>Cambio</h3>
-        <div class="prog-duration">4 a 12 hs</div>
-      </div>
-      <div class="prog-body">
-        <h3>Gestión del Cambio sin Humo</h3>
-        <p>Qué es realmente el cambio organizacional, por qué fracasa, y qué hacen distinto quienes lo logran. Herramientas concretas, no frameworks de manual.</p>
-        <div class="prog-for">Para: equipos de RRHH, líderes de proyecto, referentes internos de cambio</div>
-      </div>
+    <div class="product-card">
+      <h3>Taller de Decisiones Estratégicas</h3>
+      <p>Intervención intensiva de 1 o 2 días para equipos directivos. Análisis de una situación real, mapeo de opciones, y construcción de criterios de decisión.</p>
+      <span class="duration">1 a 2 días</span>
     </div>
-    <div class="program-card">
-      <div class="prog-meta">
-        <h3>Cultura</h3>
-        <div class="prog-duration">4 a 8 hs</div>
-      </div>
-      <div class="prog-body">
-        <h3>Cultura Organizacional — Lo que el organigrama no muestra</h3>
-        <p>Cómo se forma la cultura, cómo se cambia y cómo afecta todo lo demás. Para equipos que necesitan entender lo que el organigrama no puede mostrar.</p>
-        <div class="prog-for">Para: equipos técnicos, áreas de gestión, universidades</div>
-      </div>
-    </div>
-    <div class="program-card">
-      <div class="prog-meta">
-        <h3>Decisiones</h3>
-        <div class="prog-duration">3 a 6 hs</div>
-      </div>
-      <div class="prog-body">
-        <h3>Decisiones Estratégicas y Críticas</h3>
-        <p>Cómo tomar decisiones difíciles en contextos de incertidumbre y presión. Análisis de opciones, gestión del riesgo político, comunicación de la decisión.</p>
-        <div class="prog-for">Para: alta conducción, directivos, equipos ejecutivos</div>
-      </div>
-    </div>
-    <div class="program-card">
-      <div class="prog-meta">
-        <h3>Sector Público</h3>
-        <div class="prog-duration">Programa a medida</div>
-      </div>
-      <div class="prog-body">
-        <h3>Formación para el Sector Público</h3>
-        <p>Programas adaptados a las realidades del estado: lógica política, restricciones normativas, gestión con recursos insuficientes. Facilitado desde la experiencia real en el sector.</p>
-        <div class="prog-for">Para: organismos públicos, IPAP, universidades, institutos de formación</div>
-      </div>
+    <div class="product-card">
+      <h3>Programas a Medida</h3>
+      <p>Diseño de programas de formación y desarrollo específicos para la necesidad de la organización. Diagnóstico previo incluido. Sin módulos enlatados.</p>
+      <span class="duration">Variable</span>
     </div>
   </div>
 </section>
 
 <section>
-  <div class="section-label">Cómo se trabaja</div>
-  <h2>Modalidades disponibles</h2>
+  <div class="section-label">Entregables</div>
+  <h2>Qué produce cada programa</h2>
   <div class="two-col">
     <div class="deliverable-box">
-      <h3>Cursos cerrados</h3>
+      <h3>Gerencia en Trinchera</h3>
       <ul>
-        <li>Presencial o virtual</li>
-        <li>Diseño a medida del grupo</li>
-        <li>Para entre 8 y 50 participantes</li>
-        <li>Con o sin evaluación</li>
+        <li>4-6 encuentros (presencial o virtual)</li>
+        <li>Materiales propios (no genéricos)</li>
+        <li>Trabajo sobre casos reales</li>
+        <li>Evaluación de impacto</li>
       </ul>
     </div>
     <div class="deliverable-box">
-      <h3>Programas modulares</h3>
+      <h3>Escuela de Liderazgo</h3>
       <ul>
-        <li>3 a 6 módulos de 2 a 4 hs cada uno</li>
-        <li>Con seguimiento entre módulos</li>
-        <li>Trabajo con casos reales del grupo</li>
-        <li>Informe de avance al cierre</li>
+        <li>Diagnóstico de necesidades previo</li>
+        <li>Diseño curricular adaptado</li>
+        <li>Materiales específicos por módulo</li>
+        <li>Informe de cierre</li>
       </ul>
     </div>
     <div class="deliverable-box">
-      <h3>Charlas y conferencias</h3>
+      <h3>Decisiones Estratégicas</h3>
       <ul>
-        <li>60 a 90 minutos</li>
-        <li>Para eventos o jornadas institucionales</li>
-        <li>Temas disponibles o propuesta ad hoc</li>
-        <li>Presencial o videoconferencia</li>
+        <li>Briefing y preparación previa</li>
+        <li>Facilitación del taller</li>
+        <li>Informe de conclusiones</li>
+        <li>Seguimiento a 30 días</li>
       </ul>
     </div>
     <div class="deliverable-box">
-      <h3>Ciclos ejecutivos</h3>
+      <h3>Programas a Medida</h3>
       <ul>
-        <li>Para equipos de alta conducción</li>
-        <li>Formato encuentros mensuales</li>
-        <li>Análisis de casos propios</li>
-        <li>Comunidad de práctica</li>
+        <li>Diagnóstico de necesidades</li>
+        <li>Diseño curricular</li>
+        <li>Materiales específicos</li>
+        <li>Implementación y evaluación</li>
       </ul>
     </div>
   </div>
@@ -243,46 +207,46 @@ footer a:hover { color: var(--copper); }
 
 <section>
   <div class="section-label">¿Para quién?</div>
-  <h2>Organizaciones que contratan formación</h2>
+  <h2>Equipos que necesitan aprender haciendo, no escuchando</h2>
+  <p>Trabajo con equipos y organizaciones que entienden que la formación tiene que conectar con lo que la persona tiene que resolver el lunes siguiente. Sin teoría desconectada. Sin motivación de escaparate.</p>
   <div class="for-whom-grid">
-    <div class="whom-tag">Sindicatos y obras sociales</div>
-    <div class="whom-tag">Universidades e institutos</div>
-    <div class="whom-tag">Organismos públicos</div>
-    <div class="whom-tag">Empresas medianas</div>
-    <div class="whom-tag">Cámaras empresariales</div>
-    <div class="whom-tag">Consultoras asociadas</div>
+    <div class="whom-tag">Jefaturas intermedias sin formación de gestión</div>
+    <div class="whom-tag">Equipos directivos que necesitan alinearse</div>
+    <div class="whom-tag">Organizaciones sindicales con cuadros en formación</div>
+    <div class="whom-tag">Empresas con programas de desarrollo de líderes</div>
+    <div class="whom-tag">Sector público con mandos medios a fortalecer</div>
+    <div class="whom-tag">Instituciones con requisitos de formación continua</div>
   </div>
 </section>
 
 <section>
   <div class="section-label">Referencias</div>
-  <h2>Dónde se dictó formación</h2>
+  <h2>Contextos donde se aplicó este trabajo</h2>
   <div class="case-block">
-    <div class="case-org">Universidades — UNLaM · UNLZ · UNDEF · UNSAM</div>
-    <p>Docencia y facilitación en programas de posgrado, diplomaturas y cursos de actualización en universidades nacionales con orientación en gestión pública y organizaciones.</p>
+    <div class="case-org">Sector Público — ARBA / Municipios</div>
+    <p>Ciclos de formación para jefaturas intermedias en la Agencia de Recaudación de Buenos Aires y en municipios del conurbano. Adaptación del programa Gerencia en Trinchera al contexto de la gestión pública.</p>
   </div>
   <div class="case-block">
-    <div class="case-org">Sector Gremial — UOM / OSUOMRA / UPCN</div>
-    <p>Formación para equipos de conducción, mandos medios y referentes técnicos en organizaciones sindicales. Programas diseñados con la realidad del sector como punto de partida.</p>
+    <div class="case-org">Sector Gremial — UOM / Sindicatos</div>
+    <p>Programas de formación para cuadros sindicales y equipos de conducción de organizaciones gremiales. Liderazgo, negociación y gestión de equipos en contexto sindical.</p>
   </div>
   <div class="case-block">
-    <div class="case-org">Sector Público — ARBA · IPAP / Educ.ar / INASE</div>
-    <p>Programas de formación y desarrollo para organismos del estado provincial y nacional, incluyendo el Instituto Provincial de Administración Pública de Buenos Aires.</p>
+    <div class="case-org">Internacional — CLAD / República Dominicana</div>
+    <p>Programa de formación en gestión de recursos humanos para el sector público en República Dominicana, en el marco de un acuerdo de cooperación técnica con el MAP.</p>
   </div>
 </section>
 
 <div class="cta-section">
-  <h2>¿Necesitás formación para tu organización o equipo?</h2>
-  <p>Me contás qué problema tienen que resolver, qué contexto tiene el grupo, y en cuánto tiempo. A partir de ahí, puedo hacer una propuesta concreta.</p>
+  <h2>¿Necesitás formación que cambie algo, no que llene un casillero?</h2>
+  <p>Hablamos 30 minutos. Si tiene sentido, diseñamos algo juntos.</p>
   <div class="cta-group">
-    <a href="https://wa.me/5491130444992" class="btn-primary" target="_blank">Conversar por WhatsApp</a>
-    <a href="https://calendar.app.google/5CHKaUURm9C3Jm6m7" class="btn-outline" target="_blank">Agendar una reunión</a>
+    <a href="https://wa.me/5491130444992" class="btn-primary" target="_blank">Iniciar conversación por WhatsApp</a>
+    <a href="https://calendar.app.google/5CHKaUURm9C3Jm6m7" class="btn-outline" target="_blank">Agendar reunión</a>
   </div>
 </div>
 
 <footer>
   <a href="index.html">marianoboiero.com.ar</a> &nbsp;·&nbsp; mhboiero@gmail.com &nbsp;·&nbsp; +54 9 11 3044-4992
 </footer>
-
 </body>
 </html>
