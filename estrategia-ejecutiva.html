@@ -9,15 +9,15 @@
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg: #0e0c0a;
-  --copper: #b87333;
-  --copper-dim: #8a5a2a;
-  --copper-faint: #1e1510;
-  --text: #e8e0d4;
-  --text-mid: #b0a898;
-  --text-light: #7a7068;
-  --divider: #2a2420;
-  --white: #f5f0ea;
+  --bg: #f7f4ef;
+  --copper: #9a6a3a;
+  --copper-dim: #b8895a;
+  --copper-faint: #ede8e0;
+  --text: #2a2420;
+  --text-mid: #5a4e44;
+  --text-light: #8a7e74;
+  --divider: #ddd8d0;
+  --white: #2a2420;
 }
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
@@ -29,7 +29,7 @@ body {
   line-height: 1.7;
 }
 a { color: var(--copper); text-decoration: none; }
-a:hover { color: var(--white); }
+a:hover { color: var(--text); }
 
 /* NAV */
 nav {
@@ -37,7 +37,7 @@ nav {
   display: flex; align-items: center; justify-content: space-between;
   padding: 0 2rem;
   height: 60px;
-  background: rgba(14,12,10,0.97);
+  background: rgba(247,244,239,0.97);
   border-bottom: 1px solid var(--divider);
 }
 .nav-brand { font-family: 'Cinzel', serif; font-size: 1rem; letter-spacing: .06em; color: var(--copper); }
@@ -54,7 +54,7 @@ nav {
   .nav-links {
     display: none; flex-direction: column; gap: 0;
     position: absolute; top: 60px; left: 0; right: 0;
-    background: rgba(14,12,10,.98); border-bottom: 1px solid var(--divider);
+    background: rgba(247,244,239,.98); border-bottom: 1px solid var(--divider);
     padding: 1rem 2rem 1.5rem;
   }
   .nav-links.open { display: flex; }
@@ -94,7 +94,7 @@ nav {
   font-family: 'Cinzel', serif;
   font-size: clamp(1.8rem, 4vw, 2.8rem);
   font-weight: 400;
-  color: var(--white);
+  color: var(--text);
   line-height: 1.25;
   margin-bottom: 1.5rem;
 }
@@ -126,7 +126,7 @@ h2 {
   font-family: 'Cinzel', serif;
   font-size: 1.35rem;
   font-weight: 400;
-  color: var(--white);
+  color: var(--text);
   margin-bottom: 1.2rem;
 }
 h3 {
@@ -176,7 +176,7 @@ p:last-child { margin-bottom: 0; }
   margin-top: 1.5rem;
   padding: 1.5rem 1.5rem 1.5rem 2rem;
   border-left: 2px solid var(--copper-dim);
-  background: #12100d;
+  background: #ede8e0;
 }
 .case-block .case-org {
   font-family: 'Cinzel', serif;
@@ -199,7 +199,7 @@ p:last-child { margin-bottom: 0; }
   padding: .7rem 1rem;
   font-size: .92rem;
   color: var(--text-mid);
-  background: #12100d;
+  background: #ede8e0;
 }
 
 /* PRODUCT CARDS */
@@ -248,7 +248,7 @@ p:last-child { margin-bottom: 0; }
   display: inline-block;
   transition: background .2s;
 }
-.btn-primary:hover { background: var(--white); color: var(--bg); }
+.btn-primary:hover { background: var(--text); color: var(--bg); }
 .btn-outline {
   font-family: 'Cinzel', serif;
   font-size: .82rem;
@@ -260,7 +260,7 @@ p:last-child { margin-bottom: 0; }
   display: inline-block;
   transition: .2s;
 }
-.btn-outline:hover { border-color: var(--copper); color: var(--white); }
+.btn-outline:hover { border-color: var(--copper); color: var(--text); }
 
 /* FOOTER */
 footer {
