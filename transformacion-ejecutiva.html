@@ -4,35 +4,48 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Transformación Organizacional — Mariano Boiero</title>
-<meta name="description" content="Gestión del cambio sin glitter. Intervenciones reales para organizaciones en transformación profunda: nuevos sistemas, fusiones, reestructuraciones, crisis.">
+<meta name="description" content="Diagnóstico y diseño de procesos de cambio con condiciones reales de implementación. Cultura organizacional, gestión del cambio y acompañamiento ejecutivo.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg: #0e0c0a; --copper: #b87333; --copper-dim: #8a5a2a;
-  --copper-faint: #1e1510; --text: #e8e0d4; --text-mid: #b0a898;
-  --text-light: #7a7068; --divider: #2a2420; --white: #f5f0ea;
+  --bg: #f7f4ef;
+  --copper: #9a6a3a;
+  --copper-dim: #b8895a;
+  --copper-faint: #ede8e0;
+  --text: #2a2420;
+  --text-mid: #5a4e44;
+  --text-light: #8a7e74;
+  --divider: #ddd8d0;
+  --white: #2a2420;
 }
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
-body { font-family: 'EB Garamond', Georgia, serif; background: var(--bg); color: var(--text); font-size: 18px; line-height: 1.7; }
+body {
+  font-family: 'EB Garamond', Georgia, serif;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 18px;
+  line-height: 1.7;
+}
 a { color: var(--copper); text-decoration: none; }
-a:hover { color: var(--white); }
+a:hover { color: var(--text); }
 nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
   display: flex; align-items: center; justify-content: space-between;
   padding: 0 2rem; height: 60px;
-  background: rgba(14,12,10,0.97); border-bottom: 1px solid var(--divider);
+  background: rgba(247,244,239,0.97);
+  border-bottom: 1px solid var(--divider);
 }
 .nav-brand { font-family: 'Cinzel', serif; font-size: 1rem; letter-spacing: .06em; color: var(--copper); }
 .nav-links { display: flex; gap: 2rem; list-style: none; }
 .nav-links a { font-family: 'Cinzel', serif; font-size: .78rem; letter-spacing: .08em; color: var(--text-mid); }
 .nav-links a:hover { color: var(--copper); }
 .nav-toggle { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
-.nav-toggle span { display: block; width: 22px; height: 2px; background: var(--text-mid); }
+.nav-toggle span { display: block; width: 22px; height: 2px; background: var(--text-mid); transition: .2s; }
 @media (max-width: 700px) {
   .nav-toggle { display: flex; }
-  .nav-links { display: none; flex-direction: column; gap: 0; position: absolute; top: 60px; left: 0; right: 0; background: rgba(14,12,10,.98); border-bottom: 1px solid var(--divider); padding: 1rem 2rem 1.5rem; }
+  .nav-links { display: none; flex-direction: column; gap: 0; position: absolute; top: 60px; left: 0; right: 0; background: rgba(247,244,239,.98); border-bottom: 1px solid var(--divider); padding: 1rem 2rem 1.5rem; }
   .nav-links.open { display: flex; }
   .nav-links li { padding: .6rem 0; border-bottom: 1px solid var(--divider); }
   .nav-links li:last-child { border-bottom: none; }
@@ -43,12 +56,12 @@ nav {
 .breadcrumb span { margin: 0 .5rem; }
 .hero-area { padding: 5rem 2rem 4rem; max-width: 860px; margin: 0 auto; }
 .area-tag { display: inline-block; font-family: 'Cinzel', serif; font-size: .72rem; letter-spacing: .14em; color: var(--copper); border: 1px solid var(--copper-dim); padding: .3rem .9rem; margin-bottom: 1.5rem; }
-.hero-area h1 { font-family: 'Cinzel', serif; font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 400; color: var(--white); line-height: 1.25; margin-bottom: 1.5rem; }
+.hero-area h1 { font-family: 'Cinzel', serif; font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 400; color: var(--text); line-height: 1.25; margin-bottom: 1.5rem; }
 .lead { font-size: 1.22rem; color: var(--text); line-height: 1.75; margin-bottom: 1rem; max-width: 720px; }
 .sublead { font-size: 1.05rem; color: var(--text-mid); line-height: 1.75; max-width: 680px; }
 section { padding: 3.5rem 2rem; border-top: 1px solid var(--divider); max-width: 860px; margin: 0 auto; }
 .section-label { font-family: 'Cinzel', serif; font-size: .72rem; letter-spacing: .14em; color: var(--copper); text-transform: uppercase; margin-bottom: 1.2rem; }
-h2 { font-family: 'Cinzel', serif; font-size: 1.35rem; font-weight: 400; color: var(--white); margin-bottom: 1.2rem; }
+h2 { font-family: 'Cinzel', serif; font-size: 1.35rem; font-weight: 400; color: var(--text); margin-bottom: 1.2rem; }
 h3 { font-family: 'Cinzel', serif; font-size: 1rem; font-weight: 600; color: var(--copper); margin-bottom: .6rem; }
 p { margin-bottom: 1rem; color: var(--text); }
 p:last-child { margin-bottom: 0; }
@@ -59,31 +72,30 @@ p:last-child { margin-bottom: 0; }
 .deliverable-box li { padding: .4rem 0; border-bottom: 1px solid var(--divider); font-size: .97rem; color: var(--text-mid); }
 .deliverable-box li:last-child { border-bottom: none; }
 .deliverable-box li::before { content: '—'; color: var(--copper-dim); margin-right: .6rem; }
-.case-block { margin-top: 1.5rem; padding: 1.5rem 1.5rem 1.5rem 2rem; border-left: 2px solid var(--copper-dim); background: #12100d; }
+.case-block { margin-top: 1.5rem; padding: 1.5rem 1.5rem 1.5rem 2rem; border-left: 2px solid var(--copper-dim); background: #ede8e0; }
 .case-block .case-org { font-family: 'Cinzel', serif; font-size: .78rem; letter-spacing: .1em; color: var(--copper); margin-bottom: .5rem; }
 .case-block p { color: var(--text-mid); font-style: italic; }
 .for-whom-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; margin-top: 1.2rem; }
-.whom-tag { border: 1px solid var(--divider); padding: .7rem 1rem; font-size: .92rem; color: var(--text-mid); background: #12100d; }
-.phase-list { margin-top: 1.5rem; }
-.phase-item { display: flex; gap: 1.5rem; padding: 1.2rem 0; border-bottom: 1px solid var(--divider); }
-.phase-item:last-child { border-bottom: none; }
-.phase-number { font-family: 'Cinzel', serif; font-size: .85rem; color: var(--copper-dim); min-width: 60px; padding-top: .2rem; }
-.phase-content h3 { font-size: .95rem; margin-bottom: .3rem; }
-.phase-content p { font-size: .95rem; color: var(--text-mid); }
+.whom-tag { border: 1px solid var(--divider); padding: .7rem 1rem; font-size: .92rem; color: var(--text-mid); background: #ede8e0; }
+.product-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 1.5rem; }
+@media (max-width: 640px) { .product-cards { grid-template-columns: 1fr; } }
+.product-card { border: 1px solid var(--divider); padding: 1.5rem; }
+.product-card h3 { font-size: .9rem; margin-bottom: .6rem; }
+.product-card p { font-size: .95rem; color: var(--text-mid); }
+.product-card .duration { display: inline-block; margin-top: .8rem; font-size: .78rem; font-family: 'Cinzel', serif; letter-spacing: .08em; color: var(--copper-dim); }
 .cta-section { padding: 4rem 2rem; border-top: 1px solid var(--divider); text-align: center; max-width: 860px; margin: 0 auto; }
 .cta-section p { color: var(--text-mid); max-width: 540px; margin: 0 auto 2rem; }
 .cta-group { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
 .btn-primary { font-family: 'Cinzel', serif; font-size: .82rem; letter-spacing: .1em; color: var(--bg); background: var(--copper); border: none; padding: .85rem 2rem; cursor: pointer; text-decoration: none; display: inline-block; transition: background .2s; }
-.btn-primary:hover { background: var(--white); color: var(--bg); }
+.btn-primary:hover { background: var(--text); color: var(--bg); }
 .btn-outline { font-family: 'Cinzel', serif; font-size: .82rem; letter-spacing: .1em; color: var(--copper); border: 1px solid var(--copper-dim); padding: .85rem 2rem; text-decoration: none; display: inline-block; transition: .2s; }
-.btn-outline:hover { border-color: var(--copper); color: var(--white); }
+.btn-outline:hover { border-color: var(--copper); color: var(--text); }
 footer { border-top: 1px solid var(--divider); padding: 2rem; text-align: center; font-size: .85rem; color: var(--text-light); font-family: 'Cinzel', serif; letter-spacing: .06em; }
 footer a { color: var(--text-light); }
 footer a:hover { color: var(--copper); }
 </style>
 </head>
 <body>
-
 <nav>
   <a href="index.html" class="nav-brand">Mariano Boiero</a>
   <button class="nav-toggle" aria-label="Menú" onclick="this.closest('nav').querySelector('.nav-links').classList.toggle('open')">
@@ -91,96 +103,103 @@ footer a:hover { color: var(--copper); }
   </button>
   <ul class="nav-links">
     <li><a href="index.html#areas">Áreas</a></li>
-    <li><a href="index.html#herramientas">Herramientas</a></li>
+    <li><a href="index.html#instrumentos">Instrumentos</a></li>
     <li><a href="index.html#experiencia">Experiencia</a></li>
     <li><a href="como-trabajo.html">Cómo trabajo</a></li>
     <li><a href="index.html#contacto">Contacto</a></li>
   </ul>
 </nav>
-
 <div class="breadcrumb">
   <a href="index.html">Inicio</a><span>›</span> Áreas de trabajo <span>›</span> Transformación Organizacional
 </div>
-
 <div class="hero-area">
   <div class="area-tag">Área de trabajo</div>
   <h1>Transformación Organizacional</h1>
-  <p class="lead">El cambio no se gestiona con slogans. Tampoco con talleres de sensibilización ni con consultores que venden el mismo modelo a todos. Se gestiona con estructura, poder, tiempos y política.</p>
-  <p class="sublead">Trabajo con organizaciones que están en medio de un cambio real: nuevo sistema, fusión, reestructuración, cambio de modelo. Diseño un proceso adaptado a lo que la organización efectivamente puede sostener.</p>
+  <p class="lead">Las organizaciones cambian de nombre, de estructura, de tecnología. Cambian todo menos lo que necesitan cambiar. El problema de fondo no es la resistencia al cambio: es que nadie diagnosticó qué hay que cambiar realmente, ni si las condiciones están dadas para hacerlo.</p>
+  <p class="sublead">Trabajo con organizaciones que necesitan transformarse sin destruirse en el proceso. Diagnóstico antes que receta. Intervención con condiciones reales. Sin modelos de manual.</p>
 </div>
 
 <section>
   <div class="section-label">El problema real</div>
-  <h2>Por qué fracasan la mayoría de los procesos de cambio</h2>
-  <p>Los procesos de cambio fracasan porque se aplican modelos universales a organizaciones particulares. Se ignoran las estructuras de poder reales. Se subestiman las resistencias. Se sobreestiman los plazos y la capacidad de absorción.</p>
-  <p>El resultado es predecible: mucho ruido, poco cambio, y una organización más resistente a la próxima intervención que a la anterior.</p>
+  <h2>Cuando el cambio se anuncia pero no ocurre</h2>
+  <p>La mayoría de los procesos de cambio organizacional fracasan. No por resistencia de la gente: por diseño deficiente. Se anuncia la transformación antes de entender qué está pasando realmente. Se contrata un consultor de modelo. Se hace el taller de cultura. Y nada cambia.</p>
   <div class="two-col">
     <div>
-      <h3>Lo que no funciona</h3>
-      <p style="color:var(--text-mid); font-size:.97rem;">Talleres motivacionales. Presentaciones de PowerPoint a todo el personal. Consultores que no se quedan a ver qué pasa. Planes de comunicación sin análisis de actores.</p>
+      <h3>Síntomas frecuentes</h3>
+      <p style="color:var(--text-mid); font-size:.97rem;">Iniciativas que duran lo que dura el impulso político. Consultores que vienen con la solución antes de ver el problema. Cultura declarada que no coincide con cultura real. Proyectos de cambio que generan más burocracia.</p>
     </div>
     <div>
-      <h3>Lo que sí funciona</h3>
-      <p style="color:var(--text-mid); font-size:.97rem;">Diagnóstico real de resistencias y alianzas. Trabajo con quien tiene el poder de mover el sistema. Diseño de proceso viable, no ideal. Presencia técnica en los momentos críticos.</p>
+      <h3>Lo que hay detrás</h3>
+      <p style="color:var(--text-mid); font-size:.97rem;">Diagnóstico ausente o superficial. Falta de análisis de viabilidad política. Intervenciones diseñadas desde el manual, no desde la organización. Conducción que no lidera el proceso.</p>
     </div>
   </div>
 </section>
 
 <section>
-  <div class="section-label">Metodología</div>
-  <h2>Cómo se trabaja un proceso de cambio real</h2>
-  <div class="phase-list">
-    <div class="phase-item">
-      <div class="phase-number">Fase 1</div>
-      <div class="phase-content">
-        <h3>Diagnóstico de clima, estructuras y tensiones</h3>
-        <p>Lectura del estado organizacional antes de intervenir: qué está funcionando, dónde están las resistencias, quiénes son los actores clave, cuáles son los nudos de conflicto no resuelto.</p>
-      </div>
+  <div class="section-label">Intervenciones</div>
+  <h2>Qué hago en esta área</h2>
+  <div class="product-cards">
+    <div class="product-card">
+      <h3>Diagnóstico de Cultura Organizacional</h3>
+      <p>Lectura real de los valores, supuestos y patrones de comportamiento que gobiernan la organización. Base indispensable antes de cualquier intervención de cambio.</p>
+      <span class="duration">4 a 8 semanas</span>
     </div>
-    <div class="phase-item">
-      <div class="phase-number">Fase 2</div>
-      <div class="phase-content">
-        <h3>Diseño del plan de cambio situado</h3>
-        <p>Un plan que parte de lo real, no de lo ideal. Etapas, hitos, actores responsables, mecanismos de seguimiento. Adaptado al tempo político de la organización y a su capacidad efectiva de movimiento.</p>
-      </div>
+    <div class="product-card">
+      <h3>Diseño de Proceso de Cambio</h3>
+      <p>Arquitectura de la transformación: qué cambia, en qué orden, con qué condiciones, con quién. Hoja de ruta viable, no ideal.</p>
+      <span class="duration">3 a 6 semanas</span>
     </div>
-    <div class="phase-item">
-      <div class="phase-number">Fase 3</div>
-      <div class="phase-content">
-        <h3>Acompañamiento técnico y político</h3>
-        <p>Presencia en los momentos críticos: reuniones de conducción, comunicaciones clave, puntos de conflicto. No solo diseño: también acompañamiento en la ejecución cuando el sistema se tensa.</p>
-      </div>
+    <div class="product-card">
+      <h3>Acompañamiento Ejecutivo</h3>
+      <p>Trabajo directo con el equipo de conducción durante el proceso de cambio. Decisiones, conflictos, ajustes en tiempo real.</p>
+      <span class="duration">3 a 12 meses</span>
     </div>
-    <div class="phase-item">
-      <div class="phase-number">Fase 4</div>
-      <div class="phase-content">
-        <h3>Cierre y transferencia</h3>
-        <p>El proceso no termina con el consultor: termina con la organización en capacidad de sostener lo que cambió. Documentación, formación de referentes internos, validación del nuevo estado.</p>
-      </div>
+    <div class="product-card">
+      <h3>Intervención de Conflicto Organizacional</h3>
+      <p>Diagnóstico y mediación en situaciones de conflicto que bloquean el funcionamiento. Mapa de intereses, opciones y salida viable.</p>
+      <span class="duration">3 a 6 semanas</span>
     </div>
   </div>
 </section>
 
 <section>
   <div class="section-label">Entregables</div>
-  <h2>Qué produce esta intervención</h2>
+  <h2>Qué produce cada intervención</h2>
   <div class="two-col">
     <div class="deliverable-box">
-      <h3>Diagnóstico previo</h3>
+      <h3>Diagnóstico Cultural</h3>
       <ul>
-        <li>Mapa de actores y resistencias</li>
-        <li>Estado emocional-organizacional</li>
-        <li>Análisis de clima y tensiones</li>
-        <li>Focos de conflicto identificados</li>
+        <li>Informe de cultura real vs. declarada</li>
+        <li>Mapa de subculturas y tensiones</li>
+        <li>Palancas de cambio identificadas</li>
+        <li>Agenda de intervención priorizada</li>
       </ul>
     </div>
     <div class="deliverable-box">
-      <h3>Plan de cambio</h3>
+      <h3>Diseño de cambio</h3>
       <ul>
-        <li>Hoja de ruta adaptada al contexto</li>
-        <li>Estrategia de actores</li>
+        <li>Diagnóstico de viabilidad</li>
+        <li>Hoja de ruta con fases y condiciones</li>
         <li>Plan de comunicación interna</li>
-        <li>Mecanismos de seguimiento</li>
+        <li>Sistema de seguimiento</li>
+      </ul>
+    </div>
+    <div class="deliverable-box">
+      <h3>Acompañamiento</h3>
+      <ul>
+        <li>Sesiones individuales y de equipo</li>
+        <li>Seguimiento de indicadores de proceso</li>
+        <li>Ajustes en tiempo real</li>
+        <li>Informe de cierre</li>
+      </ul>
+    </div>
+    <div class="deliverable-box">
+      <h3>Conflicto organizacional</h3>
+      <ul>
+        <li>Mapa de actores e intereses</li>
+        <li>Diagnóstico del conflicto</li>
+        <li>Propuesta de salida viable</li>
+        <li>Acompañamiento en la negociación</li>
       </ul>
     </div>
   </div>
@@ -188,40 +207,40 @@ footer a:hover { color: var(--copper); }
 
 <section>
   <div class="section-label">¿Para quién?</div>
-  <h2>Organizaciones con un cambio real en proceso</h2>
-  <p>Esta intervención requiere un sponsor interno con poder real y disposición a poner el cuerpo. Sin eso, no hay condiciones para trabajar.</p>
+  <h2>Organizaciones con capacidad de transformarse</h2>
+  <p>No trabajo con organizaciones que quieren el sticker de "transformación" sin el proceso. Trabajo con las que tienen conducción comprometida y un problema real que resolver.</p>
   <div class="for-whom-grid">
-    <div class="whom-tag">Implementación de nuevos sistemas</div>
-    <div class="whom-tag">Fusiones y absorciones</div>
-    <div class="whom-tag">Cambio de modelo de gestión</div>
-    <div class="whom-tag">Reestructuraciones post-crisis</div>
-    <div class="whom-tag">Organismos en transición política</div>
-    <div class="whom-tag">Empresas en crecimiento acelerado</div>
+    <div class="whom-tag">Empresas en procesos de fusión o restructuración</div>
+    <div class="whom-tag">Organismos públicos en transición política</div>
+    <div class="whom-tag">Organizaciones con conflictos de conducción</div>
+    <div class="whom-tag">Instituciones con cultura que frenó el crecimiento</div>
+    <div class="whom-tag">Equipos que necesitan reorganizarse</div>
+    <div class="whom-tag">Organizaciones post-crisis</div>
   </div>
 </section>
 
 <section>
   <div class="section-label">Referencias</div>
-  <h2>Contextos donde se trabajó transformación</h2>
+  <h2>Contextos donde se aplicó este trabajo</h2>
   <div class="case-block">
-    <div class="case-org">Sector Privado — JST Argentina / Maitén Agro</div>
-    <p>Procesos de cambio organizacional y acompañamiento en reestructuración de equipos de gestión en empresas del sector privado con presencia regional.</p>
+    <div class="case-org">Sector Público — Ministerio de Trabajo</div>
+    <p>Diagnóstico organizacional y diseño de proceso de cambio en una unidad del Ministerio de Trabajo durante un período de transición político-institucional. Intervención sobre cultura, procesos y sistema de conducción.</p>
   </div>
   <div class="case-block">
-    <div class="case-org">Sector Público — Ministerio de Desarrollo Social</div>
-    <p>Intervención en procesos de cambio institucional, rediseño de estructuras de gestión y acompañamiento en implementación de nuevos modelos operativos.</p>
+    <div class="case-org">Sector Gremial — UCEM / UOM</div>
+    <p>Acompañamiento en proceso de transformación institucional. Diagnóstico de cultura organizacional, mapeo de conflictos internos y diseño de la hoja de ruta de cambio.</p>
   </div>
   <div class="case-block">
-    <div class="case-org">Internacional — Save the Children / CLAD</div>
-    <p>Diseño y acompañamiento de procesos de transformación organizacional en el ámbito de organismos de cooperación internacional y desarrollo regional.</p>
+    <div class="case-org">Organismos Internacionales — CLAD / BID</div>
+    <p>Intervenciones de diagnóstico y rediseño organizacional en el marco de proyectos de modernización del Estado en Argentina y América Latina.</p>
   </div>
 </section>
 
 <div class="cta-section">
-  <h2>¿Tu organización está en medio de un cambio?</h2>
-  <p>Si el proceso ya empezó y no está yendo bien, también se puede entrar en marcha. El mejor momento para llamar es antes; el segundo mejor es ahora.</p>
+  <h2>¿Tu organización está en un proceso de cambio que no está funcionando?</h2>
+  <p>Empezamos con una conversación de 30 minutos para ver si tiene sentido trabajar juntos. Sin compromiso.</p>
   <div class="cta-group">
-    <a href="https://wa.me/5491130444992" class="btn-primary" target="_blank">Hablar por WhatsApp</a>
+    <a href="https://wa.me/5491130444992" class="btn-primary" target="_blank">Iniciar conversación por WhatsApp</a>
     <a href="https://calendar.app.google/5CHKaUURm9C3Jm6m7" class="btn-outline" target="_blank">Agendar reunión</a>
   </div>
 </div>
@@ -229,6 +248,5 @@ footer a:hover { color: var(--copper); }
 <footer>
   <a href="index.html">marianoboiero.com.ar</a> &nbsp;·&nbsp; mhboiero@gmail.com &nbsp;·&nbsp; +54 9 11 3044-4992
 </footer>
-
 </body>
 </html>
