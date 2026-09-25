@@ -328,6 +328,35 @@
       font-size: 1.05rem;
     }
 
+    .clients-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2rem;
+      margin-top: 2.5rem;
+    }
+
+    .client-group-title {
+      font-family: 'Cinzel', serif;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      color: var(--copper);
+      text-transform: uppercase;
+      margin-bottom: 0.8rem;
+      border-bottom: 1px solid #d6cfc3;
+      padding-bottom: 0.5rem;
+    }
+
+    .client-list {
+      list-style: none;
+    }
+
+    .client-list li {
+      font-size: 0.92rem;
+      color: var(--text-mid);
+      margin-bottom: 0.4rem;
+    }
+
     .areas-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -1044,6 +1073,47 @@
       <h2 class="section-title" id="exp-title">Trayectoria</h2>
       <div class="bio-text">
         <p>Más de veinte años de práctica en organismos públicos, organizaciones sindicales y proyectos de cooperación internacional (BID, Banco Mundial, CLAD). Docente universitario. Doctorando en administración pública.</p>
+      </div>
+
+      <div class="clients-grid">
+        <div class="client-group">
+          <p class="client-group-title">Sector Público</p>
+          <ul class="client-list">
+            <li>Jefatura de Gabinete de Ministros</li>
+            <li>Ministerio de Desarrollo Social</li>
+            <li>ARBA</li>
+            <li>Educ.ar</li>
+            <li>IPAP</li>
+          </ul>
+        </div>
+        <div class="client-group">
+          <p class="client-group-title">Sector Privado</p>
+          <ul class="client-list">
+            <li>Banco BICE</li>
+            <li>Hospital Español</li>
+            <li>Maitén Agro</li>
+          </ul>
+        </div>
+        <div class="client-group">
+          <p class="client-group-title">Organizaciones Gremiales y Sociales</p>
+          <ul class="client-list">
+            <li>UOM</li>
+            <li>OSUOMRA</li>
+            <li>UPCN</li>
+            <li>CAME</li>
+          </ul>
+        </div>
+        <div class="client-group">
+          <p class="client-group-title">Cooperación Internacional y Academia</p>
+          <ul class="client-list">
+            <li>Banco Mundial</li>
+            <li>Banco Interamericano de Desarrollo</li>
+            <li>Save the Children</li>
+            <li>Gobierno de la República Dominicana</li>
+            <li>CLAD</li>
+            <li>UNLaM · UNLZ · UNDEF · UNSAM</li>
+          </ul>
+        </div>
       </div>
     </div>
   </section>
